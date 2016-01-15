@@ -55,14 +55,5 @@ namespace ApplicationWPF.ViewModel
                 OnPropertyChanged("Tournoi");
             }
         }
-
-        /*public EntitiesLayer.Jedi Vainqueur
-        {
-            get 
-            {
-                
-            }
-            set { }
-        }*/
     }
 }
