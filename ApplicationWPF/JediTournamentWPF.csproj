@@ -56,6 +56,14 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Jedi\JedisModelView.cs" />
+    <Compile Include="ViewModel\Jedi\JediViewModel.cs" />
+    <Compile Include="ViewModel\ManagementViewModel.cs" />
+    <Compile Include="ViewModel\Match\MatchViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\Stade\StadeViewModel.cs" />
+    <Compile Include="ViewModel\Tournament\TournamentViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Page Include="ConnexionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -111,7 +119,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="modele\" />
+    <Folder Include="Modele\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
