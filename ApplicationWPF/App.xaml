@@ -12,6 +12,10 @@
             <Setter Property="Foreground" Value="LightGray"/>
             <Setter Property="TextDecorations" Value="None"/>
         </Style>
-        
+
+        <BitmapImage x:Key="StarWarsImageBackGround1" UriSource="./Picture/starwars10.jpg" />
+        <BitmapImage x:Key="StarWarsImageBackGround2" UriSource="./Picture/starwars5.jpg" />
+        <BitmapImage x:Key="JediTournamentLogo" UriSource="./Picture/JediTournamentLogo.png" />
+
     </Application.Resources>
 </Application>

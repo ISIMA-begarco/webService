@@ -53,12 +53,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppButton1.xaml.cs">
+      <DependentUpon>AppButton1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Jedi\JedisModelView.cs" />
     <Compile Include="ViewModel\Jedi\JediViewModel.cs" />
-    <Compile Include="ViewModel\ManagementViewModel.cs" />
     <Compile Include="ViewModel\Match\MatchsViewModel.cs" />
     <Compile Include="ViewModel\Match\MatchViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
@@ -67,6 +72,10 @@
     <Compile Include="ViewModel\Tournament\TournamentsViewModel.cs" />
     <Compile Include="ViewModel\Tournament\TournamentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Page Include="AppButton1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ConnexionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +88,10 @@
       <DependentUpon>ConnexionWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +136,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modele\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\starwars5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\starwars10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\JediTournamentLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
