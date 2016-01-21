@@ -56,5 +56,20 @@ namespace EntitiesLayer
             get { return niveauBlessure; }
             set { niveauBlessure = value; }
         }
+
+        public double getPerception()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int getStrength()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int getDexterity()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

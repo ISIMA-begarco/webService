@@ -65,12 +65,19 @@ namespace BusinessLayer
             Jedi winner = m.Jedi1;
             Random rd = new Random();
             double balance = .5;
+            
+            double gain1, gain2, gain3, gain4;
+            gain1 = rd.NextDouble();
+            gain1 = gain1 <= m.Jedi1.getPerception() / 100 ? 1 + gain1 : 1;
+            gain2 = rd.NextDouble();
+            gain2 = gain2 <= m.Jedi2.getPerception() / 100 ? 1 + gain2 : 1;
+            gain3 = rd.NextDouble();
+            gain3 = gain3 <= m.Jedi1.getPerception() / 100 ? 1 + gain3 : 1;
+            gain4 = rd.NextDouble();
+            gain4 = gain4 <= m.Jedi2.getPerception() / 100 ? 1 + gain4 : 1;
 
-            ///
-            /// TODO Ajouter la modification de la balance selon les caractéristiques
-            ///
-
-            rd.NextDouble();
+            balance += ((m.Jedi1.getStrength()/100*gain1-m.Jedi2.getDexterity()/100*gain2) + (m.Jedi2.getStrength() / 100 * gain4 - m.Jedi1.getDexterity() / 100 * gain3));
+            
             if (rd.NextDouble() > balance)
                 winner = m.Jedi2;
 
