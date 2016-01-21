@@ -52,7 +52,52 @@ namespace BusinessLayer
 
             return isOk;
         }
+        public enum Shifumi{ Pierre, Papier, Cizeaux };
+        public int playRound(Shifumi choiceA, Shifumi choiceB)
+        {
+            return (choiceA == choiceB ? 0 :            // si egalite ZERO
+                    (choiceA == choiceB+1 ? -1 :        // si A gagne -1
+                    (choiceA == Shifumi.Pierre && choiceB == Shifumi.Cizeaux ? -1 : 1)));   // si B gagne 1
+        }
 
+        public Jedi simulateMatch(Match m)
+        {
+            Jedi winner = m.Jedi1;
+            Random rd = new Random();
+            double balance = .5;
+
+            ///
+            /// TODO Ajouter la modification de la balance selon les caractéristiques
+            ///
+
+            rd.NextDouble();
+            if (rd.NextDouble() > balance)
+                winner = m.Jedi2;
+
+            return winner;
+        }
+
+        public void simulateTournament(Dictionary<EPhaseTournoi, List<Match>> championshipScheme)
+        {
+            Queue<Jedi> winners = new Queue<Jedi>();
+
+            foreach (KeyValuePair<EPhaseTournoi, List<Match>> phase in championshipScheme)
+            {
+                if(winners.Count != 0)
+                {
+                    foreach (Match m in phase.Value)
+                    {
+                        m.Jedi1 = winners.Dequeue();
+                        m.Jedi2 = winners.Dequeue();
+                    }
+                }
+                Console.Out.WriteLine(phase.Key);
+                foreach (Match m in phase.Value)
+                {
+                    winners.Enqueue(simulateMatch(m));
+                }
+            }
+        }
 
     }
 }

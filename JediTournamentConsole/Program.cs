@@ -10,6 +10,16 @@ namespace JediTournamentConsole
 {
     class Program
     {
+        /*static void Main(string[] args)
+        {
+            JediTournamentManager tournoi = new JediTournamentManager();
+            Dictionary<EPhaseTournoi, List<Match>> championshipScheme = new Dictionary<EPhaseTournoi, List<Match>>();
+            championshipScheme.Add(EPhaseTournoi.HuitiemeFinale, new List<Match>());
+            championshipScheme.Add(EPhaseTournoi.QuartFinale, new List<Match>());
+            championshipScheme.Add(EPhaseTournoi.DemiFinale, new List<Match>());
+            championshipScheme.Add(EPhaseTournoi.Finale, new List<Match>());
+            tournoi.simulateTournament(championshipScheme);
+        }*/
         static void Main(string[] args)
         {
             JediTournamentManager tournoi = new JediTournamentManager();
