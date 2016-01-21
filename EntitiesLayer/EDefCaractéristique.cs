@@ -2,7 +2,7 @@
 {
     public enum EDefCaractéristique
     {
-        Strengh,
+        Strength,
         Dexterity,
         Perception
     }

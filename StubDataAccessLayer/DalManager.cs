@@ -45,7 +45,7 @@ namespace StubDataAccessLayer
 
             caracteristiques.Add(new Caracteristique(EDefCaractéristique.Perception, "Perception",ETypeCaracteristique.Jedi, 2));
             caracteristiques.Add(new Caracteristique(EDefCaractéristique.Dexterity, "Dextérité", ETypeCaracteristique.Jedi, 2));
-            caracteristiques.Add(new Caracteristique(EDefCaractéristique.Strengh, "Force", ETypeCaracteristique.Jedi, 2));
+            caracteristiques.Add(new Caracteristique(EDefCaractéristique.Strength, "Force", ETypeCaracteristique.Jedi, 2));
 
             return caracteristiques;
         }
