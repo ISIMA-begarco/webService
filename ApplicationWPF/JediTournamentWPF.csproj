@@ -53,7 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AppButton1.xaml.cs">
+    <Compile Include="UserControls\AppButton1.xaml.cs">
       <DependentUpon>AppButton1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\IFrameNavigator.cs" />
@@ -82,7 +82,7 @@
     <Compile Include="ViewModel\Tournament\TournamentsViewModel.cs" />
     <Compile Include="ViewModel\Tournament\TournamentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Page Include="AppButton1.xaml">
+    <Page Include="UserControls\AppButton1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
