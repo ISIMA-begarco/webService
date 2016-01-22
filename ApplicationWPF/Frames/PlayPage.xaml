@@ -20,8 +20,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <UserControls:PlayChoice Grid.Row="0" Grid.Column="0"/>
-        <UserControls:PlayChoice Grid.Row="0" Grid.Column="0"/>
-        <UserControls:PlayChoice Grid.Row="0" Grid.Column="0"/>
-        <UserControls:PlayChoice Grid.Row="0" Grid.Column="0"/>
+        <UserControls:PlayChoice Grid.Row="1" Grid.Column="0"/>
+        <UserControls:PlayChoice Grid.Row="2" Grid.Column="0"/>
+        <UserControls:PlayChoice Grid.Row="3" Grid.Column="0"/>
+        <UserControls:ButtonSoft Grid.Row="4" Grid.Column="0"/>
     </Grid>
 </Page>

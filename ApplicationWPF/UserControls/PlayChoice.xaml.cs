@@ -36,7 +36,7 @@ namespace ApplicationWPF.UserControls
         /// </summary>
         public static readonly DependencyProperty ImSourceProperty =
                 DependencyProperty.Register("PlayChoiceImSource", typeof(string),
-                typeof(AppButton1), new PropertyMetadata(""));
+                typeof(ButtonSoft), new PropertyMetadata(""));
 
         /// <summary>
         /// Gets or sets the Label which is displayed next to the field
@@ -52,7 +52,7 @@ namespace ApplicationWPF.UserControls
         /// </summary>
         public static readonly DependencyProperty LabelProperty =
             DependencyProperty.Register("PlayChoiceTitle", typeof(string),
-              typeof(AppButton1), new PropertyMetadata("Titre de test"));
+              typeof(ButtonSoft), new PropertyMetadata("Titre de test"));
 
 
         public PlayChoice()
