@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using ApplicationWPF.Frames;
+
 namespace ApplicationWPF
 {
     /// <summary>
@@ -23,7 +25,7 @@ namespace ApplicationWPF
         {
             InitializeComponent();
 
-            this.MainFrame.NavigationService.Navigate(new System.Uri("MainMenu.xaml", UriKind.Relative));
+            this.MainFrame.NavigationService.Navigate(new System.Uri("Frames/MainMenu.xaml", UriKind.Relative));
             MainFrame.NavigationService.LoadCompleted += FrameLoadCompleted;
         }
 
@@ -31,23 +33,16 @@ namespace ApplicationWPF
         {
             // Update de frame
             Console.WriteLine("Changement de frame Mozart Fucker.");
-            this.MainFrame.NavigationService.Navigate(new System.Uri(((MainMenu)sender).nextFrame, UriKind.Relative));
+            this.MainFrame.NavigationService.Navigate(new System.Uri(((IFrameNavigator)sender).NextFrame, UriKind.Relative));
         }
 
         void FrameLoadCompleted (object sender, EventArgs e)
         {
-            MainMenu mainMenu = MainFrame.NavigationService.Content as MainMenu;
-            if (mainMenu != null)
+            IFrameNavigator frame = MainFrame.NavigationService.Content as IFrameNavigator;
+            if (frame != null)
             {
-                mainMenu.ChangeFrame += ChangeFrame;
+                frame.ChangeFrame += ChangeFrame;
             }
-            else
-            {
-                SubMenu subMenu = MainFrame.NavigationService.Content as SubMenu;
-                if (subMenu != null)
-                    subMenu.ChangeFrame += ChangeFrame;
-            }
-            
         }
     }
 }

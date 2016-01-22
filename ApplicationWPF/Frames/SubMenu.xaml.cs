@@ -13,30 +13,42 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ApplicationWPF
+namespace ApplicationWPF.Frames
 {
     /// <summary>
     /// Logique d'interaction pour SubMenu.xaml
     /// </summary>
-    public partial class SubMenu : Page
+    public partial class SubMenu : Page, IFrameNavigator
     {
-        public event EventHandler ChangeFrame;
-        public string nextFrame;
+        public event EventHandler m_changeFrame;
+        public string m_nextFrame;
 
         public SubMenu()
         {
             InitializeComponent();
         }
 
+        public string NextFrame
+        {
+            get { return m_nextFrame; }
+            set { m_nextFrame = value; }
+        }
+
+        public EventHandler ChangeFrame
+        {
+            get { return m_changeFrame; }
+            set { m_changeFrame = value; }
+        }
+
         private void ButtonPlay_Event(object sender, EventArgs e)
         {
-            nextFrame = "ConnexionWindow.xaml";
+            m_nextFrame = "Frames/MainMenu.xaml";
             ChangeFrame(this, e);
         }
 
         private void ButtonManage_Event(object sender, EventArgs e)
         {
-            nextFrame = "ConnexionWindow.xaml";
+            m_nextFrame = "Frames/MainMenu.xaml";
             ChangeFrame(this, e);
         }
 
