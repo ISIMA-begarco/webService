@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ApplicationWPF.AppButton1"
+﻿<UserControl x:Class="ApplicationWPF.UserControls.ButtonSoft"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -25,14 +25,14 @@
                 <EventTrigger RoutedEvent="Mouse.MouseEnter">
                     <BeginStoryboard>
                         <Storyboard>
-                            <ColorAnimation Duration="0:0:0.2" Storyboard.TargetName="BorderButton" Storyboard.TargetProperty="Color" To="Red" />
+                            <ColorAnimation Duration="0:0:1" Storyboard.TargetName="BorderButton" Storyboard.TargetProperty="Color" To="Red" />
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
                 <EventTrigger RoutedEvent="Mouse.MouseLeave">
                 <BeginStoryboard>
                     <Storyboard>
-                        <ColorAnimation Duration="0:0:0.2" Storyboard.TargetName="BorderButton" Storyboard.TargetProperty="Color" To="Black" />
+                        <ColorAnimation Duration="0:0:1" Storyboard.TargetName="BorderButton" Storyboard.TargetProperty="Color" To="Black" />
                     </Storyboard>
                 </BeginStoryboard>
                 </EventTrigger>

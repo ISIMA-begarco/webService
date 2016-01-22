@@ -13,12 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ApplicationWPF
+namespace ApplicationWPF.UserControls
 {
     /// <summary>
     /// Logique d'interaction pour AppButton1.xaml
     /// </summary>
-    public partial class AppButton1 : UserControl
+    public partial class ButtonSoft : UserControl
     {
         /// <summary>
         /// Gets or sets the Label which is displayed next to the field
@@ -32,20 +32,14 @@ namespace ApplicationWPF
         /// <summary>
         /// Identified the Label dependency property
         /// </summary>
-        public static readonly DependencyProperty LabelProperty;
-            
+        public static readonly DependencyProperty LabelProperty =
+            DependencyProperty.Register("Label", typeof(string),
+              typeof(ButtonSoft), new PropertyMetadata("Default"));
 
-        public AppButton1()
+        public ButtonSoft()
         {
             InitializeComponent();
             this.DataContext = this;
-        }
-
-        static AppButton1()
-        {
-           AppButton1.LabelProperty = DependencyProperty.Register("Label", 
-              typeof(string),typeof(AppButton1), 
-              new PropertyMetadata("Default"));
         }
 
         public event EventHandler Event;

@@ -53,8 +53,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControls\AppButton1.xaml.cs">
-      <DependentUpon>AppButton1.xaml</DependentUpon>
+    <Compile Include="UserControls\ButtonSoft.xaml.cs">
+      <DependentUpon>ButtonSoft.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\IFrameNavigator.cs" />
     <Compile Include="Frames\PlayMenu.xaml.cs">
@@ -82,7 +82,7 @@
     <Compile Include="ViewModel\Tournament\TournamentsViewModel.cs" />
     <Compile Include="ViewModel\Tournament\TournamentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Page Include="UserControls\AppButton1.xaml">
+    <Page Include="UserControls\ButtonSoft.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
