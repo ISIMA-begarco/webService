@@ -59,17 +59,32 @@ namespace EntitiesLayer
 
         public double getPerception()
         {
-            throw new NotImplementedException();
+            double retour = 0;
+            foreach(Caracteristique c in Caracteristiques)
+            {
+                retour += (c.Definition == EDefCaractéristique.Perception ? c.Valeur : 0);
+            }
+            return retour;
         }
 
         public int getStrength()
         {
-            throw new NotImplementedException();
+            int retour = 0;
+            foreach (Caracteristique c in Caracteristiques)
+            {
+                retour += (c.Definition == EDefCaractéristique.Strength ? c.Valeur : 0);
+            }
+            return retour;
         }
 
         public int getDexterity()
         {
-            throw new NotImplementedException();
+            int retour = 0;
+            foreach (Caracteristique c in Caracteristiques)
+            {
+                retour += (c.Definition == EDefCaractéristique.Dexterity ? c.Valeur : 0);
+            }
+            return retour;
         }
     }
 }
