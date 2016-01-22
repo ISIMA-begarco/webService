@@ -22,6 +22,32 @@ namespace ApplicationWPF
         public MainWindow()
         {
             InitializeComponent();
+
+            this.MainFrame.NavigationService.Navigate(new System.Uri("MainMenu.xaml", UriKind.Relative));
+            MainFrame.NavigationService.LoadCompleted += FrameLoadCompleted;
+        }
+
+        void ChangeFrame (object sender, EventArgs e)
+        {
+            // Update de frame
+            Console.WriteLine("Changement de frame Mozart Fucker.");
+            this.MainFrame.NavigationService.Navigate(new System.Uri(((MainMenu)sender).nextFrame, UriKind.Relative));
+        }
+
+        void FrameLoadCompleted (object sender, EventArgs e)
+        {
+            MainMenu mainMenu = MainFrame.NavigationService.Content as MainMenu;
+            if (mainMenu != null)
+            {
+                mainMenu.ChangeFrame += ChangeFrame;
+            }
+            else
+            {
+                SubMenu subMenu = MainFrame.NavigationService.Content as SubMenu;
+                if (subMenu != null)
+                    subMenu.ChangeFrame += ChangeFrame;
+            }
+            
         }
     }
 }

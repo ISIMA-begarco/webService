@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Jedi Tournament" WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize" Background="Black">
     <Grid>
-        <Frame x:Name="MainFrame" Grid.Row="1" Source="MainMenu.xaml" Padding="5">            
+        <Frame x:Name="MainFrame" Grid.Row="1" Padding="5">            
         </Frame>
     </Grid>
 </Window>

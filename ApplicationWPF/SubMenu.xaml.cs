@@ -16,27 +16,27 @@ using System.Windows.Shapes;
 namespace ApplicationWPF
 {
     /// <summary>
-    /// Logique d'interaction pour MainMenu.xaml
+    /// Logique d'interaction pour SubMenu.xaml
     /// </summary>
-    public partial class MainMenu : Page
+    public partial class SubMenu : Page
     {
         public event EventHandler ChangeFrame;
         public string nextFrame;
 
-        public MainMenu()
+        public SubMenu()
         {
             InitializeComponent();
         }
 
         private void ButtonPlay_Event(object sender, EventArgs e)
         {
-            nextFrame = "SubMenu.xaml";
+            nextFrame = "ConnexionWindow.xaml";
             ChangeFrame(this, e);
         }
 
         private void ButtonManage_Event(object sender, EventArgs e)
         {
-            nextFrame = "SubMenu.xaml";
+            nextFrame = "ConnexionWindow.xaml";
             ChangeFrame(this, e);
         }
 
