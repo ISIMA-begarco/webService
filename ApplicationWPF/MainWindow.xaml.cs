@@ -21,10 +21,19 @@ namespace ApplicationWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string m_currentFrame;
+
+        public string CurrentFrame
+        {
+            get { return m_currentFrame; }
+            set { m_currentFrame = value; }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
 
+            CurrentFrame = "Frames/MainMenu.xaml";
             this.MainFrame.NavigationService.Navigate(new System.Uri("Frames/MainMenu.xaml", UriKind.Relative));
             MainFrame.NavigationService.LoadCompleted += FrameLoadCompleted;
         }
@@ -32,8 +41,8 @@ namespace ApplicationWPF
         void ChangeFrame (object sender, EventArgs e)
         {
             // Update de frame
-            Console.WriteLine("Changement de frame Mozart Fucker.");
             this.MainFrame.NavigationService.Navigate(new System.Uri(((IFrameNavigator)sender).NextFrame, UriKind.Relative));
+            CurrentFrame = ((IFrameNavigator)sender).NextFrame;
         }
 
         void FrameLoadCompleted (object sender, EventArgs e)
