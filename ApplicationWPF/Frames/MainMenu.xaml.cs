@@ -42,13 +42,13 @@ namespace ApplicationWPF.Frames
 
         private void ButtonPlay_Event(object sender, EventArgs e)
         {
-            m_nextFrame = "Frames/SubMenu.xaml";
+            m_nextFrame = "Frames/PlayMenu.xaml";
             ChangeFrame(this, e);
         }
 
         private void ButtonManage_Event(object sender, EventArgs e)
         {
-            m_nextFrame = "Frames/SubMenu.xaml";
+            m_nextFrame = "Frames/PlayMenu.xaml";
             ChangeFrame(this, e);
         }
 

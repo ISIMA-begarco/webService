@@ -57,14 +57,20 @@
       <DependentUpon>AppButton1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\IFrameNavigator.cs" />
-    <Compile Include="Frames\SubMenu.xaml.cs">
-      <DependentUpon>SubMenu.xaml</DependentUpon>
+    <Compile Include="Frames\PlayMenu.xaml.cs">
+      <DependentUpon>PlayMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Frames\PlayPage.xaml.cs">
+      <DependentUpon>PlayPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PlayChoice.xaml.cs">
+      <DependentUpon>PlayChoice.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Jedi\JedisModelView.cs" />
     <Compile Include="ViewModel\Jedi\JediViewModel.cs" />
@@ -92,7 +98,7 @@
       <DependentUpon>ConnexionWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Frames\SubMenu.xaml">
+    <Page Include="Frames\PlayMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -100,7 +106,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Frames\PlayPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PlayChoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,7 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modele\" />
-    <Folder Include="UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Picture\starwars5.jpg" />

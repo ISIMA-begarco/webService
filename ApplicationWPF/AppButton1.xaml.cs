@@ -32,14 +32,20 @@ namespace ApplicationWPF
         /// <summary>
         /// Identified the Label dependency property
         /// </summary>
-        public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register("Label", typeof(string),
-              typeof(AppButton1), new PropertyMetadata("Default"));
+        public static readonly DependencyProperty LabelProperty;
+            
 
         public AppButton1()
         {
             InitializeComponent();
             this.DataContext = this;
+        }
+
+        static AppButton1()
+        {
+           AppButton1.LabelProperty = DependencyProperty.Register("Label", 
+              typeof(string),typeof(AppButton1), 
+              new PropertyMetadata("Default"));
         }
 
         public event EventHandler Event;
