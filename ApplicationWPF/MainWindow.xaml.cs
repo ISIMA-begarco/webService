@@ -17,17 +17,17 @@ using ApplicationWPF.Frames;
 namespace ApplicationWPF
 {
     /// <summary>
-    /// Logique d'interaction pour Window1.xaml
+    /// Logique d'interaction pour MainWindow
     /// </summary>
     public partial class MainWindow : Window
     {
         private IFrameNavigator m_currentFrame;
 
-        public IFrameNavigator CurrentFrame
+        /*public IFrameNavigator CurrentFrame
         {
             get { return m_currentFrame; }
             set { m_currentFrame = value; }
-        }
+        }*/
 
         public MainWindow()
         {
@@ -40,7 +40,7 @@ namespace ApplicationWPF
         void ChangeFrame (object sender, FrameChangedEventArgs e)
         {
             // Unsubscribe to event handler
-            CurrentFrame.OnFrameChanged -= ChangeFrame;
+            m_currentFrame.OnFrameChanged -= ChangeFrame;
 
             // Update de frame
             this.MainFrame.NavigationService.Navigate(new System.Uri(e.nextFramePath, UriKind.Relative));
@@ -48,11 +48,18 @@ namespace ApplicationWPF
 
         void FrameLoadCompleted (object sender, EventArgs e)
         {
-            CurrentFrame = MainFrame.NavigationService.Content as IFrameNavigator;
-            if (CurrentFrame != null)
+            /*if (MainFrame.NavigationService.Content != null)
+            {*/
+                m_currentFrame = MainFrame.NavigationService.Content as IFrameNavigator;
+                if (m_currentFrame != null)
+                {
+                    m_currentFrame.OnFrameChanged += ChangeFrame;
+                }
+            /*}
+            else
             {
-                CurrentFrame.OnFrameChanged += ChangeFrame;
-            }
+                this.MainFrame.NavigationService.Navigate(new System.Uri("Frames/MainMenu.xaml", UriKind.Relative));
+            }*/
         }
     }
 }

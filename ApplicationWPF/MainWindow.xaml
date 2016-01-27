@@ -4,6 +4,7 @@
         xmlns:local="Frames/IFrameNavigator"
     Title="Jedi Tournament" WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize" Background="Black">
     <Grid>
-        <Frame x:Name="MainFrame" Grid.Row="1" Padding="5" NavigationUIVisibility="Hidden"/>
+        <!-- Content="{Binding Path=CurrentFrame, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" -->
+        <Frame x:Name="MainFrame" Grid.Row="1" Padding="5" NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>
