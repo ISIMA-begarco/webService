@@ -25,16 +25,9 @@ namespace ApplicationWPF.UserControls
         /// </summary>
         public String Label
         {
-            get { return (String)GetValue(LabelProperty); }
-            set { SetValue(LabelProperty, value); }
+            get { return this.label.Text; }
+            set { this.label.Text = value; }
         }
-
-        /// <summary>
-        /// Identified the Label dependency property
-        /// </summary>
-        public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register("Label", typeof(string),
-              typeof(ButtonSoft), new PropertyMetadata("Default"));
 
         public ButtonSoft()
         {
@@ -44,7 +37,7 @@ namespace ApplicationWPF.UserControls
 
         public event EventHandler Event;
 
-        private void UserControl1Button_Click(object sender, RoutedEventArgs e)
+        private void OnButtonClick(object sender, RoutedEventArgs e)
         {
             if (Event != null)
             {

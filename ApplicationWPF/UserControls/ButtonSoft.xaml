@@ -17,7 +17,7 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <Border CornerRadius="50" Style="{StaticResource HooverButton}" BorderThickness="2" BorderBrush="Red" Width="200" Height="75" MouseDown="UserControl1Button_Click">
+        <Border CornerRadius="50" Style="{StaticResource HooverButton}" BorderThickness="2" BorderBrush="Red" Width="200" Height="75" MouseDown="OnButtonClick">
             <Border.Background>
                 <SolidColorBrush x:Name="BorderButton" Color="Black" Opacity="0.5"/>
             </Border.Background>
@@ -37,7 +37,7 @@
                 </BeginStoryboard>
                 </EventTrigger>
             </Border.Triggers>
-            <TextBlock Text="{Binding Path=Label}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Tele-Marines" />
+            <TextBlock Name="label" Text="{Binding Path=Label}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Tele-Marines" />
         </Border>
     </Grid>
 </UserControl>
