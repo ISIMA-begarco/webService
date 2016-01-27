@@ -21,9 +21,9 @@ namespace ApplicationWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string m_currentFrame;
+        private IFrameNavigator m_currentFrame;
 
-        public string CurrentFrame
+        public IFrameNavigator CurrentFrame
         {
             get { return m_currentFrame; }
             set { m_currentFrame = value; }
@@ -33,24 +33,25 @@ namespace ApplicationWPF
         {
             InitializeComponent();
 
-            CurrentFrame = "Frames/MainMenu.xaml";
             this.MainFrame.NavigationService.Navigate(new System.Uri("Frames/MainMenu.xaml", UriKind.Relative));
             MainFrame.NavigationService.LoadCompleted += FrameLoadCompleted;
         }
 
-        void ChangeFrame (object sender, EventArgs e)
+        void ChangeFrame (object sender, FrameChangedEventArgs e)
         {
+            // Unsubscribe to event handler
+            CurrentFrame.OnFrameChanged -= ChangeFrame;
+
             // Update de frame
-            this.MainFrame.NavigationService.Navigate(new System.Uri(((IFrameNavigator)sender).NextFrame, UriKind.Relative));
-            CurrentFrame = ((IFrameNavigator)sender).NextFrame;
+            this.MainFrame.NavigationService.Navigate(new System.Uri(e.nextFramePath, UriKind.Relative));
         }
 
         void FrameLoadCompleted (object sender, EventArgs e)
         {
-            IFrameNavigator frame = MainFrame.NavigationService.Content as IFrameNavigator;
-            if (frame != null)
+            CurrentFrame = MainFrame.NavigationService.Content as IFrameNavigator;
+            if (CurrentFrame != null)
             {
-                frame.ChangeFrame += ChangeFrame;
+                CurrentFrame.OnFrameChanged += ChangeFrame;
             }
         }
     }
