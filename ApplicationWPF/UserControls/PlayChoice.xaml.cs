@@ -24,35 +24,59 @@ namespace ApplicationWPF.UserControls
     {
 
         /// <summary>
-        /// Gets or sets the ImSource which is displayed next to the field
+        /// Identified the Label dependency property
         /// </summary>
-        public String PlayChoiceImSource
-        {
-            get { return (String)GetValue(ImSourceProperty); }
-            set { SetValue(ImSourceProperty, value); }
-        }
+        public static readonly DependencyProperty PlayChoiceTitleProperty;
         /// <summary>
         /// Identified the ImSource dependency property
         /// </summary>
-        public static readonly DependencyProperty ImSourceProperty =
-                DependencyProperty.Register("PlayChoiceImSource", typeof(string),
-                typeof(ButtonSoft), new PropertyMetadata(""));
+        public static readonly DependencyProperty ImSourceProperty;
+        /// <summary>
+        /// Identified the ImSource dependency property
+        /// </summary>
+        public static readonly DependencyProperty PlayChoiceDescriptionProperty;
+
+        /// <summary>
+        /// Gets or sets the ImSource which is displayed next to the field
+        /// </summary>
+        public BitmapImage PlayChoiceImSource
+        {
+            get { return (BitmapImage)GetValue(ImSourceProperty); }
+            set { SetValue(ImSourceProperty, value); }
+        }
+        
 
         /// <summary>
         /// Gets or sets the Label which is displayed next to the field
         /// </summary>
         public String PlayChoiceTitle
         {
-            get { return (String)GetValue(LabelProperty); }
-            set { SetValue(LabelProperty, value); }
+            get { return (String)GetValue(PlayChoiceTitleProperty); }
+            set { SetValue(PlayChoiceTitleProperty, value); }
         }
 
-        /// <summary>
-        /// Identified the Label dependency property
-        /// </summary>
-        public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register("PlayChoiceTitle", typeof(string),
-              typeof(ButtonSoft), new PropertyMetadata("Titre de test"));
+        public String PlayChoiceDescription
+        {
+            get { return (String)GetValue(PlayChoiceDescriptionProperty); }
+            set { SetValue(PlayChoiceDescriptionProperty, value); }
+        }
+
+       
+
+        static PlayChoice()
+        {
+            PlayChoiceTitleProperty = DependencyProperty.Register("PlayChoiceTitle", 
+                        typeof(string), typeof(PlayChoice), 
+                        new PropertyMetadata("Titre de test"));
+
+            PlayChoiceDescriptionProperty = DependencyProperty.Register("PlayChoiceDescription",
+                        typeof(string), typeof(PlayChoice),
+                        new PropertyMetadata("Description de test"));
+            ImSourceProperty = DependencyProperty.Register("PlayChoiceImSource", 
+                        typeof(BitmapImage),typeof(PlayChoice),
+                        new PropertyMetadata());
+
+        }
 
 
         public PlayChoice()

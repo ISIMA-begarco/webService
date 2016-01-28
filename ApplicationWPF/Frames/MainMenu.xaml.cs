@@ -42,7 +42,7 @@ namespace ApplicationWPF.Frames
 
         private void ButtonPlay_Event(object sender, EventArgs e)
         {
-            m_nextFrame = "Frames/PlayMenu.xaml";
+            m_nextFrame = "Frames/PlayPage.xaml";
             ChangeFrame(this, e);
         }
 

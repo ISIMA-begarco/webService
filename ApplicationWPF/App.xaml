@@ -12,9 +12,26 @@
             <Setter Property="Foreground" Value="LightGray"/>
             <Setter Property="TextDecorations" Value="None"/>
         </Style>
+        <Style x:Key="StarWarsFont">
+            <Setter Property="TextElement.FontFamily" Value="Font/#Star Jedi Outline"/>
+        </Style>
+        <Style x:Key="TeleMarinesFont">
+            <Setter Property="TextElement.FontFamily" Value="Font/#Tele-Marines"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="StarWarsFontStyle">
+            <Setter Property="Foreground"   Value="White"/>
+            <Setter Property="FontSize"     Value="30"/>
+            <Setter Property="FontFamily"   Value="Font/#Tele-Marines"/>
+            <Setter Property="FontStyle"    Value="Italic"/>
+        </Style>
 
         <BitmapImage x:Key="StarWarsImageBackGround1" UriSource="./Picture/starwars10.jpg" />
-        <BitmapImage x:Key="StarWarsImageBackGround2" UriSource="./Picture/starwars5.jpg" />
+        <BitmapImage x:Key="StarWarsImageBackGround2" UriSource="./Picture/starwars8.jpg" />
+        <BitmapImage x:Key="StarWarsImageBackGround3" UriSource="./Picture/starwars7.jpg" />
+        <BitmapImage x:Key="StarWarsImageBackGround4" UriSource="./Picture/starwars6.jpg" />
+        <BitmapImage x:Key="StarWarsImageBackGround5" UriSource="./Picture/starwars5.jpg" />
+        <BitmapImage x:Key="StarWarsImageBackGround6" UriSource="./Picture/starwars4.jpg" />
+        <BitmapImage x:Key="StarWarsImageBackGround7" UriSource="./Picture/starwars3.jpg" />
         <BitmapImage x:Key="JediTournamentLogo" UriSource="./Picture/JediTournamentLogo.png" />
 
     </Application.Resources>

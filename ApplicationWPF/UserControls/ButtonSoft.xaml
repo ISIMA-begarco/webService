@@ -37,7 +37,7 @@
                 </BeginStoryboard>
                 </EventTrigger>
             </Border.Triggers>
-            <TextBlock Text="{Binding Path=Label}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Tele-Marines" />
+            <TextBlock Text="{Binding Path=Label}" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource StarWarsFontStyle}"/>
         </Border>
     </Grid>
 </UserControl>

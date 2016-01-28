@@ -18,11 +18,32 @@ namespace ApplicationWPF.Frames
     /// <summary>
     /// Logique d'interaction pour PlayPage.xaml
     /// </summary>
-    public partial class PlayPage : Page
+    public partial class PlayPage : Page, IFrameNavigator
     {
+        public event EventHandler m_changeFrame;
+        public string m_nextFrame;
+
         public PlayPage()
         {
             InitializeComponent();
+        }        
+
+        public string NextFrame
+        {
+            get { return m_nextFrame; }
+            set { m_nextFrame = value; }
+        }
+
+        public EventHandler ChangeFrame
+        {
+            get { return m_changeFrame; }
+            set { m_changeFrame = value; }
+        }
+
+        private void ButtonBack_Event(object sender, EventArgs e)
+        {
+            m_nextFrame = "Frames/MainMenu.xaml";
+            ChangeFrame(this, e);
         }
     }
 }
