@@ -57,9 +57,6 @@
       <DependentUpon>ButtonSoft.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\IFrameNavigator.cs" />
-    <Compile Include="Frames\PlayMenu.xaml.cs">
-      <DependentUpon>PlayMenu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Frames\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
@@ -98,10 +95,6 @@
       <DependentUpon>ConnexionWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Frames\PlayMenu.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Frames\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +130,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Font\Starjout.ttf" />
+    <Resource Include="Font\telemarines1.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -167,6 +162,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Picture\JediTournamentLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\starwars8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\starwars6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\starwars4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\starwars7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\starwars3.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

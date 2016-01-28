@@ -9,7 +9,7 @@
       mc:Ignorable="d"      
       Title="MainMenu">
     <Page.Background>
-        <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround2}"/>
+        <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround5}"/>
     </Page.Background>
     <Grid>
         <Grid.RowDefinitions>

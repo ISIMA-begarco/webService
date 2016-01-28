@@ -4,14 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             Margin="10"
+             Opacity="0.9"
              d:DesignHeight="300" d:DesignWidth="500">
+    <UserControl.Background>
+        <ImageBrush ImageSource="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=PlayChoiceImSource}"/>
+    </UserControl.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <ImageBrush ImageSource="{Binding Path=PlayChoiceImSource}"/>
-        </Grid.Background>
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=PlayChoiceTitle}" FontSize="24" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=PlayChoiceTitle}" FontSize="24" FontWeight="Bold" />
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=PlayChoiceDescription}" FontSize="18" FontWeight="Bold"/>
     </Grid>
 </UserControl>

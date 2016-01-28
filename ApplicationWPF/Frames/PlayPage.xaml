@@ -7,6 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1000"
 	Title="PlayPage">
+    <Page.Background>
+        <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround4}"/>
+    </Page.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -16,13 +19,13 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <UserControls:PlayChoice Grid.Row="0" Grid.Column="0"/>
-        <UserControls:PlayChoice Grid.Row="1" Grid.Column="0"/>
-        <UserControls:PlayChoice Grid.Row="2" Grid.Column="0"/>
-        <UserControls:PlayChoice Grid.Row="3" Grid.Column="0"/>
-        <UserControls:ButtonSoft Grid.Row="4" Grid.Column="0"/>
+        <UserControls:PlayChoice Grid.Row="0" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround1}" PlayChoiceTitle="Armée d'un seul homme"/>
+        <UserControls:PlayChoice Grid.Row="1" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround7}" PlayChoiceTitle="Bataille au sommet"/>
+        <UserControls:PlayChoice Grid.Row="2" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround3}" PlayChoiceTitle="Marchand de mort"/>
+        <UserControls:PlayChoice Grid.Row="3" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround2}" PlayChoiceTitle="Les Vendeurs d'âmes"/>
+        <UserControls:ButtonSoft Grid.Row="4" Grid.Column="0" Label="Retour" Event="ButtonBack_Event"/>
     </Grid>
 </Page>
