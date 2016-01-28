@@ -36,6 +36,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,9 +58,23 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Gestion\CtrlJedi.xaml.cs">
+      <DependentUpon>CtrlJedi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Gestion\CtrlMatch.xaml.cs">
+      <DependentUpon>CtrlMatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Gestion\CtrlResearch.xaml.cs">
+      <DependentUpon>CtrlResearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Gestion\CtrlStade.xaml.cs">
+      <DependentUpon>CtrlStade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Gestion\GestionTournament.xaml.cs">
+      <DependentUpon>GestionTournament.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\Jedi\JedisModelView.cs" />
     <Compile Include="ViewModel\Jedi\JediViewModel.cs" />
-    <Compile Include="ViewModel\ManagementViewModel.cs" />
     <Compile Include="ViewModel\Match\MatchsViewModel.cs" />
     <Compile Include="ViewModel\Match\MatchViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
@@ -83,6 +99,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ViewModel\Gestion\CtrlJedi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\Gestion\CtrlMatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\Gestion\CtrlResearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\Gestion\CtrlStade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\Gestion\GestionTournament.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -101,6 +137,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -123,6 +160,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modele\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Jedi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VS_Icon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Jedi.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
