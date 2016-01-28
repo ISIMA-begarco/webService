@@ -36,12 +36,12 @@ namespace JediTournamentConsole
                 option = int.Parse(Console.ReadLine());
 
                 if(option ==1)
-                    foreach (Stade s in tournoi.displayStades())
+                    foreach (Stade s in tournoi.getStades())
                     {
                         Console.WriteLine("le stade de {0} dispose de {1} places",s.Planete,s.NbPlaces);
                     }
                 else if(option ==2)
-                    foreach (String s in tournoi.darkSideJedis())
+                    foreach (String s in tournoi.getDarkSideJedisNames())
                     {
                         Console.WriteLine(s);
                     }

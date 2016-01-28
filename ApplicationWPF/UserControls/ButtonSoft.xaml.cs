@@ -13,30 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ApplicationWPF
+namespace ApplicationWPF.UserControls
 {
     /// <summary>
     /// Logique d'interaction pour AppButton1.xaml
     /// </summary>
-    public partial class AppButton1 : UserControl
+    public partial class ButtonSoft : UserControl
     {
         /// <summary>
         /// Gets or sets the Label which is displayed next to the field
         /// </summary>
         public String Label
         {
-            get { return (String)GetValue(LabelProperty); }
-            set { SetValue(LabelProperty, value); }
+            get { return this.label.Text; }
+            set { this.label.Text = value; }
         }
 
-        /// <summary>
-        /// Identified the Label dependency property
-        /// </summary>
-        public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register("Label", typeof(string),
-              typeof(AppButton1), new PropertyMetadata("Default"));
-
-        public AppButton1()
+        public ButtonSoft()
         {
             InitializeComponent();
             this.DataContext = this;
@@ -44,7 +37,7 @@ namespace ApplicationWPF
 
         public event EventHandler Event;
 
-        private void UserControl1Button_Click(object sender, RoutedEventArgs e)
+        private void OnButtonClick(object sender, RoutedEventArgs e)
         {
             if (Event != null)
             {

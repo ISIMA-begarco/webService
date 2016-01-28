@@ -53,17 +53,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AppButton1.xaml.cs">
-      <DependentUpon>AppButton1.xaml</DependentUpon>
+    <Compile Include="UserControls\ButtonSoft.xaml.cs">
+      <DependentUpon>ButtonSoft.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SubMenu.xaml.cs">
-      <DependentUpon>SubMenu.xaml</DependentUpon>
+    <Compile Include="Frames\IFrameNavigator.cs" />
+    <Compile Include="Frames\PlayMenu.xaml.cs">
+      <DependentUpon>PlayMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainMenu.xaml.cs">
+    <Compile Include="Frames\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\PlayPage.xaml.cs">
+      <DependentUpon>PlayPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PlayChoice.xaml.cs">
+      <DependentUpon>PlayChoice.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Jedi\JedisModelView.cs" />
     <Compile Include="ViewModel\Jedi\JediViewModel.cs" />
@@ -75,7 +82,7 @@
     <Compile Include="ViewModel\Tournament\TournamentsViewModel.cs" />
     <Compile Include="ViewModel\Tournament\TournamentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Page Include="AppButton1.xaml">
+    <Page Include="UserControls\ButtonSoft.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,15 +98,23 @@
       <DependentUpon>ConnexionWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SubMenu.xaml">
+    <Page Include="Frames\PlayMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainMenu.xaml">
+    <Page Include="Frames\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\PlayPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PlayChoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

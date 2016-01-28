@@ -13,30 +13,91 @@ namespace BusinessLayer
     {
         private static DalManager bdd = new DalManager();
 
-        public List<Stade> displayStades()
+        #region Stades management
+        public List<Stade> getStades()
         {
             return bdd.getStade();
         }
 
-        public IEnumerable<String> darkSideJedis()
+        public List<Stade> getStadesByNbPlace(int nbPlace)
+        {
+            return (from x in bdd.getStade() where x.NbPlaces >= nbPlace select x).ToList();
+        }
+
+        public List<Stade> getStadeByCarac(Caracteristique carac)
+        {
+            return (from x in bdd.getStade() where x.Caracteristiques.Contains(carac) select x).ToList();
+        }
+
+        public List<Stade> getStadeByPlanet(String planet)
+        {
+            return (from x in bdd.getStade() where x.Planete == planet select x).ToList();
+        }
+        #endregion
+
+        #region Jedis management
+        public List<Jedi> getJedis()
+        {
+            return bdd.getJedis();
+        }
+
+        public List<Jedi> getWhiteSideJedis()
+        {
+            return (from x in bdd.getJedis() where x.IsSith == false select x).ToList();
+        }
+
+        public List<Jedi> getDarkSideJedis()
+        {
+            return (from x in bdd.getJedis() where x.IsSith == true select x).ToList();
+        }
+
+        public List<Jedi> getJedisByName(string name)
+        {
+            return (from x in bdd.getJedis() where x.Nom == name select x).ToList();
+        }
+
+        public IEnumerable<String> getDarkSideJedisNames()
         {
             IEnumerable<String> coteObscur = from x in bdd.getJedis() where x.IsSith == true select x.Nom;
 
             return coteObscur;
         }
+        #endregion
+
+        #region Match management
+        public List<Match> getMatchs()
+        {
+            return bdd.getMatchs();
+        }
+
+        public List<Match> getMatchsByJedisName(string j1, string j2)
+        {
+            return (from x in bdd.getMatchs()
+                    where (x.Jedi1.Nom == j1 && x.Jedi2.Nom == j2) ||
+                          (x.Jedi1.Nom == j2 && x.Jedi2.Nom == j1)
+                    select x).ToList();
+        }
+
+        public List<Match> getMatchsByWinner(string winner)
+        {
+            return (from x in bdd.getMatchs() 
+                    where (from y in bdd.getJedis() 
+                           where y.Nom == winner 
+                           select y.Id).Any()
+                    select x).ToList();
+        }
 
         public IEnumerable<Match> getMatches200Sith()
         {
             IEnumerable<Match> matches = from x in bdd.getMatchs()
-                where x.Stade.NbPlaces >= 200 && x.Jedi1.IsSith == true
-                      && x.Jedi2.IsSith == true
-                select x;
-
+                                         where x.Stade.NbPlaces >= 200 && x.Jedi1.IsSith == true
+                                               && x.Jedi2.IsSith == true
+                                         select x;
             return matches;
-
-            
         }
+        #endregion
 
+        #region Bdd management
         public static bool CheckConnexionUser(string login, string mdp)
         {
             bool isOk = false;
@@ -52,6 +113,9 @@ namespace BusinessLayer
 
             return isOk;
         }
+        #endregion
+
+        #region Game Simulation
         public enum Shifumi{ Pierre, Papier, Cizeaux };
         public int playRound(Shifumi choiceA, Shifumi choiceB)
         {
@@ -105,6 +169,6 @@ namespace BusinessLayer
                 }
             }
         }
-
+        #endregion
     }
 }

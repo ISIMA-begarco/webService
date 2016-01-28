@@ -37,7 +37,7 @@ namespace EntitiesLayer
             set { nom = value; }
         }
 
-        public static int Id
+        public int Id
         {
             get { return ID; }
             set { ID = value; }

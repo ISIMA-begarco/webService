@@ -13,31 +13,36 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ApplicationWPF
+namespace ApplicationWPF.Frames
 {
     /// <summary>
     /// Logique d'interaction pour MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Page
+    public partial class MainMenu : Page, IFrameNavigator
     {
-        public event EventHandler ChangeFrame;
-        public string nextFrame;
+        public event EventHandler<FrameChangedEventArgs> m_changeFrame;
 
         public MainMenu()
         {
             InitializeComponent();
         }
 
+        public EventHandler<FrameChangedEventArgs> OnFrameChanged
+        {
+            get { return m_changeFrame; }
+            set { m_changeFrame = value; }
+        }
+
         private void ButtonPlay_Event(object sender, EventArgs e)
         {
-            nextFrame = "SubMenu.xaml";
-            ChangeFrame(this, e);
+            string nextFrame = "Frames/PlayMenu.xaml";
+            OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
 
         private void ButtonManage_Event(object sender, EventArgs e)
         {
-            nextFrame = "SubMenu.xaml";
-            ChangeFrame(this, e);
+            string nextFrame = "Frames/PlayMenu.xaml";
+            OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
 
         private void ButtonQuit_Event(object sender, EventArgs e)
