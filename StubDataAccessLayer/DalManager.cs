@@ -9,10 +9,10 @@ namespace StubDataAccessLayer
         {
             List<Jedi> jedis =new List<Jedi>(); 
 
-            jedis.Add(new Jedi(null,5,false,"Revan"));
-            jedis.Add(new Jedi(null,5,true,"Jacen Solo"));
-            jedis.Add(new Jedi(null,3,false,"Cade Skywalker"));
-            jedis.Add(new Jedi(null, 5, true, "Darth Bane"));
+            jedis.Add(new Jedi(null,false,"Revan"));
+            jedis.Add(new Jedi(null,true,"Jacen Solo"));
+            jedis.Add(new Jedi(null,false,"Cade Skywalker"));
+            jedis.Add(new Jedi(null, true, "Darth Bane"));
 
             return jedis;
         }
@@ -21,9 +21,9 @@ namespace StubDataAccessLayer
         {
             List<Match> matches = new List<Match>();
 
-            matches.Add(new Match(new Jedi(null, 5, false, "Revan"), new Jedi(null, 5, true, "Jacen Solo"),EPhaseTournoi.DemiFinale, new Stade(120,"Tython",null)));
-            matches.Add(new Match(new Jedi(null, 3, false, "Cade Skywalker"), new Jedi(null, 5, true, "Darth Bane"),EPhaseTournoi.DemiFinale,new Stade(120,"Nar Shaddaa",null)));
-            matches.Add(new Match(new Jedi(null, 5, true, "Jacen Solo"), new Jedi(null, 5, true, "Darth Bane"), EPhaseTournoi.Finale, new Stade(250, "Coruscant", null)));
+            matches.Add(new Match(new Jedi(null, false, "Revan"), new Jedi(null, true, "Jacen Solo"),EPhaseTournoi.DemiFinale, new Stade(120,"Tython",null)));
+            matches.Add(new Match(new Jedi(null, false, "Cade Skywalker"), new Jedi(null, true, "Darth Bane"),EPhaseTournoi.DemiFinale,new Stade(120,"Nar Shaddaa",null)));
+            matches.Add(new Match(new Jedi(null, true, "Jacen Solo"), new Jedi(null, true, "Darth Bane"), EPhaseTournoi.Finale, new Stade(250, "Coruscant", null)));
 
             return matches;
         }

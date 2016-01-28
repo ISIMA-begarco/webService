@@ -69,8 +69,8 @@ namespace ApplicationWPF.ViewModel.Match
 
         private void Add()
         {
-            EntitiesLayer.Match m = new EntitiesLayer.Match(new EntitiesLayer.Jedi(null, 0, false, ""),
-                                                            new EntitiesLayer.Jedi(null, 0, false, ""),
+            EntitiesLayer.Match m = new EntitiesLayer.Match(new EntitiesLayer.Jedi(null, false, ""),
+                                                            new EntitiesLayer.Jedi(null, false, ""),
                                                             new EntitiesLayer.EPhaseTournoi(),
                                                             new EntitiesLayer.Stade(0, "", null));
             this.SelectedItem = new MatchViewModel(m);

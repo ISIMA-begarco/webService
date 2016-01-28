@@ -38,16 +38,6 @@ namespace ApplicationWPF.ViewModel
             }
         }
 
-        public int NiveauBlessure
-        {
-            get { return m_jedi.NiveauBlessure; }
-            set
-            {
-                m_jedi.NiveauBlessure = value;
-                OnPropertyChanged("NiveauBlessure");
-            }
-        }
-
         public List<EntitiesLayer.Caracteristique> Caracteristiques
         {
             get { return m_jedi.Caracteristiques; }

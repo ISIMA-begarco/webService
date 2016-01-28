@@ -20,21 +20,14 @@ namespace ApplicationWPF.Frames
     /// </summary>
     public partial class MainMenu : Page, IFrameNavigator
     {
-        public event EventHandler m_changeFrame;
-        public string m_nextFrame;
+        public event EventHandler<FrameChangedEventArgs> m_changeFrame;
 
         public MainMenu()
         {
             InitializeComponent();
         }
 
-        public string NextFrame
-        {
-            get { return m_nextFrame; }
-            set { m_nextFrame = value; }
-        }
-
-        public EventHandler ChangeFrame
+        public EventHandler<FrameChangedEventArgs> OnFrameChanged
         {
             get { return m_changeFrame; }
             set { m_changeFrame = value; }
@@ -42,14 +35,14 @@ namespace ApplicationWPF.Frames
 
         private void ButtonPlay_Event(object sender, EventArgs e)
         {
-            m_nextFrame = "Frames/PlayPage.xaml";
-            ChangeFrame(this, e);
+            string nextFrame = "Frames/PlayMenu.xaml";
+            OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
 
         private void ButtonManage_Event(object sender, EventArgs e)
         {
-            m_nextFrame = "Frames/PlayMenu.xaml";
-            ChangeFrame(this, e);
+            string nextFrame = "Frames/PlayMenu.xaml";
+            OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
 
         private void ButtonQuit_Event(object sender, EventArgs e)

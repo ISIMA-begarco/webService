@@ -6,32 +6,23 @@ namespace EntitiesLayer
     public class Jedi: EntityObject
     {
         private List<Caracteristique> caracteristiques;
-        private int coteObscur;
         private bool isSith;
         private String nom;
-        private int niveauBlessure;
+        private String image;
 
-       
 
-        public Jedi(List<Caracteristique> caracteristiques, int coteObscur, bool isSith, string nom)
+        public Jedi(List<Caracteristique> caracteristiques, bool isSith, string nom, string image = "img/default.png")
         {
             this.caracteristiques = caracteristiques;
-            this.coteObscur = coteObscur;
             this.isSith = isSith;
             this.nom = nom;
-            niveauBlessure = 0;
+            this.image = image;
         }
 
         public List<Caracteristique> Caracteristiques
         {
             get { return caracteristiques; }
             set { caracteristiques = value; }
-        }
-
-        public int CoteObscur
-        {
-            get { return coteObscur; }
-            set { coteObscur = value; }
         }
 
         public bool IsSith
@@ -46,15 +37,23 @@ namespace EntitiesLayer
             set { nom = value; }
         }
 
-        public static int Id
+        public int Id
         {
             get { return ID; }
             set { ID = value; }
         }
-        public int NiveauBlessure
+
+        public string Image
         {
-            get { return niveauBlessure; }
-            set { niveauBlessure = value; }
+            get
+            {
+                return image;
+            }
+
+            set
+            {
+                image = value;
+            }
         }
 
         public double getPerception()

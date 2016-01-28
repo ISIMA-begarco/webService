@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace ApplicationWPF.Frames
 {
-    interface IFrameNavigator
+    public class FrameChangedEventArgs : EventArgs
     {
-        string NextFrame
-        {
-            get;
-            set;
-        }
+        public string nextFramePath;
 
-        EventHandler ChangeFrame
+        public FrameChangedEventArgs(string nfp)
+        {
+            nextFramePath = nfp;
+        }
+    }
+
+    public interface IFrameNavigator
+    {
+        EventHandler<FrameChangedEventArgs> OnFrameChanged
         {
             get;
             set;
