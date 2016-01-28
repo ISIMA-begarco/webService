@@ -35,13 +35,13 @@ namespace ApplicationWPF.Frames
 
         private void ButtonPlay_Event(object sender, EventArgs e)
         {
-            string nextFrame = "Frames/PlayMenu.xaml";
+            string nextFrame = "Frames/PlayPage.xaml";
             OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
 
         private void ButtonManage_Event(object sender, EventArgs e)
         {
-            string nextFrame = "Frames/PlayMenu.xaml";
+            string nextFrame = "Frames/PlayPage.xaml";
             OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
 

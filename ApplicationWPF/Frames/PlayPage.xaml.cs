@@ -20,7 +20,7 @@ namespace ApplicationWPF.Frames
     /// </summary>
     public partial class PlayPage : Page, IFrameNavigator
     {
-        public event EventHandler m_changeFrame;
+        public event EventHandler<FrameChangedEventArgs> m_changeFrame;
         public string m_nextFrame;
 
         public PlayPage()
@@ -34,16 +34,18 @@ namespace ApplicationWPF.Frames
             set { m_nextFrame = value; }
         }
 
-        public EventHandler ChangeFrame
+        public EventHandler<FrameChangedEventArgs> OnFrameChanged
         {
             get { return m_changeFrame; }
             set { m_changeFrame = value; }
         }
 
+
+
         private void ButtonBack_Event(object sender, EventArgs e)
         {
-            m_nextFrame = "Frames/MainMenu.xaml";
-            ChangeFrame(this, e);
+            string nextFrame = "Frames/MainMenu.xaml";
+            OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
     }
 }
