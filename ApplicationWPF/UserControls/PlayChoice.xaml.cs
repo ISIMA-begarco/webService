@@ -24,17 +24,9 @@ namespace ApplicationWPF.UserControls
     {
 
         /// <summary>
-        /// Identified the Label dependency property
-        /// </summary>
-        public static readonly DependencyProperty PlayChoiceTitleProperty;
-        /// <summary>
         /// Identified the ImSource dependency property
         /// </summary>
         public static readonly DependencyProperty ImSourceProperty;
-        /// <summary>
-        /// Identified the ImSource dependency property
-        /// </summary>
-        public static readonly DependencyProperty PlayChoiceDescriptionProperty;
 
         /// <summary>
         /// Gets or sets the ImSource which is displayed next to the field
@@ -51,27 +43,20 @@ namespace ApplicationWPF.UserControls
         /// </summary>
         public String PlayChoiceTitle
         {
-            get { return (String)GetValue(PlayChoiceTitleProperty); }
-            set { SetValue(PlayChoiceTitleProperty, value); }
+            get { return this.Title.Text; }
+            set { this.Title.Text = value; }
         }
 
         public String PlayChoiceDescription
         {
-            get { return (String)GetValue(PlayChoiceDescriptionProperty); }
-            set { SetValue(PlayChoiceDescriptionProperty, value); }
+            get { return this.Description.Text; }
+            set { this.Description.Text = value; }
         }
 
        
 
         static PlayChoice()
         {
-            PlayChoiceTitleProperty = DependencyProperty.Register("PlayChoiceTitle", 
-                        typeof(string), typeof(PlayChoice), 
-                        new PropertyMetadata("Titre de test"));
-
-            PlayChoiceDescriptionProperty = DependencyProperty.Register("PlayChoiceDescription",
-                        typeof(string), typeof(PlayChoice),
-                        new PropertyMetadata("Description de test"));
             ImSourceProperty = DependencyProperty.Register("PlayChoiceImSource", 
                         typeof(BitmapImage),typeof(PlayChoice),
                         new PropertyMetadata());

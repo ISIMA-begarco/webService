@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Margin="10"
-             Opacity="0.9"
+             Style="{StaticResource PlayChoiceStyle}"
              d:DesignHeight="300" d:DesignWidth="500">
     <UserControl.Background>
         <ImageBrush ImageSource="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=PlayChoiceImSource}"/>
@@ -15,7 +14,20 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=PlayChoiceTitle}" FontSize="24" FontWeight="Bold" />
-        <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=PlayChoiceDescription}" FontSize="18" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" x:Name="Title" UseLayoutRounding="True" TextWrapping="Wrap" Text="{Binding Path=PlayChoiceTitle}" 
+                Style="{StaticResource StarWarsFontStyle}">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="1" Color="red"
+                                  Direction="0" ShadowDepth="1"/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <TextBlock Grid.Row="1" x:Name="Description" UseLayoutRounding="True" Text="{Binding Path=PlayChoiceDescription}" 
+                   Style="{StaticResource StarWarsFontStyle}"
+                   FontSize="20">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="1" Color="Black"
+                                  Direction="0" ShadowDepth="1"/>
+            </TextBlock.Effect>
+        </TextBlock>
     </Grid>
 </UserControl>

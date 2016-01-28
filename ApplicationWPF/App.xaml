@@ -2,7 +2,27 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
-    <Application.Resources>
+    <Application.Resources>        
+        <!-- Définition des Fonts -->
+        <Style x:Key="StarWarsFont">
+            <Setter Property="TextElement.FontFamily" Value="Font/#Star Jedi Outline"/>
+        </Style>
+        <Style x:Key="TeleMarinesFont">
+            <Setter Property="TextElement.FontFamily" Value="Font/#Tele-Marines"/>
+        </Style>
+
+
+        <Style TargetType="{x:Type UserControl}"  x:Key="PlayChoiceStyle">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Opacity" Value="1"/>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="Margin" Value="10"/>            
+        </Style>
+
         <Style TargetType="Hyperlink" x:Key="ConnexionButton">
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
@@ -12,19 +32,18 @@
             <Setter Property="Foreground" Value="LightGray"/>
             <Setter Property="TextDecorations" Value="None"/>
         </Style>
-        <Style x:Key="StarWarsFont">
-            <Setter Property="TextElement.FontFamily" Value="Font/#Star Jedi Outline"/>
-        </Style>
-        <Style x:Key="TeleMarinesFont">
-            <Setter Property="TextElement.FontFamily" Value="Font/#Tele-Marines"/>
-        </Style>
+
+
         <Style TargetType="TextBlock" x:Key="StarWarsFontStyle">
-            <Setter Property="Foreground"   Value="White"/>
+            <Setter Property="Foreground"   Value="WhiteSmoke"/>
             <Setter Property="FontSize"     Value="30"/>
+            <Setter Property="FontWeight"   Value="Bold"/>
             <Setter Property="FontFamily"   Value="Font/#Tele-Marines"/>
             <Setter Property="FontStyle"    Value="Italic"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
-
+               
         <BitmapImage x:Key="StarWarsImageBackGround1" UriSource="./Picture/starwars10.jpg" />
         <BitmapImage x:Key="StarWarsImageBackGround2" UriSource="./Picture/starwars8.jpg" />
         <BitmapImage x:Key="StarWarsImageBackGround3" UriSource="./Picture/starwars7.jpg" />
@@ -32,6 +51,7 @@
         <BitmapImage x:Key="StarWarsImageBackGround5" UriSource="./Picture/starwars5.jpg" />
         <BitmapImage x:Key="StarWarsImageBackGround6" UriSource="./Picture/starwars4.jpg" />
         <BitmapImage x:Key="StarWarsImageBackGround7" UriSource="./Picture/starwars3.jpg" />
+        <BitmapImage x:Key="StarWarsImageBackGround8" UriSource="./Picture/starwars12.jpg" />
         <BitmapImage x:Key="JediTournamentLogo" UriSource="./Picture/JediTournamentLogo.png" />
 
     </Application.Resources>

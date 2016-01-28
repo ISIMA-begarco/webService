@@ -53,6 +53,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Frames\PlayPageFrame\MultiplayerPage.xaml.cs">
+      <DependentUpon>MultiplayerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\PlayPageFrame\OnePlayerPage.xaml.cs">
+      <DependentUpon>OnePlayerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ButtonSoft.xaml.cs">
       <DependentUpon>ButtonSoft.xaml</DependentUpon>
     </Compile>
@@ -79,6 +85,14 @@
     <Compile Include="ViewModel\Tournament\TournamentsViewModel.cs" />
     <Compile Include="ViewModel\Tournament\TournamentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Page Include="Frames\PlayPageFrame\MultiplayerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\PlayPageFrame\OnePlayerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ButtonSoft.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -177,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Picture\starwars3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\starwars12.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
