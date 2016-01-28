@@ -6,32 +6,33 @@ using System.Text;
 using System.Threading.Tasks;
 using EntitiesLayer;
 using StubDataAccessLayer;
+using DataAccessLayer;
 
 namespace BusinessLayer
 {
     public class JediTournamentManager
     {
-        private static DalManager bdd = new DalManager();
+        private static DataAccessLayer.DalManager bdd = new DataAccessLayer.DalManager();
 
         #region Stades management
         public List<Stade> getStades()
         {
-            return bdd.getStade();
+            return bdd.getStades();
         }
 
         public List<Stade> getStadesByNbPlace(int nbPlace)
         {
-            return (from x in bdd.getStade() where x.NbPlaces >= nbPlace select x).ToList();
+            return (from x in bdd.getStades() where x.NbPlaces >= nbPlace select x).ToList();
         }
 
         public List<Stade> getStadeByCarac(Caracteristique carac)
         {
-            return (from x in bdd.getStade() where x.Caracteristiques.Contains(carac) select x).ToList();
+            return (from x in bdd.getStades() where x.Caracteristiques.Contains(carac) select x).ToList();
         }
 
         public List<Stade> getStadeByPlanet(String planet)
         {
-            return (from x in bdd.getStade() where x.Planete == planet select x).ToList();
+            return (from x in bdd.getStades() where x.Planete == planet select x).ToList();
         }
         #endregion
 
@@ -67,12 +68,12 @@ namespace BusinessLayer
         #region Match management
         public List<Match> getMatchs()
         {
-            return bdd.getMatchs();
+            return bdd.getMatches();
         }
 
         public List<Match> getMatchsByJedisName(string j1, string j2)
         {
-            return (from x in bdd.getMatchs()
+            return (from x in bdd.getMatches()
                     where (x.Jedi1.Nom == j1 && x.Jedi2.Nom == j2) ||
                           (x.Jedi1.Nom == j2 && x.Jedi2.Nom == j1)
                     select x).ToList();
@@ -80,7 +81,7 @@ namespace BusinessLayer
 
         public List<Match> getMatchsByWinner(string winner)
         {
-            return (from x in bdd.getMatchs() 
+            return (from x in bdd.getMatches() 
                     where (from y in bdd.getJedis() 
                            where y.Nom == winner 
                            select y.Id).Any()
@@ -89,7 +90,7 @@ namespace BusinessLayer
 
         public IEnumerable<Match> getMatches200Sith()
         {
-            IEnumerable<Match> matches = from x in bdd.getMatchs()
+            IEnumerable<Match> matches = from x in bdd.getMatches()
                                          where x.Stade.NbPlaces >= 200 && x.Jedi1.IsSith == true
                                                && x.Jedi2.IsSith == true
                                          select x;

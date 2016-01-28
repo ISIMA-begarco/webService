@@ -49,5 +49,9 @@ namespace DataAccessLayer
 
         }
 
+        public Utilisateur GetUtilisateurByLogin(string login)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

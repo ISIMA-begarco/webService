@@ -1,6 +1,6 @@
 ﻿namespace EntitiesLayer
 {
-    public enum EDefCaractéristique
+    public enum EDefCaracteristique
     {
         Strength,
         Dexterity,

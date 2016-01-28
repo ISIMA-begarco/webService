@@ -4,34 +4,26 @@ namespace EntitiesLayer
 {
     public class Match : EntityObject
     {
-        private int idJediVainqueur;
+        private Jedi jediVainqueur;
         private Jedi jedi1;
         private Jedi jedi2;
         private EPhaseTournoi phaseTournoi;
         private Stade stade;
 
-        public Match(List<Caracteristique> caracteristiques, int idJediVainqueur, Jedi jedi1, Jedi jedi2, EPhaseTournoi phaseTournoi, Stade stade)
-        {
-            this.idJediVainqueur = idJediVainqueur;
-            this.jedi1 = jedi1;
-            this.jedi2 = jedi2;
-            this.phaseTournoi = phaseTournoi;
-            this.stade = stade;
-        }
-
-        public Match(Jedi jedi1, Jedi jedi2, EPhaseTournoi phaseTournoi, Stade stade)
+        public Match(Jedi jedi1, Jedi jedi2, EPhaseTournoi phaseTournoi, Stade stade, Jedi vainqueur = null)
         {
             this.jedi1 = jedi1;
             this.jedi2 = jedi2;
             this.phaseTournoi = phaseTournoi;
             this.stade = stade;
+            this.jediVainqueur = vainqueur;
         }
 
        
-        public int IdJediVainqueur
+        public Jedi JediVainqueur
         {
-            get { return idJediVainqueur; }
-            set { idJediVainqueur = value; }
+            get { return jediVainqueur; }
+            set { jediVainqueur = value; }
         }
 
         public Jedi Jedi1
