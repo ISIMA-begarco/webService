@@ -4,12 +4,12 @@ namespace EntitiesLayer
 {
     public class Caracteristique : EntityObject
     {
-        private EDefCaractéristique definition;
+        private EDefCaracteristique definition;
         private String               nom;
         private ETypeCaracteristique type;
         private int valeur;
 
-        public Caracteristique(EDefCaractéristique definition, string nom, ETypeCaracteristique type, int valeur)
+        public Caracteristique(EDefCaracteristique definition, string nom, ETypeCaracteristique type, int valeur)
         {
             this.definition = definition;
             this.nom = nom;
@@ -17,7 +17,7 @@ namespace EntitiesLayer
             this.valeur = valeur;
         }
 
-        public EDefCaractéristique Definition
+        public EDefCaracteristique Definition
         {
             get { return definition; }
             set { definition = value; }

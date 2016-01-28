@@ -17,7 +17,7 @@ namespace StubDataAccessLayer
             return jedis;
         }
 
-        public List<Match> getMatchs()
+        public List<Match> getMatches()
         {
             List<Match> matches = new List<Match>();
 
@@ -28,7 +28,7 @@ namespace StubDataAccessLayer
             return matches;
         }
 
-        public List<Stade> getStade()
+        public List<Stade> getStades()
         {
             List<Stade> stades = new List<Stade>();
 
@@ -43,9 +43,9 @@ namespace StubDataAccessLayer
         {
             List<Caracteristique> caracteristiques = new List<Caracteristique>();
 
-            caracteristiques.Add(new Caracteristique(EDefCaractéristique.Perception, "Perception",ETypeCaracteristique.Jedi, 2));
-            caracteristiques.Add(new Caracteristique(EDefCaractéristique.Dexterity, "Dextérité", ETypeCaracteristique.Jedi, 2));
-            caracteristiques.Add(new Caracteristique(EDefCaractéristique.Strength, "Force", ETypeCaracteristique.Jedi, 2));
+            caracteristiques.Add(new Caracteristique(EDefCaracteristique.Perception, "Perception",ETypeCaracteristique.Jedi, 2));
+            caracteristiques.Add(new Caracteristique(EDefCaracteristique.Dexterity, "Dextérité", ETypeCaracteristique.Jedi, 2));
+            caracteristiques.Add(new Caracteristique(EDefCaracteristique.Strength, "Force", ETypeCaracteristique.Jedi, 2));
 
             return caracteristiques;
         }

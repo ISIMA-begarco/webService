@@ -61,7 +61,7 @@ namespace EntitiesLayer
             double retour = 0;
             foreach(Caracteristique c in Caracteristiques)
             {
-                retour += (c.Definition == EDefCaractéristique.Perception ? c.Valeur : 0);
+                retour += (c.Definition == EDefCaracteristique.Perception ? c.Valeur : 0);
             }
             return retour;
         }
@@ -71,7 +71,7 @@ namespace EntitiesLayer
             int retour = 0;
             foreach (Caracteristique c in Caracteristiques)
             {
-                retour += (c.Definition == EDefCaractéristique.Strength ? c.Valeur : 0);
+                retour += (c.Definition == EDefCaracteristique.Strength ? c.Valeur : 0);
             }
             return retour;
         }
@@ -81,7 +81,7 @@ namespace EntitiesLayer
             int retour = 0;
             foreach (Caracteristique c in Caracteristiques)
             {
-                retour += (c.Definition == EDefCaractéristique.Dexterity ? c.Valeur : 0);
+                retour += (c.Definition == EDefCaracteristique.Dexterity ? c.Valeur : 0);
             }
             return retour;
         }

@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caracteristique.cs" />
-    <Compile Include="EDefCaractéristique.cs" />
+    <Compile Include="EDefCaracteristique.cs" />
     <Compile Include="EntityObject.cs" />
     <Compile Include="EPhaseTournoi.cs" />
     <Compile Include="ETypeCaracteristique.cs" />

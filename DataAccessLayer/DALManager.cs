@@ -13,7 +13,7 @@ namespace DataAccessLayer
 
         public DalManager()
         {
-            bdd = new MSSQLSFile("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Benoît\Source\Repos\webService\Database\JediTournament.mdf;Integrated Security=True;Connect Timeout=30");
+            bdd = new MSSQLSFile("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Benoît\\Source\\Repos\\webService\\Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30");
         }
 
         public List<Jedi> getJedis()
@@ -49,5 +49,9 @@ namespace DataAccessLayer
 
         }
 
+        public Utilisateur GetUtilisateurByLogin(string login)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
