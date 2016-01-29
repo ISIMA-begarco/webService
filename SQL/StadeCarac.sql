@@ -1,0 +1,6 @@
+﻿CREATE TABLE StadeCarac
+(
+	[IdStade] INT NOT NULL,
+	[IdCarac] INT NOT NULL,
+	CONSTRAINT PK_StadeCarac PRIMARY KEY CLUSTERED (IdStade,IdCarac)
+)
