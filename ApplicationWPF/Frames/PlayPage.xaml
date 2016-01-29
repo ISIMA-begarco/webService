@@ -10,6 +10,50 @@
     <Page.Background>
         <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround4}"/>
     </Page.Background>
+    <Page.Resources>
+        <ControlTemplate x:Key="CustomToggleButton" TargetType="ToggleButton">
+            <Grid>
+                <Border Name="Border" />
+                <Border Name="SmallBorder" />
+                <Path Name="Arrow" />
+            </Grid>
+        </ControlTemplate>
+        <Style TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border>
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Template="{StaticResource CustomToggleButton}" />
+                            <ContentPresenter />
+                            <TextBox />
+                            <Popup>
+                                <Grid>
+                                    <Border>
+                                        <ScrollViewer>
+                                            <ItemsPresenter />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -43,7 +87,20 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <Label Content="Stade"/>
+                    <ComboBox ItemsSource="{Binding Stades}" SelectedItem="{Binding SelectedItem}"  Height="40"  >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <!-- //TODO USER CONTROL -->
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>                
             </Grid>
             <Frame Grid.Row="1">
 
