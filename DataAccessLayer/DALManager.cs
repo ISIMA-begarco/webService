@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntitiesLayer;
+using System.IO;
 
 namespace DataAccessLayer
 {
@@ -13,7 +14,8 @@ namespace DataAccessLayer
 
         public DalManager()
         {
-            bdd = new MSSQLSFile("Data Source=(LocalDB)/MSSQLLocalDB;AttachDbFilename=C:/Users/Kami/Source/Repos/webService/Database/JediTournament.mdf;Integrated Security=True;Connect Timeout=30");
+            string root = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="+ Environment.CurrentDirectory.Split(new string[] { "JediTournamentConsole" }, StringSplitOptions.None)[0] + "Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
+            bdd = new MSSQLSFile(root);
         }
 
         public List<Jedi> getJedis()
