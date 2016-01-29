@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ApplicationWPF.ViewModel.Gestion" x:Class="ApplicationWPF.ViewModel.Gestion.GestionTournament" 
+      xmlns:local="clr-namespace:ApplicationWPF.Frames" x:Class="ApplicationWPF.Frames.GestionTournament" 
+      xmlns:userControls="clr-namespace:ApplicationWPF.ViewModel.Gestion"
       mc:Ignorable="d"
 	Title="GestionTournament" Height="376" Width="518.4">
 
@@ -17,7 +18,7 @@
                 <Grid Background="#FFE5E5E5" Margin="0,0,4.4,-7">
                     <DockPanel LastChildFill="True">
                         <!-- Barre de recherche des Jedis-->
-                        <local:CtrlResearch DockPanel.Dock="top"/>
+                        <userControls:CtrlResearch DockPanel.Dock="top"/>
                         <!-- Liste des Jedis -->
                         <ScrollViewer Margin="0,-0.4,0,10" Width="449">
                             <StackPanel x:Name="sp2" Height="221" Width="436">
@@ -37,7 +38,7 @@
                 <Grid Background="#FFE5E5E5" Margin="0,0,4.4,-7">
                     <DockPanel LastChildFill="True">
                         <!-- Barre de recherche des Jedis-->
-                        <local:CtrlResearch DockPanel.Dock="top"/>
+                        <userControls:CtrlResearch DockPanel.Dock="top"/>
                         <!-- Liste des Jedis -->
                         <ScrollViewer Margin="0,-0.4,0,10" Width="449">
                             <StackPanel x:Name="sp3" Height="221" Width="436">
@@ -56,7 +57,7 @@
                 <Grid Background="#FFE5E5E5">
                     <DockPanel LastChildFill="True">
                     <!-- Barre de recherche des Jedis-->
-                    <local:CtrlResearch DockPanel.Dock="top"/>
+                    <userControls:CtrlResearch DockPanel.Dock="top"/>
                     <!-- Liste des Jedis -->
                     <ScrollViewer Margin="0,-0.4,0,10" Width="449">
                         <StackPanel x:Name="sp4" Height="221" Width="436">
@@ -75,7 +76,7 @@
                 <Grid Background="#FFE5E5E5">
                     <DockPanel LastChildFill="True">
                         <!-- Barre de recherche des Jedis-->
-                        <local:CtrlResearch DockPanel.Dock="top"/>
+                        <userControls:CtrlResearch DockPanel.Dock="top"/>
                         <!-- Liste des Jedis -->
                         <ScrollViewer Margin="0,-0.4,0,10" Width="449">
                             <StackPanel x:Name="sp5" Height="221" Width="436">

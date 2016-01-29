@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ApplicationWPF.ViewModel.Gestion
+namespace ApplicationWPF.Frames
 {
     /// <summary>
     /// Interaction logic for GestionTournament.xaml

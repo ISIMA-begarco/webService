@@ -89,7 +89,7 @@
     <Compile Include="ViewModel\Gestion\CtrlStade.xaml.cs">
       <DependentUpon>CtrlStade.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\Gestion\GestionTournament.xaml.cs">
+    <Compile Include="Frames\GestionTournament.xaml.cs">
       <DependentUpon>GestionTournament.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Jedi\JedisModelView.cs" />
@@ -158,7 +158,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModel\Gestion\GestionTournament.xaml">
+    <Page Include="Frames\GestionTournament.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

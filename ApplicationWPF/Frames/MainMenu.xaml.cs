@@ -41,7 +41,7 @@ namespace ApplicationWPF.Frames
 
         private void ButtonManage_Event(object sender, EventArgs e)
         {
-            string nextFrame = "Frames/PlayPage.xaml";
+            string nextFrame = "Frames/GestionTournament.xaml";
             OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
 
