@@ -61,6 +61,12 @@
     <Compile Include="Frames\PlayPageFrame\OnePlayerPage.xaml.cs">
       <DependentUpon>OnePlayerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Frames\PlayPageFrame\PariMultiplayer.xaml.cs">
+      <DependentUpon>PariMultiplayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\PlayPageFrame\PariOnePlayer.xaml.cs">
+      <DependentUpon>PariOnePlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ButtonSoft.xaml.cs">
       <DependentUpon>ButtonSoft.xaml</DependentUpon>
     </Compile>
@@ -107,6 +113,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Frames\PlayPageFrame\OnePlayerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\PlayPageFrame\PariMultiplayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\PlayPageFrame\PariOnePlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,13 +10,13 @@ namespace DataAccessLayer
 {
     public class MSSQLSFile : IBridge
     {
-        String connectionString;
+        private String connectionString;
 
         public MSSQLSFile(String pConnectionString)
         {
             connectionString = pConnectionString;
         }
-        List<Caracteristique> IBridge.getCaracteristiques()
+        public List<Caracteristique> getCaracteristiques()
         {
             List<Caracteristique> carac = new List<Caracteristique>();
 
@@ -63,7 +63,7 @@ namespace DataAccessLayer
             IMAGE = 3
         }
 
-        List<Jedi> getJedis()
+        public List<Jedi> getJedis()
         {
             List<Jedi> allJedis = new List<Jedi>();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -174,7 +174,7 @@ namespace DataAccessLayer
             PHASE
         }
 
-        List<Match> IBridge.getMatches()
+        public List<Match> getMatches()
         {
             List<Match> allMatches = new List<Match>();
             List<Stade> allStade = this.getStades();
@@ -202,7 +202,7 @@ namespace DataAccessLayer
             return allMatches;
         }
 
-        List<Stade> getStades()
+        public List<Stade> getStades()
         {
             List<Stade> allStades = new List<Stade>();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -264,16 +264,6 @@ namespace DataAccessLayer
         void IBridge.setStades()
         {
             throw new NotImplementedException();
-        }
-
-        List<Jedi> IBridge.getJedis()
-        {
-            return this.getJedis();
-        }
-
-        List<Stade> IBridge.getStades()
-        {
-            return this.getStades();
         }
     }
 }

@@ -20,6 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{4922E289-603C-4471-9C78-727D54DF60C9}"
 	ProjectSection(SolutionItems) = preProject
 		img\default.png = img\default.png
+		img\planet.png = img\planet.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{FA776FF9-9B98-4E10-B831-3FA639A1BA32}"

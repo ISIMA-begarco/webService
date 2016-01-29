@@ -1,0 +1,6 @@
+﻿CREATE TABLE JediCarac
+(
+	[IdJedi] INT NOT NULL,
+	[IdCarac] INT NOT NULL,
+	CONSTRAINT PK_JediCarac PRIMARY KEY CLUSTERED (IdJedi,IdCarac)
+)

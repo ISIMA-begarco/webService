@@ -53,6 +53,16 @@ namespace ApplicationWPF.UserControls
             set { this.Description.Text = value; }
         }
 
+
+        public event EventHandler Event;
+
+        private void OnButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (Event != null)
+            {
+                Event(this, new EventArgs());
+            }
+        }
        
 
         static PlayChoice()
