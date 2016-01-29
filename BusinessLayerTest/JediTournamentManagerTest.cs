@@ -32,7 +32,7 @@ namespace BusinessLayerTest
             Assert.AreEqual(expectedSize, stades2.Count);
 
             expectedSize = jedis.Count;
-            jedis.Add(new Jedi(null, 10, false, "Jar Jar"));
+            jedis.Add(new Jedi(null, false, "Jar Jar"));
             List<Jedi> jedis2 = jtm.getJedis();
             Assert.AreEqual(expectedSize, jedis2.Count);
 

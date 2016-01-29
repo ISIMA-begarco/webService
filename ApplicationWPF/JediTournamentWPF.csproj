@@ -234,7 +234,7 @@
     <Resource Include="Picture\starwars12.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Jedi.jpg" />
+    <None Include="Picture\Jedi.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\VS_Icon.gif" />

@@ -53,6 +53,7 @@
         <BitmapImage x:Key="StarWarsImageBackGround7" UriSource="./Picture/starwars3.jpg" />
         <BitmapImage x:Key="StarWarsImageBackGround8" UriSource="./Picture/starwars12.jpg" />
         <BitmapImage x:Key="JediTournamentLogo" UriSource="./Picture/JediTournamentLogo.png" />
+        <BitmapImage x:Key="JediLogo" UriSource="./Picture/Jedi.jpg" />
 
     </Application.Resources>
 </Application>
