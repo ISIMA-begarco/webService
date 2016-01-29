@@ -47,5 +47,14 @@ namespace ApplicationWPF.Frames
             string nextFrame = "Frames/MainMenu.xaml";
             OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
+
+        private void OnPlayChoice_Click(object sender, EventArgs e)
+        {
+            /*
+            this.ModeChoice.Source = new Uri(,UriKind.Relative);
+            string nextFrame = "Frames/MainMenu.xaml";
+            OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
+             */
+        }
     }
 }
