@@ -25,8 +25,8 @@
                 </LinearGradientBrush>
             </Image.OpacityMask>
         </Image>
-        <Label Content="{Binding JedisModelView.Nom}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="30" Width="38"/>
-        <CheckBox Content="Seigneur Sith" HorizontalAlignment="Left" Margin="303,91,0,0" VerticalAlignment="Top" Height="15" Width="116" FontFamily="MV Boli" FontWeight="Bold"/>
-        <Label Content="{Binding JedisModelView.Caracteristiques}" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Height="26" Width="96"/>
+        <Label Content="{Binding JediViewModel.Nom}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="30" Width="38"/>
+        <CheckBox Checked="{Binding JediViewModel.IsSith}" Content="Seigneur Sith" HorizontalAlignment="Left" Margin="303,91,0,0" VerticalAlignment="Top" Height="15" Width="116" FontFamily="MV Boli" FontWeight="Bold"/>
+        <Label Content="{Binding JediViewModel.Caracteristiques}" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Height="26" Width="96"/>
     </Grid>
 </UserControl>
