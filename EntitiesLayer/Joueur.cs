@@ -7,10 +7,11 @@ namespace EntitiesLayer
         private String nom;
         private int score;
 
-        public Joueur(string nom, int score)
+        public Joueur(int id, string nom, int score)
         {
             this.nom = nom;
             this.score = score;
+            this.Id = id;
         }
 
         public string Nom
@@ -23,12 +24,6 @@ namespace EntitiesLayer
         {
             get { return score; }
             set { score = value; }
-        }
-
-        public static int Id
-        {
-            get { return ID; }
-            set { ID = value; }
         }
     }
 }

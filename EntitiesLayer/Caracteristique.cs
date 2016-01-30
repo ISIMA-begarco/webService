@@ -9,8 +9,9 @@ namespace EntitiesLayer
         private ETypeCaracteristique type;
         private int valeur;
 
-        public Caracteristique(EDefCaracteristique definition, string nom, ETypeCaracteristique type, int valeur)
+        public Caracteristique(int id, EDefCaracteristique definition, string nom, ETypeCaracteristique type, int valeur)
         {
+            this.Id = id;
             this.definition = definition;
             this.nom = nom;
             this.type = type;
@@ -40,14 +41,5 @@ namespace EntitiesLayer
             get { return valeur; }
             set { valeur = value; }
         }
-
-        public static int Id
-        {
-            get { return ID; }
-            set { ID = value; }
-        }
-
-
-
     }
 }

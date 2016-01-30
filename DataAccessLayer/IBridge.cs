@@ -13,9 +13,12 @@ namespace DataAccessLayer
         List<Stade> getStades();
         List<Match> getMatches();
         List<Caracteristique> getCaracteristiques();
-        void setJedis();
-        void setStades();
-        void setMatches();
-        void setCaracteristiques();
+        List<Tournoi> getTournois();
+        int updateJedis(List<Jedi> l);
+        int updateStades(List<Stade> l);
+        int updateMatches(List<Match> l);
+        int updateCaracteristiques(List<Caracteristique> l);
+        int updateTournois(List<Tournoi> l);
+        Utilisateur getUtilisateurByLogin(string login);
     }
 }

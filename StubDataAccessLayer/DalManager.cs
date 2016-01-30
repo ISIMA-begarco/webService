@@ -9,10 +9,10 @@ namespace StubDataAccessLayer
         {
             List<Jedi> jedis =new List<Jedi>(); 
 
-            jedis.Add(new Jedi(null,false,"Revan"));
-            jedis.Add(new Jedi(null,true,"Jacen Solo"));
-            jedis.Add(new Jedi(null,false,"Cade Skywalker"));
-            jedis.Add(new Jedi(null, true, "Darth Bane"));
+            jedis.Add(new Jedi(1, null,false,"Revan"));
+            jedis.Add(new Jedi(2, null,true,"Jacen Solo"));
+            jedis.Add(new Jedi(3, null,false,"Cade Skywalker"));
+            jedis.Add(new Jedi(4, null, true, "Darth Bane"));
 
             return jedis;
         }
@@ -21,9 +21,9 @@ namespace StubDataAccessLayer
         {
             List<Match> matches = new List<Match>();
 
-            matches.Add(new Match(new Jedi(null, false, "Revan"), new Jedi(null, true, "Jacen Solo"),EPhaseTournoi.DemiFinale, new Stade(120,"Tython",null)));
-            matches.Add(new Match(new Jedi(null, false, "Cade Skywalker"), new Jedi(null, true, "Darth Bane"),EPhaseTournoi.DemiFinale,new Stade(120,"Nar Shaddaa",null)));
-            matches.Add(new Match(new Jedi(null, true, "Jacen Solo"), new Jedi(null, true, "Darth Bane"), EPhaseTournoi.Finale, new Stade(250, "Coruscant", null)));
+            matches.Add(new Match(1, new Jedi(1, null, false, "Revan"), new Jedi(2, null, true, "Jacen Solo"),EPhaseTournoi.DemiFinale, new Stade(2, 120,"Tython",null)));
+            matches.Add(new Match(2, new Jedi(3, null, false, "Cade Skywalker"), new Jedi(4, null, true, "Darth Bane"),EPhaseTournoi.DemiFinale,new Stade(1, 120,"Nar Shaddaa",null)));
+            matches.Add(new Match(3, new Jedi(2, null, true, "Jacen Solo"), new Jedi(4, null, true, "Darth Bane"), EPhaseTournoi.Finale, new Stade(3, 250, "Coruscant", null)));
 
             return matches;
         }
@@ -32,9 +32,9 @@ namespace StubDataAccessLayer
         {
             List<Stade> stades = new List<Stade>();
 
-            stades.Add(new Stade(120, "Nar Shaddaa",null));
-            stades.Add(new Stade(120, "Tython", null));
-            stades.Add(new Stade(250, "Coruscant", null));
+            stades.Add(new Stade(1, 120, "Nar Shaddaa",null));
+            stades.Add(new Stade(2, 120, "Tython", null));
+            stades.Add(new Stade(3, 250, "Coruscant", null));
 
             return stades;
         }
@@ -43,9 +43,9 @@ namespace StubDataAccessLayer
         {
             List<Caracteristique> caracteristiques = new List<Caracteristique>();
 
-            caracteristiques.Add(new Caracteristique(EDefCaracteristique.Perception, "Perception",ETypeCaracteristique.Jedi, 2));
-            caracteristiques.Add(new Caracteristique(EDefCaracteristique.Dexterity, "Dextérité", ETypeCaracteristique.Jedi, 2));
-            caracteristiques.Add(new Caracteristique(EDefCaracteristique.Strength, "Force", ETypeCaracteristique.Jedi, 2));
+            caracteristiques.Add(new Caracteristique(1, EDefCaracteristique.Perception, "Perception",ETypeCaracteristique.Jedi, 2));
+            caracteristiques.Add(new Caracteristique(2, EDefCaracteristique.Dexterity, "Dextérité", ETypeCaracteristique.Jedi, 2));
+            caracteristiques.Add(new Caracteristique(3, EDefCaracteristique.Strength, "Force", ETypeCaracteristique.Jedi, 2));
 
             return caracteristiques;
         }
@@ -54,9 +54,9 @@ namespace StubDataAccessLayer
         {
             List<Utilisateur> users = new List<Utilisateur>();
 
-            users.Add(new Utilisateur("Yoda", "Maitre", "YodaDu69", "YoloForce"));
-            users.Add(new Utilisateur("Dark", "Vador", "BestForceEver", "IamGod"));
-            users.Add(new Utilisateur("Skywalker", "Luck", "Luck", "leia24+"));
+            users.Add(new Utilisateur(1, "YodaDu69", "YoloForce"));
+            users.Add(new Utilisateur(2, "BestForceEver", "IamGod"));
+            users.Add(new Utilisateur(3, "Luck", "leia24+"));
 
             return users;
         }

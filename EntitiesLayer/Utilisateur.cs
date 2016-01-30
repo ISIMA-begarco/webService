@@ -6,49 +6,31 @@ using System.Threading.Tasks;
 
 namespace EntitiesLayer
 {
-    public class Utilisateur
+    public class Utilisateur : EntityObject
     {
-        public string Nom
-        {
-            get;
-            set;
-        }
-        private string mNom;
-
-        public string Prenom
-        {
-            get;
-            set;
-        }
-        private string mPrenom;
-
         public string Login
         {
             get;
             set;
         }
-        private string mLogin;
 
         public string Password
         {
             get;
             set;
         }
-        private string mPassword;
 
 
         public Utilisateur()
         {
-            this.Nom = "Jonas";
-            this.Prenom = "Coco";
-            this.Login = "JCoco";
-            this.Password = "Flemme";
+            this.Id = 1;
+            this.Login = "bob";
+            this.Password = "bleu";
         }
 
-        public Utilisateur(string nom, string prenom, string login, string password)
+        public Utilisateur(int id, string login, string password)
         {
-            this.Nom = nom;
-            this.Prenom = prenom;
+            this.Id = id;
             this.Login = login;
             this.Password = password;
         }
