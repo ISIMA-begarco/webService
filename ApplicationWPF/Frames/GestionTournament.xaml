@@ -5,23 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ApplicationWPF.Frames" x:Class="ApplicationWPF.Frames.GestionTournament" 
       xmlns:userControls="clr-namespace:ApplicationWPF.ViewModel.Gestion"
+      d:DesignHeight="1000" d:DesignWidth="1000"
       mc:Ignorable="d"
-	Title="GestionTournament" Height="376" Width="518.4">
+	Title="GestionTournament">
 
     <Grid>
-        <TabControl HorizontalAlignment="Left"
-		    Height="331"
+        <TabControl HorizontalAlignment="Stretch"
 		    Margin="10,45,0,0"
-		    VerticalAlignment="Top"
-		    Width="508">
-            <TabItem Header="Jedi" FontFamily="MV Boli" FontWeight="Bold">
-                <Grid Background="#FFE5E5E5" Margin="0,0,4.4,-7">
+		    VerticalAlignment="Stretch"
+            FontSize="70" Style="{StaticResource TeleMarinesFont}">
+            <TabItem Header="Jedi" FontWeight="Bold" Padding="25,20,25,20">
+            <Grid Background="#FFE5E5E5" Margin="0,0,4.4,-7">
                     <DockPanel LastChildFill="True">
                         <!-- Barre de recherche des Jedis-->
                         <userControls:CtrlResearch DockPanel.Dock="top"/>
                         <!-- Liste des Jedis -->
-                        <ScrollViewer Margin="0,-0.4,0,10" Width="449">
-                            <StackPanel x:Name="sp2" Height="221" Width="436">
+                        <ScrollViewer Margin="0,-0.4,0,10">
+                            <StackPanel x:Name="sp2">
                                 <StackPanel.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="Black" Offset="0"/>
@@ -34,14 +34,14 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Match" FontFamily="MV Boli" FontWeight="Bold">
+            <TabItem Header="Match" FontWeight="Bold" Padding="25,20,25,20">
                 <Grid Background="#FFE5E5E5" Margin="0,0,4.4,-7">
                     <DockPanel LastChildFill="True">
                         <!-- Barre de recherche des Jedis-->
                         <userControls:CtrlResearch DockPanel.Dock="top"/>
                         <!-- Liste des Jedis -->
-                        <ScrollViewer Margin="0,-0.4,0,10" Width="449">
-                            <StackPanel x:Name="sp3" Height="221" Width="436">
+                        <ScrollViewer Margin="0,-0.4,0,10">
+                            <StackPanel x:Name="sp3">
                                 <StackPanel.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="Black" Offset="0"/>
@@ -53,14 +53,14 @@
                     </DockPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Stade" FontFamily="MV Boli" FontWeight="Bold">
+            <TabItem Header="Stade" FontWeight="Bold" Padding="25,20,25,20">
                 <Grid Background="#FFE5E5E5">
                     <DockPanel LastChildFill="True">
                     <!-- Barre de recherche des Jedis-->
                     <userControls:CtrlResearch DockPanel.Dock="top"/>
                     <!-- Liste des Jedis -->
-                    <ScrollViewer Margin="0,-0.4,0,10" Width="449">
-                        <StackPanel x:Name="sp4" Height="221" Width="436">
+                    <ScrollViewer Margin="0,-0.4,0,10">
+                        <StackPanel x:Name="sp4">
                             <StackPanel.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="Black" Offset="0"/>
@@ -72,14 +72,14 @@
                     </DockPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Tournoi" FontFamily="MV Boli" FontWeight="Bold">
+            <TabItem Header="Tournoi" FontWeight="Bold" Padding="25,20,25,20">
                 <Grid Background="#FFE5E5E5">
                     <DockPanel LastChildFill="True">
                         <!-- Barre de recherche des Jedis-->
                         <userControls:CtrlResearch DockPanel.Dock="top"/>
                         <!-- Liste des Jedis -->
-                        <ScrollViewer Margin="0,-0.4,0,10" Width="449">
-                            <StackPanel x:Name="sp5" Height="221" Width="436">
+                        <ScrollViewer Margin="0,-0.4,0,10">
+                            <StackPanel x:Name="sp5">
                                 <StackPanel.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="Black" Offset="0"/>
