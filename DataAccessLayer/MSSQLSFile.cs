@@ -605,32 +605,42 @@ namespace DataAccessLayer
                 DataRow row;
                 int numero = (c.Id == 0 ? maximum++ : c.Id);
 
-                if (dataTables[(int)DTName.TOURNOIS].Select("Id = " + c.Id.ToString()).Length != 0)
+                if (dataTables[(int)DTName.TOURNOIS].Select("Id = " + c.Id.ToString()).Length != 0)     // modif
                 {
                     row = dataTables[(int)DTName.TOURNOIS].Select("Id = " + c.Id.ToString()).First();
                     row[(int)TournoiField.ID] = numero;
                     row[(int)TournoiField.NOM] = c.Nom;
                 }
-                else
+                else        // ajout
                 {
                     row = dataTables[(int)DTName.TOURNOIS].NewRow();
                     dataTables[(int)DTName.TOURNOIS].LoadDataRow(new object[] { numero, c.Nom }, false);
                     c.Id = numero;
                 }
 
-                foreach (DataRow lineJC in dataTables[(int)DTName.MATCHTOURNOI].Select("IdTournoi = " + numero))
+                foreach (DataRow lineJC in dataTables[(int)DTName.MATCHTOURNOI].Select("IdTournoi = " + numero))    // suppression des matches pour update
                 {
                     lineJC.Delete();
                 }
-                if (c.Matchs != null)
+                if (c.Matchs != null)       // update des matches
                 {
+                    List<Match> MajMatch = getMatches();
                     foreach (Match ca in c.Matchs)
                     {
                         DataRow newRow = dataTables[(int)DTName.MATCHTOURNOI].NewRow();
                         newRow["IdTournoi"] = c.Id;
                         newRow["IdMatch"] = ca.Id;
                         dataTables[(int)DTName.MATCHTOURNOI].Rows.Add(newRow);
+
+                        /* MAJ DES MATCHES */
+                        Match toModify = MajMatch.Where(m => m.Id == ca.Id).First();
+                        toModify.Jedi1 = ca.Jedi1;
+                        toModify.Jedi2 = ca.Jedi2;
+                        toModify.Stade = ca.Stade;
+                        toModify.JediVainqueur = ca.JediVainqueur;
+                        toModify.PhaseTournoi = ca.PhaseTournoi;
                     }
+                    updateMatches(MajMatch);
                 }
             }
 
