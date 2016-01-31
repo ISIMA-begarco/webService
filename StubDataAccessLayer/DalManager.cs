@@ -21,8 +21,8 @@ namespace StubDataAccessLayer
         {
             List<Match> matches = new List<Match>();
 
-            matches.Add(new Match(1, new Jedi(1, null, false, "Revan"), new Jedi(2, null, true, "Jacen Solo"),EPhaseTournoi.DemiFinale, new Stade(2, 120,"Tython",null)));
-            matches.Add(new Match(2, new Jedi(3, null, false, "Cade Skywalker"), new Jedi(4, null, true, "Darth Bane"),EPhaseTournoi.DemiFinale,new Stade(1, 120,"Nar Shaddaa",null)));
+            matches.Add(new Match(1, new Jedi(1, null, false, "Revan"), new Jedi(2, null, true, "Jacen Solo"),EPhaseTournoi.DemiFinale1, new Stade(2, 120,"Tython",null)));
+            matches.Add(new Match(2, new Jedi(3, null, false, "Cade Skywalker"), new Jedi(4, null, true, "Darth Bane"),EPhaseTournoi.DemiFinale2,new Stade(1, 120,"Nar Shaddaa",null)));
             matches.Add(new Match(3, new Jedi(2, null, true, "Jacen Solo"), new Jedi(4, null, true, "Darth Bane"), EPhaseTournoi.Finale, new Stade(3, 250, "Coruscant", null)));
 
             return matches;

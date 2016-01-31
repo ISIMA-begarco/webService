@@ -71,7 +71,7 @@ namespace ApplicationWPF.ViewModel.Stade
 
         private void Add()
         {
-            EntitiesLayer.Stade s = new EntitiesLayer.Stade(0, "", null);
+            EntitiesLayer.Stade s = new EntitiesLayer.Stade(0, 0, "", null);
             this.SelectedItem = new StadeViewModel(s);
             m_stades.Add(this.SelectedItem);
         }

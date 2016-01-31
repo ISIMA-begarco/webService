@@ -14,17 +14,8 @@ namespace DataAccessLayer
         private String connectionString;
         private DataTable[] dataTables;
 
-        public MSSQLSFile(String pConnectionString)
-        {
-            connectionString = pConnectionString;
-            dataTables = new DataTable[9];
-            for(int i = 0; i<9; i++)
-            {
-                dataTables[i] = new DataTable();
-            }
-        }
-
-        private enum DTName
+        #region Enums
+        public enum DTName
         {
             JEDIS = 0,
             STADES = 1,
@@ -35,37 +26,6 @@ namespace DataAccessLayer
             STADECARAC = 6,
             JEDICARAC = 7,
             MATCHTOURNOI = 8
-        }
-
-        public List<Caracteristique> getCaracteristiques()
-        {
-            List<Caracteristique> carac = new List<Caracteristique>();
-
-            using (SqlConnection sqlConnection2 = new SqlConnection(connectionString))
-            {
-                String request2 = "SELECT C.id, C.nom, C.def, C.type, C.valeur FROM caracteristiques C;";
-                SqlCommand sqlCommand2 = new SqlCommand(request2, sqlConnection2);
-                sqlConnection2.Open();
-
-                SqlDataReader sqlDataReader2 = sqlCommand2.ExecuteReader();            
-
-                while (sqlDataReader2.Read())
-                {
-                    carac.Add(new Caracteristique(  sqlDataReader2.GetInt32((int)CaracField.ID),
-                                                    convertDef(sqlDataReader2.GetString((int)CaracField.DEF)),
-                                                    sqlDataReader2.GetString((int)CaracField.NOM),
-                                                    convertType(sqlDataReader2.GetString((int)CaracField.TYPE)),
-                                                    sqlDataReader2.GetInt32((int)CaracField.VALEUR))
-                    );
-                }
-
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand2);
-                sqlDataAdapter.Fill(dataTables[(int)DTName.CARAC]);
-
-                sqlConnection2.Close();
-            }
-
-            return carac;
         }
         public enum JediField
         {
@@ -95,7 +55,101 @@ namespace DataAccessLayer
             LOGIN = 1,
             PASSWORD = 2
         }
+        public enum MatchField
+        {
+            ID = 0,
+            JEDI1 = 1,
+            JEDI2,
+            STADE,
+            WINNER,
+            PHASE
+        }
+        public enum TournoiField
+        {
+            ID = 0,
+            NOM = 1
+        }
+        #endregion
 
+        public MSSQLSFile(String pConnectionString)
+        {
+            connectionString = pConnectionString;
+            dataTables = new DataTable[9];
+            for (int i = 0; i < 9; i++)
+            {
+                dataTables[i] = new DataTable();
+            }
+
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT id, nom, isSith, image FROM jedis;", sqlConnection));
+                dataTables[(int)DTName.JEDIS].Clear();
+                sqlDataAdapter.Fill(dataTables[(int)DTName.JEDIS]);
+
+                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idjedi, idcarac FROM JediCarac;", sqlConnection));
+                dataTables[(int)DTName.JEDICARAC].Clear();
+                sqlDataAdapter.Fill(dataTables[(int)DTName.JEDICARAC]);
+
+                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT C.id, C.nom, C.def, C.type, C.valeur FROM caracteristiques C;", sqlConnection));
+                dataTables[(int)DTName.CARAC].Clear();
+                sqlDataAdapter.Fill(dataTables[(int)DTName.CARAC]);
+
+                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", sqlConnection));
+                dataTables[(int)DTName.MATCHES].Clear();
+                sqlDataAdapter.Fill(dataTables[(int)DTName.MATCHES]);
+
+                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT id, nom, nbplaces, image FROM stades;", sqlConnection));
+                dataTables[(int)DTName.STADES].Clear();
+                sqlDataAdapter.Fill(dataTables[(int)DTName.STADES]);
+
+                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idstade, idcarac FROM StadeCarac;", sqlConnection));
+                dataTables[(int)DTName.STADECARAC].Clear();
+                sqlDataAdapter.Fill(dataTables[(int)DTName.STADECARAC]);
+
+                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT id, nom FROM Tournois;", sqlConnection));
+                dataTables[(int)DTName.TOURNOIS].Clear();
+                sqlDataAdapter.Fill(dataTables[(int)DTName.TOURNOIS]);
+
+                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idtournoi, idmatch FROM MatchTournoi;", sqlConnection));
+                dataTables[(int)DTName.MATCHTOURNOI].Clear();
+                sqlDataAdapter.Fill(dataTables[(int)DTName.MATCHTOURNOI]);
+
+                sqlConnection.Close();
+            }
+        }
+
+        #region Getters
+        public List<Caracteristique> getCaracteristiques()
+        {
+            List<Caracteristique> carac = new List<Caracteristique>();
+
+            using (SqlConnection sqlConnection2 = new SqlConnection(connectionString))
+            {
+                String request2 = "SELECT C.id, C.nom, C.def, C.type, C.valeur FROM caracteristiques C;";
+                SqlCommand sqlCommand2 = new SqlCommand(request2, sqlConnection2);
+                sqlConnection2.Open();
+
+                SqlDataReader sqlDataReader2 = sqlCommand2.ExecuteReader();            
+
+                while (sqlDataReader2.Read())
+                {
+                    carac.Add(new Caracteristique(  sqlDataReader2.GetInt32((int)CaracField.ID),
+                                                    convertDef(sqlDataReader2.GetString((int)CaracField.DEF)),
+                                                    sqlDataReader2.GetString((int)CaracField.NOM),
+                                                    convertType(sqlDataReader2.GetString((int)CaracField.TYPE)),
+                                                    sqlDataReader2.GetInt32((int)CaracField.VALEUR))
+                    );
+                }
+                sqlDataReader2.Close();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand2);
+                dataTables[(int)DTName.CARAC].Clear();
+                sqlDataAdapter.Fill(dataTables[(int)DTName.CARAC]);
+
+                sqlConnection2.Close();
+            }
+
+            return carac;
+        }
         public List<Jedi> getJedis()
         {
             List<Jedi> allJedis = new List<Jedi>();
@@ -139,82 +193,15 @@ namespace DataAccessLayer
                 }
                 sqlDataReader.Close();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                dataTables[(int)DTName.JEDIS].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.JEDIS]);
                 sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idjedi, idcarac FROM JediCarac;", sqlConnection));
+                dataTables[(int)DTName.JEDICARAC].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.JEDICARAC]);
                 sqlConnection.Close();
             }
             return allJedis;
         }
-
-        private EDefCaracteristique convertDef(String s)
-        {
-            EDefCaracteristique retour;
-
-            if(s.Equals("Strength"))
-            {
-                retour = EDefCaracteristique.Strength;
-            }
-            else if(s.Equals("Dexterity"))
-            {
-                retour = EDefCaracteristique.Dexterity;
-            }
-            else
-            {
-                retour = EDefCaracteristique.Perception;
-            }
-
-            return retour;
-        }
-
-        private ETypeCaracteristique convertType(String s)
-        {
-            ETypeCaracteristique retour = 0;
-
-            if (s.Equals("Jedi"))
-            {
-                retour = ETypeCaracteristique.Jedi;
-            }
-            else if (s.Equals("Stade"))
-            {
-                retour = ETypeCaracteristique.Stade;
-            }
-
-            return retour;
-        }
-
-        private EPhaseTournoi convertPhase(int n)
-        {
-            EPhaseTournoi retour;
-            if(n < 8)
-            {
-                retour = EPhaseTournoi.HuitiemeFinale;
-            }
-            else if (n < 12)
-            {
-                retour = EPhaseTournoi.QuartFinale;
-            }
-            else if (n < 14)
-            {
-                retour = EPhaseTournoi.DemiFinale;
-            }
-            else
-            {
-                retour = EPhaseTournoi.Finale;
-            }
-            return retour;
-        }
-
-        public enum MatchField
-        {
-            ID = 0,
-            JEDI1 = 1,
-            JEDI2,
-            STADE,
-            WINNER,
-            PHASE
-        }
-
         public List<Match> getMatches()
         {
             List<Match> allMatches = new List<Match>();
@@ -233,18 +220,18 @@ namespace DataAccessLayer
                     allMatches.Add(new Match(   sqlDataReader.GetInt32((int)MatchField.ID),
                                                 allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.JEDI1))).First(),
                                                 allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.JEDI2))).First(),
-                                                convertPhase(sqlDataReader.GetInt32((int)MatchField.PHASE)),
+                                                (EPhaseTournoi)sqlDataReader.GetInt32((int)MatchField.PHASE),
                                                 allStade.Where(s => s.Planete.Equals(sqlDataReader.GetString((int)MatchField.STADE))).First(),
                                                 allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.WINNER))).First()));
                 }
                 sqlDataReader.Close();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", sqlConnection));
+                dataTables[(int)DTName.MATCHES].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.MATCHES]);
                 sqlConnection.Close();
             }
             return allMatches;
         }
-
         public List<Stade> getStades()
         {
             List<Stade> allStades = new List<Stade>();
@@ -288,75 +275,22 @@ namespace DataAccessLayer
                 }
                 sqlDataReader.Close();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                dataTables[(int)DTName.STADES].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.STADES]);
                 sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idstade, idcarac FROM StadeCarac;", sqlConnection));
+                dataTables[(int)DTName.STADECARAC].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.STADECARAC]);
                 sqlConnection.Close();
             }
             return allStades;
         }
-
-        private int UpdateByCommandBuilder(string request, DataTable table)
-        {
-            int result = 0;
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-            {
-                SqlTransaction myTrans = sqlConnection.BeginTransaction();
-                SqlCommand sqlCommand = new SqlCommand(request, sqlConnection, myTrans);
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-
-                SqlCommandBuilder sqlCommandbuild = new SqlCommandBuilder(sqlDataAdapter);
-
-                sqlDataAdapter.UpdateCommand = sqlCommandbuild.GetUpdateCommand();
-                sqlDataAdapter.InsertCommand = sqlCommandbuild.GetInsertCommand();
-                sqlDataAdapter.DeleteCommand = sqlCommandbuild.GetDeleteCommand();
-
-                sqlDataAdapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
-
-                try
-                {
-                    result = sqlDataAdapter.Update(table);
-                    myTrans.Commit();
-                }
-                catch (DBConcurrencyException)
-                {
-                    myTrans.Rollback();
-                }
-            }
-            return result;
-        }
-
-        public int updateCaracteristiques(List<Caracteristique> l)
-        {
-            int result = 0;
-            
-
-
-            return result;
-        }
-
-        public int updateJedis(List<Jedi> l)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int updateMatches(List<Match> l)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int updateStades(List<Stade> l)
-        {
-            throw new NotImplementedException();
-        }
-
         public Utilisateur getUtilisateurByLogin(string login)
         {
             Utilisateur us = null;
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                String request = "SELECT id, login, password FROM users WHERE login="+login+";";
+                String request = "SELECT id, login, password FROM users WHERE login=" + login + ";";
                 SqlCommand sqlCommand = new SqlCommand(request, sqlConnection);
                 sqlConnection.Open();
 
@@ -367,22 +301,16 @@ namespace DataAccessLayer
                 }
                 sqlDataReader.Close();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                dataTables[(int)DTName.USERS].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.USERS]);
                 sqlConnection.Close();
             }
             return us;
         }
-
-        enum TournoiField
-        {
-            ID = 0,
-            NOM = 1
-        }
-
         public List<Tournoi> getTournois()
         {
             List<Tournoi> allTournois = new List<Tournoi>();
-            List<Match> allMatches =  this.getMatches();
+            List<Match> allMatches = this.getMatches();
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
@@ -410,24 +338,386 @@ namespace DataAccessLayer
                         }
                         sqlConnection2.Close();
                     }
-
                     allTournois.Add(new Tournoi(sqlDataReader.GetInt32((int)TournoiField.ID),
                                                 sqlDataReader.GetString((int)TournoiField.NOM),
                                                 matches));
                 }
                 sqlDataReader.Close();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                dataTables[(int)DTName.MATCHES].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.MATCHES]);
                 sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idtournoi, idmatch FROM MatchTournoi;", sqlConnection));
+                dataTables[(int)DTName.MATCHTOURNOI].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.MATCHTOURNOI]);
                 sqlConnection.Close();
             }
             return allTournois;
         }
+        #endregion
 
+        #region Updaters
+        public int updateCaracteristiques(List<Caracteristique> l)
+        {
+            int result = 0;
+            int maximum = 1;
+
+            foreach(Caracteristique c in l)
+            {
+                maximum = (c.Id>=maximum?c.Id+1:maximum);
+            }
+
+            foreach (Caracteristique c in l)    // ajout et modification
+            {
+                DataRow row;
+                bool nouveau = false;
+                int numero = (c.Id == 0 ? maximum++ : c.Id);
+
+                if (dataTables[(int)DTName.CARAC].Select("Id = "+c.Id.ToString()).Length!=0)
+                {
+                    row = dataTables[(int)DTName.CARAC].Select("Id = " + c.Id.ToString()).First();
+                }
+                else
+                {
+                    row = dataTables[(int)DTName.CARAC].NewRow();
+                    nouveau = true;
+                    c.Id = numero;
+                }
+
+                row[(int)CaracField.ID] = numero;
+                row[(int)CaracField.NOM] = c.Nom;
+                row[(int)CaracField.DEF] = c.Definition.ToString();
+                row[(int)CaracField.TYPE] = c.Type.ToString();
+                row[(int)CaracField.VALEUR] = c.Valeur;
+
+                if (nouveau)
+                {
+                    dataTables[(int)DTName.CARAC].Rows.Add(row);
+                }
+            }
+            
+            foreach (DataRow ligne in dataTables[(int)DTName.CARAC].Select())   // suppression
+            {
+                if(l.Count(c => c.Id == (int)ligne["Id"])==0)
+                {
+                    Console.WriteLine(dataTables[(int)DTName.JEDICARAC]);
+                    DataRow[] res = dataTables[(int)DTName.JEDICARAC].Select("IdCarac = " + ligne["Id"].ToString());
+                    foreach (DataRow lineJC in res)
+                    {
+                        lineJC.Delete();
+                    }
+                    ligne.Delete();
+                }
+            }
+
+            UpdateByCommandBuilder("SELECT idjedi, idcarac FROM JediCarac;", dataTables[(int)DTName.JEDICARAC]);
+            UpdateByCommandBuilder("SELECT C.id, C.nom, C.def, C.type, C.valeur FROM caracteristiques C;", dataTables[(int)DTName.CARAC]);
+
+            return result;
+        }
+        public int updateJedis(List<Jedi> l)
+        {
+            int result = 0;
+            int maximum = 1;
+            
+            foreach (Jedi c in l)
+            {
+                maximum = (c.Id >= maximum ? c.Id + 1 : maximum);
+            }
+
+            foreach (Jedi c in l)    // ajout et modification
+            {
+                DataRow row;
+                int numero = (c.Id == 0 ? maximum++ : c.Id);
+
+                if (dataTables[(int)DTName.JEDIS].Select("Id = " + c.Id.ToString()).Length != 0)
+                {
+                    row = dataTables[(int)DTName.JEDIS].Select("Id = " + c.Id.ToString()).First();
+                    row[(int)JediField.ID] = numero;
+                    row[(int)JediField.NOM] = c.Nom;
+                    row[(int)JediField.ISSITH] = c.IsSith;
+                    row[(int)JediField.IMAGE] = c.Image;
+                }
+                else
+                {
+                    row = dataTables[(int)DTName.JEDIS].NewRow();
+                    dataTables[(int)DTName.JEDIS].LoadDataRow(new object[] { numero, c.Nom, c.IsSith, c.Image }, false);
+                    c.Id = numero;
+                }
+
+                foreach (DataRow lineJC in dataTables[(int)DTName.JEDICARAC].Select("IdJedi = " + numero))
+                {
+                    lineJC.Delete();
+                }
+                if (c.Caracteristiques != null)
+                {
+                    foreach(Caracteristique ca in c.Caracteristiques)
+                    {
+                        DataRow newRow = dataTables[(int)DTName.JEDICARAC].NewRow();
+                        newRow["IdJedi"] = c.Id;
+                        newRow["IdCarac"] = ca.Id;
+                        dataTables[(int)DTName.JEDICARAC].Rows.Add(newRow);
+                    }
+                }
+            }
+
+            foreach (DataRow ligne in dataTables[(int)DTName.JEDIS].Select())   // suppression
+            {
+                if (l.Count(c => c.Id == (int)ligne["Id"]) == 0)
+                {
+                    foreach (DataRow lineJC in dataTables[(int)DTName.JEDICARAC].Select("IdJedi = " + ligne["Id"].ToString()))
+                    {
+                        lineJC.Delete();
+                    }
+                    ligne.Delete();
+                }
+            }
+
+            UpdateByCommandBuilder("SELECT id, nom, isSith, image FROM jedis;", dataTables[(int)DTName.JEDIS]);
+            UpdateByCommandBuilder("SELECT idjedi, idcarac FROM JediCarac;", dataTables[(int)DTName.JEDICARAC]);
+
+            return result;
+        }
+        public int updateMatches(List<Match> l)
+        {
+            int result = 0;
+            int maximum = 1;
+
+            foreach (Match c in l)
+            {
+                maximum = (c.Id >= maximum ? c.Id + 1 : maximum);
+            }
+
+            foreach (Match c in l)    // ajout et modification
+            {
+                DataRow row;
+                int numero = (c.Id == 0 ? maximum++ : c.Id);
+
+                if (dataTables[(int)DTName.MATCHES].Select("Id = " + c.Id.ToString()).Length != 0)
+                {
+                    row = dataTables[(int)DTName.MATCHES].Select("Id = " + c.Id.ToString()).First();
+                    row[(int)MatchField.ID] = numero;
+                    row[(int)MatchField.JEDI1] = c.Jedi1.Id;
+                    row[(int)MatchField.JEDI2] = c.Jedi2.Id;
+                    row[(int)MatchField.STADE] = c.Stade.Id;
+                    row[(int)MatchField.WINNER] = c.JediVainqueur.Id;
+                    row[(int)MatchField.PHASE] = (int)c.PhaseTournoi;
+                }
+                else
+                {
+                    row = dataTables[(int)DTName.MATCHES].NewRow();
+                    dataTables[(int)DTName.MATCHES].LoadDataRow(new object[] { numero, c.Jedi1.Id, c.Jedi2.Id, c.Stade.Id, c.JediVainqueur.Id, (int)c.PhaseTournoi }, false);
+                    c.Id = numero;
+                }
+            }
+
+            foreach (DataRow ligne in dataTables[(int)DTName.MATCHES].Select())   // suppression
+            {
+                if (l.Count(c => c.Id == (int)ligne["Id"]) == 0)
+                {
+                    foreach (DataRow lineJC in dataTables[(int)DTName.MATCHTOURNOI].Select("IdMatch = " + ligne["Id"].ToString()))
+                    {
+                        lineJC.Delete();
+                    }
+                    ligne.Delete();
+                }
+            }
+
+            UpdateByCommandBuilder("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", dataTables[(int)DTName.TOURNOIS]);
+            UpdateByCommandBuilder("SELECT idtournoi, idmatch FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
+
+            return result;
+        }
+        public int updateStades(List<Stade> l)
+        {
+            int result = 0;
+            int maximum = 1;
+
+            foreach (Stade c in l)
+            {
+                maximum = (c.Id >= maximum ? c.Id + 1 : maximum);
+            }
+
+            foreach (Stade c in l)    // ajout et modification
+            {
+                DataRow row;
+                int numero = (c.Id == 0 ? maximum++ : c.Id);
+
+                if (dataTables[(int)DTName.STADES].Select("Id = " + c.Id.ToString()).Length != 0)
+                {
+                    row = dataTables[(int)DTName.STADES].Select("Id = " + c.Id.ToString()).First();
+                    row[(int)StadeField.ID] = numero;
+                    row[(int)StadeField.NOM] = c.Planete;
+                    row[(int)StadeField.NBPLACES] = c.NbPlaces;
+                    row[(int)StadeField.IMAGE] = c.Image;
+                }
+                else
+                {
+                    row = dataTables[(int)DTName.STADES].NewRow();
+                    dataTables[(int)DTName.STADES].LoadDataRow(new object[] { numero, c.Planete, c.NbPlaces, c.Image }, false);
+                    c.Id = numero;
+                }
+
+                foreach (DataRow lineJC in dataTables[(int)DTName.STADECARAC].Select("IdStade = " + numero))
+                {
+                    lineJC.Delete();
+                }
+                if (c.Caracteristiques != null)
+                {
+                    foreach (Caracteristique ca in c.Caracteristiques)
+                    {
+                        DataRow newRow = dataTables[(int)DTName.STADECARAC].NewRow();
+                        newRow["IdStade"] = c.Id;
+                        newRow["IdCarac"] = ca.Id;
+                        dataTables[(int)DTName.STADECARAC].Rows.Add(newRow);
+                    }
+                }
+            }
+
+            foreach (DataRow ligne in dataTables[(int)DTName.STADES].Select())   // suppression
+            {
+                if (l.Count(c => c.Id == (int)ligne["Id"]) == 0)
+                {
+                    foreach (DataRow lineJC in dataTables[(int)DTName.STADECARAC].Select("IdStade = " + ligne["Id"].ToString()))
+                    {
+                        lineJC.Delete();
+                    }
+                    ligne.Delete();
+                }
+            }
+
+            UpdateByCommandBuilder("SELECT id, nom, nbplaces, image FROM stades;", dataTables[(int)DTName.STADES]);
+            UpdateByCommandBuilder("SELECT idstade, idcarac FROM StadeCarac;", dataTables[(int)DTName.STADECARAC]);
+
+            return result;
+        }
         public int updateTournois(List<Tournoi> l)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            int maximum = 1;
+
+            foreach (Tournoi c in l)
+            {
+                maximum = (c.Id >= maximum ? c.Id + 1 : maximum);
+            }
+
+            foreach (Tournoi c in l)    // ajout et modification
+            {
+                DataRow row;
+                int numero = (c.Id == 0 ? maximum++ : c.Id);
+
+                if (dataTables[(int)DTName.TOURNOIS].Select("Id = " + c.Id.ToString()).Length != 0)
+                {
+                    row = dataTables[(int)DTName.TOURNOIS].Select("Id = " + c.Id.ToString()).First();
+                    row[(int)TournoiField.ID] = numero;
+                    row[(int)TournoiField.NOM] = c.Nom;
+                }
+                else
+                {
+                    row = dataTables[(int)DTName.TOURNOIS].NewRow();
+                    dataTables[(int)DTName.TOURNOIS].LoadDataRow(new object[] { numero, c.Nom }, false);
+                    c.Id = numero;
+                }
+
+                foreach (DataRow lineJC in dataTables[(int)DTName.MATCHTOURNOI].Select("IdTournoi = " + numero))
+                {
+                    lineJC.Delete();
+                }
+                if (c.Matchs != null)
+                {
+                    foreach (Match ca in c.Matchs)
+                    {
+                        DataRow newRow = dataTables[(int)DTName.MATCHTOURNOI].NewRow();
+                        newRow["IdTournoi"] = c.Id;
+                        newRow["IdMatch"] = ca.Id;
+                        dataTables[(int)DTName.MATCHTOURNOI].Rows.Add(newRow);
+                    }
+                }
+            }
+
+            foreach (DataRow ligne in dataTables[(int)DTName.TOURNOIS].Select())   // suppression
+            {
+                if (l.Count(c => c.Id == (int)ligne["Id"]) == 0)
+                {
+                    foreach (DataRow lineJC in dataTables[(int)DTName.MATCHTOURNOI].Select("IdTournoi = " + ligne["Id"].ToString()))
+                    {
+                        lineJC.Delete();
+                    }
+                    ligne.Delete();
+                }
+            }
+
+            UpdateByCommandBuilder("SELECT id, nom FROM Tournois;", dataTables[(int)DTName.TOURNOIS]);
+            UpdateByCommandBuilder("SELECT idtournoi, idmatch FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
+
+            return result;
         }
+        #endregion
+
+        #region Annexe
+        private int UpdateByCommandBuilder(string request, DataTable table)
+        {
+            int result = 0;
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                SqlTransaction myTrans = sqlConnection.BeginTransaction();
+                SqlCommand sqlCommand = new SqlCommand(request, sqlConnection, myTrans);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                SqlCommandBuilder sqlCommandbuild = new SqlCommandBuilder(sqlDataAdapter);
+
+                sqlDataAdapter.UpdateCommand = sqlCommandbuild.GetUpdateCommand();
+                sqlDataAdapter.InsertCommand = sqlCommandbuild.GetInsertCommand();
+                sqlDataAdapter.DeleteCommand = sqlCommandbuild.GetDeleteCommand();
+
+                sqlDataAdapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+
+                try
+                {
+                    result = sqlDataAdapter.Update(table);
+                    myTrans.Commit();
+                }
+                catch (DBConcurrencyException)
+                {
+                    myTrans.Rollback();
+                }
+            }
+            return result;
+        }
+        private EDefCaracteristique convertDef(String s)
+        {
+            EDefCaracteristique retour;
+
+            if (s.Equals("Strength"))
+            {
+                retour = EDefCaracteristique.Strength;
+            }
+            else if (s.Equals("Dexterity"))
+            {
+                retour = EDefCaracteristique.Dexterity;
+            }
+            else
+            {
+                retour = EDefCaracteristique.Perception;
+            }
+
+            return retour;
+        }
+        private ETypeCaracteristique convertType(String s)
+        {
+            ETypeCaracteristique retour = 0;
+
+            if (s.Equals("Jedi"))
+            {
+                retour = ETypeCaracteristique.Jedi;
+            }
+            else if (s.Equals("Stade"))
+            {
+                retour = ETypeCaracteristique.Stade;
+            }
+
+            return retour;
+        }
+        #endregion
     }
 }

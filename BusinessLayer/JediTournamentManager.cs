@@ -12,12 +12,16 @@ namespace BusinessLayer
 {
     public class JediTournamentManager
     {
-        private static DataAccessLayer.DalManager bdd = new DataAccessLayer.DalManager();
+        private static DataAccessLayer.DalManager bdd = DataAccessLayer.DalManager.Instance;
 
         #region Stades management
         public List<Stade> getStades()
         {
             return bdd.getStades();
+        }
+        public int updateStades(List<Stade> l)
+        {
+            return bdd.updateStades(l);
         }
 
         public List<Stade> getStadesByNbPlace(int nbPlace)
@@ -40,6 +44,10 @@ namespace BusinessLayer
         public List<Jedi> getJedis()
         {
             return bdd.getJedis();
+        }
+        public int updateJedis(List<Jedi> l)
+        {
+            return bdd.updateJedis(l);
         }
 
         public List<Jedi> getWhiteSideJedis()
@@ -65,10 +73,25 @@ namespace BusinessLayer
         }
         #endregion
 
+        #region Caracteristiques
+        public List<Caracteristique> getCaracteristiques()
+        {
+            return bdd.getCaracteristiques();
+        }
+        public int updateCaracteristiques(List<Caracteristique> l)
+        {
+            return bdd.updateCaracteristiques(l);
+        }
+        #endregion
+
         #region Match management
         public List<Match> getMatchs()
         {
             return bdd.getMatches();
+        }
+        public int updateMatches(List<Match> l)
+        {
+            return bdd.updateMatches(l);
         }
 
         public List<Match> getMatchsByJedisName(string j1, string j2)
@@ -116,6 +139,17 @@ namespace BusinessLayer
         }
         #endregion
 
+        #region Tournoi
+        public List<Tournoi> getTournois()
+        {
+            return bdd.getTournois();
+        }
+        public int updateTournois(List<Tournoi> l)
+        {
+            return bdd.updateTournois(l);
+        }
+        #endregion
+
         #region Game Simulation
         public enum Shifumi{ Pierre, Papier, Cizeaux };
         public int playRound(Shifumi choiceA, Shifumi choiceB)
@@ -149,11 +183,42 @@ namespace BusinessLayer
             return winner;
         }
 
-        public void simulateTournament(Dictionary<EPhaseTournoi, List<Match>> championshipScheme)
+        public class MatchOrderComparer : IComparer<Match>
+        {
+            public int Compare(Match x, Match y)
+            {
+                if(x.PhaseTournoi <= y.PhaseTournoi)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public void simulateTournament(Tournoi championship)
         {
             Queue<Jedi> winners = new Queue<Jedi>();
+            Dictionary<int, List<Match>> championshipScheme = new Dictionary<int, List<Match>>();
+            MatchOrderComparer comp = new MatchOrderComparer();
+            List<Match> tournoi = championship.Matchs;
+            tournoi.Sort(comp);
+            List<Match> tmp = new List<Match>();
+            tmp.AddRange(tournoi.Where(x => x.PhaseTournoi < EPhaseTournoi.QuartFinale1));
+            championshipScheme.Add(0, tmp);
+            tmp = new List<Match>();
+            tmp.AddRange(tournoi.Where(x => x.PhaseTournoi < EPhaseTournoi.DemiFinale1));
+            championshipScheme.Add(1, tmp);
+            tmp = new List<Match>();
+            tmp.AddRange(tournoi.Where(x => x.PhaseTournoi < EPhaseTournoi.Finale));
+            championshipScheme.Add(2, tmp);
+            tmp = new List<Match>();
+            tmp.AddRange(tournoi.Where(x => x.PhaseTournoi == EPhaseTournoi.Finale));
+            championshipScheme.Add(3, tmp);
 
-            foreach (KeyValuePair<EPhaseTournoi, List<Match>> phase in championshipScheme)
+            foreach (KeyValuePair<int, List<Match>> phase in championshipScheme)
             {
                 if(winners.Count != 0)
                 {
