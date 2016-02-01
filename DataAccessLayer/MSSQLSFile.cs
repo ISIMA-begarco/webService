@@ -418,6 +418,7 @@ namespace DataAccessLayer
         {
             int result = 0;
             int maximum = 1;
+            bool deleteOccur = false;
             
             foreach (Jedi c in l)
             {
@@ -464,14 +465,31 @@ namespace DataAccessLayer
             {
                 if (l.Count(c => c.Id == (int)ligne["Id"]) == 0)
                 {
+                    // suppression des references sur les caracteristiques
                     foreach (DataRow lineJC in dataTables[(int)DTName.JEDICARAC].Select("IdJedi = " + ligne["Id"].ToString()))
                     {
                         lineJC.Delete();
                     }
+                    // suppression des matches ou le jedi joue
+                    foreach (DataRow lineM in dataTables[(int)DTName.MATCHES].Select("IdJedi1 = " + ligne["Id"].ToString() + " OR IdJedi2 = " + ligne["Id"].ToString()))
+                    {
+                        // suppression de la reference
+                        foreach (DataRow lineMT in dataTables[(int)DTName.MATCHTOURNOI].Select("IdMatch = " + lineM["IdMatch"].ToString()))
+                        {
+                            lineMT.Delete();
+                        }
+                        lineM.Delete();
+                    }
                     ligne.Delete();
+                    deleteOccur = true;
                 }
             }
 
+            if(deleteOccur)
+            {
+                UpdateByCommandBuilder("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", dataTables[(int)DTName.TOURNOIS]);
+                UpdateByCommandBuilder("SELECT idtournoi, idmatch FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
+            }
             UpdateByCommandBuilder("SELECT id, nom, isSith, image FROM jedis;", dataTables[(int)DTName.JEDIS]);
             UpdateByCommandBuilder("SELECT idjedi, idcarac FROM JediCarac;", dataTables[(int)DTName.JEDICARAC]);
 
@@ -531,6 +549,7 @@ namespace DataAccessLayer
         {
             int result = 0;
             int maximum = 1;
+            bool deleteOccur = false;
 
             foreach (Stade c in l)
             {
@@ -581,10 +600,26 @@ namespace DataAccessLayer
                     {
                         lineJC.Delete();
                     }
+                    // suppression des matches ou le stade est utilise
+                    foreach (DataRow lineM in dataTables[(int)DTName.MATCHES].Select("IdMatch = " + ligne["Id"].ToString()))
+                    {
+                        // suppression de la reference du match
+                        foreach (DataRow lineMT in dataTables[(int)DTName.MATCHTOURNOI].Select("IdMatch = " + lineM["IdMatch"].ToString()))
+                        {
+                            lineMT.Delete();
+                        }
+                        lineM.Delete();
+                    }
                     ligne.Delete();
+                    deleteOccur = true;
                 }
             }
 
+            if(deleteOccur)
+            {
+                UpdateByCommandBuilder("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", dataTables[(int)DTName.TOURNOIS]);
+                UpdateByCommandBuilder("SELECT idtournoi, idmatch FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
+            }
             UpdateByCommandBuilder("SELECT id, nom, nbplaces, image FROM stades;", dataTables[(int)DTName.STADES]);
             UpdateByCommandBuilder("SELECT idstade, idcarac FROM StadeCarac;", dataTables[(int)DTName.STADECARAC]);
 
