@@ -54,9 +54,9 @@ namespace StubDataAccessLayer
         {
             List<Utilisateur> users = new List<Utilisateur>();
 
-            users.Add(new Utilisateur(1, "YodaDu69", "YoloForce"));
-            users.Add(new Utilisateur(2, "BestForceEver", "IamGod"));
-            users.Add(new Utilisateur(3, "Luck", "leia24+"));
+            users.Add(new Utilisateur(1, "YodaDu69", "YoloForce", "Yoda", "Master"));
+            users.Add(new Utilisateur(2, "BestForceEver", "IamGod", "Doe", "John"));
+            users.Add(new Utilisateur(3, "Luck", "leia24+", "Skywalker", "Luke"));
 
             return users;
         }

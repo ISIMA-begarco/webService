@@ -20,6 +20,18 @@ namespace EntitiesLayer
             set;
         }
 
+        public string Nom
+        {
+            get;
+            set;
+        }
+
+        public string Prenom
+        {
+            get;
+            set;
+        }
+
 
         public Utilisateur()
         {
@@ -28,11 +40,13 @@ namespace EntitiesLayer
             this.Password = "bleu";
         }
 
-        public Utilisateur(int id, string login, string password)
+        public Utilisateur(int id, string login, string password, string nom, string prenom)
         {
             this.Id = id;
             this.Login = login;
             this.Password = password;
+            this.Nom = nom;
+            this.Prenom = prenom;
         }
 
     }

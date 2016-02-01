@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[Stades] (
     [NbPlaces] INT           NOT NULL,
     [Image]    VARCHAR (128) NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+)
 
 CREATE TABLE [dbo].[Matches] (
     [Id]        INT NOT NULL,
@@ -31,20 +31,22 @@ CREATE TABLE [dbo].[Matches] (
     [Vainqueur] INT NULL,
     [Phase]     INT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+)
 
 CREATE TABLE [dbo].[Tournois] (
     [Id]  INT          NOT NULL,
     [Nom] VARCHAR (32) NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+)
 
 CREATE TABLE [dbo].[Users] (
-    [Id]       INT          NOT NULL,
-    [Login]    VARCHAR (32) NULL,
-    [Password] VARCHAR (555) NULL,
+    [Id]       INT           NOT NULL,
+    [Login]    VARCHAR (32)  NOT NULL,
+    [Password] VARCHAR (555) NOT NULL,
+    [Nom] VARCHAR(32) NOT NULL, 
+    [Prenom] VARCHAR(32) NOT NULL, 
     PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+)
 
 CREATE TABLE [dbo].[JediCarac]
 (

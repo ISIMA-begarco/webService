@@ -53,7 +53,9 @@ namespace DataAccessLayer
         {
             ID = 0,
             LOGIN = 1,
-            PASSWORD = 2
+            PASSWORD = 2,
+            NOM = 3,
+            PRENOM = 4
         }
         public enum MatchField
         {
@@ -290,14 +292,14 @@ namespace DataAccessLayer
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                String request = "SELECT id, login, password FROM users WHERE login=" + login + ";";
+                String request = "SELECT id, login, password, nom, prenom FROM users WHERE login=" + login + ";";
                 SqlCommand sqlCommand = new SqlCommand(request, sqlConnection);
                 sqlConnection.Open();
 
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                 if (sqlDataReader.Read())
                 {
-                    us = new Utilisateur(sqlDataReader.GetInt32((int)UserField.ID), sqlDataReader.GetString((int)UserField.LOGIN), sqlDataReader.GetString((int)UserField.PASSWORD));
+                    us = new Utilisateur(sqlDataReader.GetInt32((int)UserField.ID), sqlDataReader.GetString((int)UserField.LOGIN), sqlDataReader.GetString((int)UserField.PASSWORD), sqlDataReader.GetString((int)UserField.NOM), sqlDataReader.GetString((int)UserField.PRENOM));
                 }
                 sqlDataReader.Close();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
