@@ -219,12 +219,16 @@ namespace DataAccessLayer
 
                 while (sqlDataReader.Read())
                 {
+                    List<Jedi> j1 = allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.JEDI1))).ToList();
+                    List<Jedi> j2 = allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.JEDI2))).ToList();
+                    List<Jedi> j3 = allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.WINNER))).ToList();
+                    List<Stade> s1 = allStade.Where(s => s.Planete.Equals(sqlDataReader.GetString((int)MatchField.STADE))).ToList();
                     allMatches.Add(new Match(   sqlDataReader.GetInt32((int)MatchField.ID),
-                                                allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.JEDI1))).First(),
-                                                allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.JEDI2))).First(),
+                                                (j1.Count != 0 ? j1.First() : null),
+                                                (j2.Count != 0 ? j2.First() : null),
                                                 (EPhaseTournoi)sqlDataReader.GetInt32((int)MatchField.PHASE),
-                                                allStade.Where(s => s.Planete.Equals(sqlDataReader.GetString((int)MatchField.STADE))).First(),
-                                                allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.WINNER))).First()));
+                                                (s1.Count != 0 ? s1.First() : null),
+                                                (j3.Count != 0 ? j3.First() : null)));
                 }
                 sqlDataReader.Close();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", sqlConnection));
@@ -516,16 +520,21 @@ namespace DataAccessLayer
                 {
                     row = dataTables[(int)DTName.MATCHES].Select("Id = " + c.Id.ToString()).First();
                     row[(int)MatchField.ID] = numero;
-                    row[(int)MatchField.JEDI1] = c.Jedi1.Id;
-                    row[(int)MatchField.JEDI2] = c.Jedi2.Id;
-                    row[(int)MatchField.STADE] = c.Stade.Id;
-                    row[(int)MatchField.WINNER] = c.JediVainqueur.Id;
+                    row[(int)MatchField.JEDI1] = (c.Jedi1 != null ? c.Jedi1.Id : 0);
+                    row[(int)MatchField.JEDI2] = (c.Jedi2 != null ? c.Jedi2.Id : 0);
+                    row[(int)MatchField.STADE] = (c.Stade != null ? c.Stade.Id : 0);
+                    row[(int)MatchField.WINNER] = (c.JediVainqueur != null ? c.JediVainqueur.Id : 0);
                     row[(int)MatchField.PHASE] = (int)c.PhaseTournoi;
                 }
                 else
                 {
                     row = dataTables[(int)DTName.MATCHES].NewRow();
-                    dataTables[(int)DTName.MATCHES].LoadDataRow(new object[] { numero, c.Jedi1.Id, c.Jedi2.Id, c.Stade.Id, c.JediVainqueur.Id, (int)c.PhaseTournoi }, false);
+                    dataTables[(int)DTName.MATCHES].LoadDataRow(new object[] { numero,
+                                                        (c.Jedi1 != null ? c.Jedi1.Id : 0),
+                                                        (c.Jedi2 != null ? c.Jedi2.Id : 0),
+                                                        (c.Stade != null ? c.Stade.Id : 0),
+                                                        (c.JediVainqueur != null ? c.JediVainqueur.Id : 0),
+                                                        (int)c.PhaseTournoi }, false);
                     c.Id = numero;
                 }
             }
