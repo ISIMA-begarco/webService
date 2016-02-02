@@ -23,7 +23,10 @@ namespace JediTournamentConsole
                 Console.WriteLine("3 : Afficher les stades de plus de 200 personnes où se déroule un combat entre Siths");
                 Console.WriteLine("4 : Afficher les caractéristiques");
                 Console.WriteLine("5 : Afficher les jedis");
-                Console.WriteLine("6 : Tester la base");
+                Console.WriteLine("6 : Afficher les matches");
+                Console.WriteLine("7 : Afficher les tournois");
+                Console.WriteLine("8 : Afficher les utilisateurs");
+                Console.WriteLine("9 : Exporter les jedis");
                 Console.WriteLine("0 : Quitter");
                 string answer = Console.ReadLine();
                 option = answer.Length > 0 ? int.Parse(answer) : 999;
@@ -67,26 +70,32 @@ namespace JediTournamentConsole
                 }
                 else if (option == 6)
                 {
-                    List<Stade> l = tournoi.getStades();
-                    foreach (Stade c in l)
+                    List<Match> l = tournoi.getMatches();
+                    foreach (Match c in l)
                     {
-                        Console.WriteLine("{0}\t{1}\t{2}\t{3}", c.Id, c.Planete, c.NbPlaces, c.Image);
+                        Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", c.Id, c.Jedi1.Nom, c.Jedi2.Nom, c.Stade.Planete, c.PhaseTournoi.ToString(), c.PhaseTournoi.ToString());
                     }
-                    Console.WriteLine("------------------------------------------------");
-                    //l.Add(new Stade(0, 111, "Noob Planet", null));
-                    foreach (Stade c in l)
+                }
+                else if (option == 7)
+                {
+                    List<Tournoi> l = tournoi.getTournois();
+                    foreach (Tournoi c in l)
                     {
-                        Console.WriteLine("{0}\t{1}\t{2}\t{3}", c.Id, c.Planete, c.NbPlaces, c.Image);
+                        Console.WriteLine("{0}\t{1}", c.Id, c.Nom);
                     }
-                    Console.WriteLine("------------------------------------------------");
-                    tournoi.updateStades(l);
-                    l.Remove(l.Last());
-                    tournoi.updateStades(l);
-                    foreach (Stade c in tournoi.getStades())
+                }
+                else if (option == 8)
+                {
+                    List<Utilisateur> l = tournoi.getUsers();
+                    foreach (Utilisateur c in l)
                     {
-                        Console.WriteLine("{0}\t{1}\t{2}\t{3}", c.Id, c.Planete, c.NbPlaces, c.Image);
+                        Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}", c.Id, c.Login, c.Password, c.Prenom, c.Nom);
                     }
-                    Console.WriteLine("------------------------------------------------");
+                }
+                else if (option == 9)
+                {
+                    Console.WriteLine("Exportation des Jedis ...");
+                    tournoi.exportJedis("exportedJedis.xml");
                 }
                 Console.WriteLine();
             }

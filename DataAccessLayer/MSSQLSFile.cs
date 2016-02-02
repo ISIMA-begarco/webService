@@ -306,6 +306,26 @@ namespace DataAccessLayer
                     us = new Utilisateur(sqlDataReader.GetInt32((int)UserField.ID), sqlDataReader.GetString((int)UserField.LOGIN), sqlDataReader.GetString((int)UserField.PASSWORD), sqlDataReader.GetString((int)UserField.NOM), sqlDataReader.GetString((int)UserField.PRENOM));
                 }
                 sqlDataReader.Close();
+                sqlConnection.Close();
+            }
+            return us;
+        }
+        public List<Utilisateur> getUsers()
+        {
+            List<Utilisateur> us = new List<Utilisateur>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                String request = "SELECT id, login, password, nom, prenom FROM users;";
+                SqlCommand sqlCommand = new SqlCommand(request, sqlConnection);
+                sqlConnection.Open();
+
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    us.Add(new Utilisateur(sqlDataReader.GetInt32((int)UserField.ID), sqlDataReader.GetString((int)UserField.LOGIN), sqlDataReader.GetString((int)UserField.PASSWORD), sqlDataReader.GetString((int)UserField.NOM), sqlDataReader.GetString((int)UserField.PRENOM)));
+                }
+                sqlDataReader.Close();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 dataTables[(int)DTName.USERS].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.USERS]);
@@ -704,6 +724,47 @@ namespace DataAccessLayer
 
             UpdateByCommandBuilder("SELECT id, nom FROM Tournois;", dataTables[(int)DTName.TOURNOIS]);
             UpdateByCommandBuilder("SELECT idtournoi, idmatch FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
+
+            return result;
+        }
+        public bool addUser(Utilisateur u)
+        {
+            bool result = true;
+            int maximum = 1;
+            DataTable dt = new DataTable();
+
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                String request = "SELECT id, login, password, nom, prenom FROM Users;";
+                SqlCommand sqlCommand = new SqlCommand(request, sqlConnection);
+                sqlConnection.Open();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                
+                sqlDataAdapter.Fill(dt);
+                sqlConnection.Close();
+            }
+
+            foreach (DataRow c in dt.Select("Login = " + u.Login))
+            {
+                result = false;
+            }
+
+            if (result)
+            {
+                foreach (DataRow dr in dt.Select())
+                {
+                    maximum = (dr.Field<int>("Id") >= maximum ? dr.Field<int>("Id") + 1 : maximum);
+                }
+                u.Id = maximum;
+                DataRow row = dt.NewRow();
+                row.SetField<int>("Id", u.Id);
+                row.SetField<string>("Login", u.Login);
+                row.SetField<string>("Password", u.Password);
+                row.SetField<string>("Prenom", u.Prenom);
+                row.SetField<string>("Nom", u.Nom);
+                dt.Rows.Add(row);
+                UpdateByCommandBuilder("SELECT id, login, password, nom, prenom FROM Users;", dt);
+            }
 
             return result;
         }

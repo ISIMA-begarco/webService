@@ -18,7 +18,7 @@ namespace BusinessLayerTest
             // Verifie que l'on ne retourne jamais null
             List<Stade> stades = jtm.getStades();
             List<Jedi> jedis = jtm.getJedis();
-            List<Match> matchs = jtm.getMatchs();
+            List<Match> matchs = jtm.getMatches();
 
             Assert.IsNotNull(stades);
             Assert.IsNotNull(jedis);
@@ -38,7 +38,7 @@ namespace BusinessLayerTest
 
             expectedSize = matchs.Count;
             matchs.Add(new Match(0, null, null, EPhaseTournoi.Finale, null));
-            List<Match> matchs2 = jtm.getMatchs();
+            List<Match> matchs2 = jtm.getMatches();
             Assert.AreEqual(expectedSize, matchs2.Count);
         }
 
