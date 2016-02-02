@@ -11,12 +11,13 @@ namespace EntitiesLayer
         private String image;
 
 
-        public Jedi(List<Caracteristique> caracteristiques, bool isSith, string nom, string image = "img/default.png")
+        public Jedi(int id, List<Caracteristique> caracteristiques, bool isSith, string nom, string image = "img/default.png")
         {
             this.caracteristiques = caracteristiques;
             this.isSith = isSith;
             this.nom = nom;
             this.image = image;
+            this.Id = id;
         }
 
         public List<Caracteristique> Caracteristiques
@@ -35,12 +36,6 @@ namespace EntitiesLayer
         {
             get { return nom; }
             set { nom = value; }
-        }
-
-        public int Id
-        {
-            get { return ID; }
-            set { ID = value; }
         }
 
         public string Image

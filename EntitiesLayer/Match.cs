@@ -10,8 +10,9 @@ namespace EntitiesLayer
         private EPhaseTournoi phaseTournoi;
         private Stade stade;
 
-        public Match(Jedi jedi1, Jedi jedi2, EPhaseTournoi phaseTournoi, Stade stade, Jedi vainqueur = null)
+        public Match(int id, Jedi jedi1, Jedi jedi2, EPhaseTournoi phaseTournoi, Stade stade, Jedi vainqueur = null)
         {
+            this.Id = id;
             this.jedi1 = jedi1;
             this.jedi2 = jedi2;
             this.phaseTournoi = phaseTournoi;
@@ -48,12 +49,6 @@ namespace EntitiesLayer
         {
             get { return stade; }
             set { stade = value; }
-        }
-
-        public static int Id
-        {
-            get { return ID; }
-            set { ID = value; }
         }
     }
 }

@@ -25,16 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{4922E289-603
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{FA776FF9-9B98-4E10-B831-3FA639A1BA32}"
 	ProjectSection(SolutionItems) = preProject
-		SQL\Caracteristiques.sql = SQL\Caracteristiques.sql
+		create.sql = create.sql
 		SQL\insert.sql = SQL\insert.sql
-		SQL\JediCarac.sql = SQL\JediCarac.sql
-		SQL\Jedis.sql = SQL\Jedis.sql
-		SQL\Matches.sql = SQL\Matches.sql
-		SQL\MatchTournoi.sql = SQL\MatchTournoi.sql
-		SQL\StadeCarac.sql = SQL\StadeCarac.sql
-		SQL\Stades.sql = SQL\Stades.sql
-		SQL\Tournois.sql = SQL\Tournois.sql
-		SQL\Users.sql = SQL\Users.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayerTest", "BusinessLayerTest\BusinessLayerTest.csproj", "{B62E0922-7424-41F7-9F0A-CE180717A219}"

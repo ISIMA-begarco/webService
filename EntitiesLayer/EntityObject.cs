@@ -4,11 +4,25 @@ namespace EntitiesLayer
 {
     public abstract class EntityObject
     {
-        protected static int ID=0 ;
+        private int id = 0;
+        protected static int NB = 0;
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
 
         public EntityObject()
         {
-            ++ID;
+            ++NB;
         }
 
 

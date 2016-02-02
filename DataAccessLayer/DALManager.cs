@@ -10,11 +10,32 @@ namespace DataAccessLayer
 {
     public class DalManager
     {
+        private static DalManager _instance;
+        private static readonly object padlock = new object();
         IBridge bdd;
 
-        public DalManager()
+        public static DalManager Instance
         {
-            string root = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + Environment.CurrentDirectory.Split(new string[] { "JediTournamentConsole" }, StringSplitOptions.None)[0] + "Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";//"Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\alnoel4\\Source\\Repos\\webService\\Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (padlock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new DalManager();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        private DalManager()
+        {
+            string root = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + Environment.CurrentDirectory.Split(new string[] { "JediTournamentConsole" }, StringSplitOptions.None)[0] + "Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";//"Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\alnoel4\\Source\\Repos\\webService\\Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
+            /// AVANT VISUAL STUDIO 15     string root = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + Environment.CurrentDirectory.Split(new string[] { "JediTournamentConsole" }, StringSplitOptions.None)[0] + "Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";//"Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\alnoel4\\Source\\Repos\\webService\\Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
 
             bdd = new MSSQLSFile(root);
         }
@@ -31,30 +52,38 @@ namespace DataAccessLayer
         {
             return bdd.getMatches();
         }
+        public List<Tournoi> getTournois()
+        {
+            return bdd.getTournois();
+        }
         public List<Caracteristique> getCaracteristiques()
         {
             return bdd.getCaracteristiques();
         }
-        public void setJedis()
+        public int updateJedis(List<Jedi> l)
         {
-            
+            return bdd.updateJedis(l);
         }
-        public void setStades()
+        public int updateStades(List<Stade> l)
         {
-
+            return bdd.updateStades(l);
         }
-        public void setMatches()
+        public int updateMatches(List<Match> l)
         {
-
+            return bdd.updateMatches(l);
         }
-        public void setCaracteristiques()
+        public int updateTournois(List<Tournoi> l)
         {
-
+            return bdd.updateTournois(l);
+        }
+        public int updateCaracteristiques(List<Caracteristique> l)
+        {
+            return bdd.updateCaracteristiques(l);
         }
 
         public Utilisateur GetUtilisateurByLogin(string login)
         {
-            throw new NotImplementedException();
+            return bdd.getUtilisateurByLogin(login);
         }
     }
 }

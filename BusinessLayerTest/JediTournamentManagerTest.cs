@@ -27,17 +27,17 @@ namespace BusinessLayerTest
             // Verifie que l'on ne peut pas ajouter dans les listes de
             // manière non controlée
             int expectedSize = stades.Count;
-            stades.Add(new Stade(125, "Tatouine", null));
+            stades.Add(new Stade(1, 125, "Tatouine", null));
             List<Stade> stades2 = jtm.getStades();
             Assert.AreEqual(expectedSize, stades2.Count);
 
             expectedSize = jedis.Count;
-            jedis.Add(new Jedi(null, false, "Jar Jar"));
+            jedis.Add(new Jedi(0, null, false, "Jar Jar"));
             List<Jedi> jedis2 = jtm.getJedis();
             Assert.AreEqual(expectedSize, jedis2.Count);
 
             expectedSize = matchs.Count;
-            matchs.Add(new Match(null, null, EPhaseTournoi.Finale, null));
+            matchs.Add(new Match(0, null, null, EPhaseTournoi.Finale, null));
             List<Match> matchs2 = jtm.getMatchs();
             Assert.AreEqual(expectedSize, matchs2.Count);
         }

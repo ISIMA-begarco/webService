@@ -3,15 +3,16 @@ using System.Collections.Generic;
 
 namespace EntitiesLayer
 {
-    public class Stade
+    public class Stade : EntityObject
     {
         private int nbPlaces;
         private String planete;
         private String image;
         private List<Caracteristique> caracteristiques;
 
-        public Stade(int nbPlaces, string planete, List<Caracteristique> caracteristiques, string image = "img/default.png")
+        public Stade(int id, int nbPlaces, string planete, List<Caracteristique> caracteristiques, string image = "img/default.png")
         {
+            this.Id = id;
             this.nbPlaces = nbPlaces;
             this.planete = planete;
             this.Image = image;
