@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Style="{StaticResource PlayChoiceStyle}"
-             d:DesignHeight="300" d:DesignWidth="500">
+             d:DesignHeight="300" d:DesignWidth="500"
+             MouseDown="OnButtonClick">
     <UserControl.Background>
         <ImageBrush ImageSource="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=PlayChoiceImSource}"/>
     </UserControl.Background>

@@ -18,7 +18,7 @@ namespace ApplicationWPF.Frames
     /// <summary>
     /// Logique d'interaction pour PlayPage.xaml
     /// </summary>
-    public partial class PlayPage : Page, IFrameNavigator
+    public partial class PlayPage : Page
     {
         public event EventHandler<FrameChangedEventArgs> m_changeFrame;
         public string m_nextFrame;
@@ -26,6 +26,8 @@ namespace ApplicationWPF.Frames
         public PlayPage()
         {
             InitializeComponent();
+            this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/OnePlayerPage.xaml", UriKind.Relative));
+
         }        
 
         public string NextFrame
@@ -50,11 +52,8 @@ namespace ApplicationWPF.Frames
 
         private void OnPlayChoice_Click(object sender, EventArgs e)
         {
-            /*
-            this.ModeChoice.Source = new Uri(,UriKind.Relative);
-            string nextFrame = "Frames/MainMenu.xaml";
-            OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
-             */
+            string nextFrame = "Frames/PlayPageFrame/OnePlayerPage.xaml";
+            OnFrameChanged(this.ModeChoice, new FrameChangedEventArgs(nextFrame));
         }
     }
 }
