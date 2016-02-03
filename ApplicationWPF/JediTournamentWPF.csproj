@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Frames\FightPage.xaml.cs">
+      <DependentUpon>FightPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\NewJediPagexaml.xaml.cs">
       <DependentUpon>NewJediPagexaml.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,9 @@
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ComboBoxJedi.xaml.cs">
+      <DependentUpon>ComboBoxJedi.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ComboBoxStade.xaml.cs">
       <DependentUpon>ComboBoxStade.xaml</DependentUpon>
@@ -129,6 +135,10 @@
     <Compile Include="ViewModel\Tournament\TournamentsViewModel.cs" />
     <Compile Include="ViewModel\Tournament\TournamentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Page Include="Frames\FightPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Frames\NewJediPagexaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ComboBoxJedi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -67,10 +67,30 @@ namespace ApplicationWPF.Frames
             OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
 
-        private void OnPlayChoice_Click(object sender, EventArgs e)
+        private void ButtonStart_Event(object sender, EventArgs e)
         {
-            string nextFrame = "Frames/PlayPageFrame/OnePlayerPage.xaml";
-            OnFrameChanged(this.ModeChoice, new FrameChangedEventArgs(nextFrame));
+            string nextFrame = "Frames/FightPage.xaml";
+            OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
+        }
+
+        private void OnPlayChoiceOnePlayer_Click(object sender, EventArgs e)
+        {
+            this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/OnePlayerPage.xaml", UriKind.Relative));
+        }
+
+        private void OnPlayChoiceMultiplayer_Click(object sender, EventArgs e)
+        {
+           this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/MultiplayerPage.xaml", UriKind.Relative));
+        }
+
+        private void OnPlayChoiceMultiplayerPari_Click(object sender, EventArgs e)
+        {
+            this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/PariMultiplayer.xaml", UriKind.Relative));
+        }
+
+        private void OnPlayChoiceSoloPari_Click(object sender, EventArgs e)
+        {
+            this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/PariOnePlayer.xaml", UriKind.Relative));
         }
     }
 }

@@ -26,19 +26,22 @@
         </Grid.ColumnDefinitions>
         <UserControls:PlayChoice Grid.Row="0" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround1}" 
                                  PlayChoiceTitle="Armée d'un seul homme"
-                                 PlayChoiceDescription="Solo"/>
+                                 PlayChoiceDescription="Solo"
+                                 Event="OnPlayChoiceOnePlayer_Click"/>
         <UserControls:PlayChoice Grid.Row="1" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround8}" 
                                  PlayChoiceTitle="Bataille au sommet"
                                  PlayChoiceDescription="Multiplayer"
-                                 Event="OnPlayChoice_Click"/>
+                                 Event="OnPlayChoiceMultiplayer_Click"/>
         <UserControls:PlayChoice Grid.Row="2" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround3}" 
                                  PlayChoiceTitle="Marchand de mort"
-                                 PlayChoiceDescription="Pari Solo"/>
+                                 PlayChoiceDescription="Pari Solo"
+                                 Event="OnPlayChoiceSoloPari_Click"/>
         <UserControls:PlayChoice Grid.Row="3" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround2}" 
                                  PlayChoiceTitle="Les Vendeurs d'âmes"
-                                 PlayChoiceDescription="Pari Multiplayer"/>
+                                 PlayChoiceDescription="Pari Multiplayer"
+                                 Event="OnPlayChoiceMultiplayerPari_Click"/>
         <UserControls:ButtonSoft Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Margin="50,0,0,0" Label="Retour" Event="ButtonBack_Event"/>
-        <UserControls:ButtonSoft Grid.Row="4" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,50,0"  Label="Start" Event="ButtonBack_Event"/>
+        <UserControls:ButtonSoft Grid.Row="4" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,50,0"  Label="Start" Event="ButtonStart_Event"/>
 
         <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="20,10,10,10" Background="Black" Opacity="0.9">
             <Grid.RowDefinitions>
