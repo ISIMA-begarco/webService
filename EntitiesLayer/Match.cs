@@ -50,5 +50,10 @@ namespace EntitiesLayer
             get { return stade; }
             set { stade = value; }
         }
+
+        public override string ToString()
+        {
+            return Id + "\t\t" + (Jedi1 != null ? Jedi1.Nom : "aucun") + '\t' + (Jedi2 != null ? Jedi2.Nom : "aucun") + '\t' + Stade.Planete + '\t' + PhaseTournoi.ToString() + '\t' + (JediVainqueur != null ? JediVainqueur.Nom : "aucun");
+        }
     }
 }

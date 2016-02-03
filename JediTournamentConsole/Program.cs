@@ -49,7 +49,8 @@ namespace JediTournamentConsole
                 {
                     foreach (Match m in tournoi.getMatches200Sith())
                     {
-                        Console.WriteLine("Le duel entre {0} et {1} se déroulera dans le stade de {2}.", m.Jedi1.Nom, m.Jedi2.Nom, m.Stade.Planete);
+                        if(m.Jedi1 != null && m.Jedi2 != null)
+                            Console.WriteLine("Le duel entre {0} et {1} se déroulera dans le stade de {2}.", m.Jedi1.Nom, m.Jedi2.Nom, m.Stade.Planete);
                     }
                 }
                 else if (option == 4)
@@ -73,7 +74,7 @@ namespace JediTournamentConsole
                     List<Match> l = tournoi.getMatches();
                     foreach (Match c in l)
                     {
-                        Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", c.Id, c.Jedi1.Nom, c.Jedi2.Nom, c.Stade.Planete, c.PhaseTournoi.ToString(), c.PhaseTournoi.ToString());
+                        Console.WriteLine(c);
                     }
                 }
                 else if (option == 7)
