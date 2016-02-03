@@ -26,7 +26,7 @@
                         <StackPanel DockPanel.Dock="top" >
                             <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="Recherche du Jedi" Margin="351,0,327.8,0" Width="302" />
                             <ComboBox ItemsSource="{Binding Jedis}" SelectedItem="{Binding SelectedItem}" Height="40" Margin="10,10,9.8,10" />
-                            <UserControls:ButtonSoft HorizontalAlignment="Right" Label="Nouveau" Event="ButtonBak_Event" Margin="0,0,-0.2,0" />
+                            <UserControls:ButtonSoft HorizontalAlignment="Right" Label="Nouveau" Event="ButtonBak_Event" Margin="0,0,-0.2,0" Loaded="ButtonSoft_Loaded" />
                         </StackPanel>
                         <!-- Liste des Jedis -->
                         <!-- <ScrollViewer Margin="0,-0.4,0,10">-->

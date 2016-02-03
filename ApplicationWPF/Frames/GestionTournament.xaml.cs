@@ -33,6 +33,12 @@ namespace ApplicationWPF.Frames
 
 
         }
-        
+
+        private void ButtonSoft_Loaded(object sender, RoutedEventArgs e)
+        {
+            //passage à la page newJedi depuis le boutton Ajouter
+            Uri uri = new Uri("Frames/NewJediPagexaml.xaml", UriKind.Relative);
+            this.NavigationService.Navigate(uri);
+        }
     }
 }
