@@ -6,18 +6,30 @@
              xmlns:local="clr-namespace:ApplicationWPF.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <ListView  
             ItemsSource="{Binding Stades}" 
             SelectedItem="{Binding SelectedStade}"
-            Grid.Row="1" Grid.ColumnSpan="2">
+            Grid.Row="0" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Planete" DisplayMemberBinding="{Binding Planete}"/>
                     <GridViewColumn Header="NbPlaces" DisplayMemberBinding="{Binding NbPlaces}"/>
-                    <!--<GridViewColumn Header="Caracs" DisplayMemberBinding="Liste de carac..."/>-->
+                    <GridViewColumn Header="Caracs" DisplayMemberBinding="{Binding Caracteristiques}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <local:CtrlMatch x:Name="InfoStade" Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding SelectedMatch}"/>
+        <Button Name="Add" Grid.Row="2" Grid.Column="0" Content="Ajouter" Command="{Binding AddCommand}"/>
+        <Button Name="Remvoe" Grid.Row="2" Grid.Column="1" Content="Supprimer" Command="{Binding RemoveCommand}"/>
     </Grid>
 </UserControl>

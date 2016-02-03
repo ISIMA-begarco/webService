@@ -6,11 +6,11 @@
              xmlns:local="clr-namespace:ApplicationWPF.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -29,9 +29,11 @@
             </ListView.View>
         </ListView>
         <local:CtrlJedi x:Name="InfoJedi" Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding SelectedJedi}"/>
-        <local:ButtonSoft x:Name="Add" Label="Ajouter" Grid.Row="2" Grid.Column="0"/>
+        <!--<local:ButtonSoft x:Name="Add" Label="Ajouter" Grid.Row="2" Grid.Column="0"/>-->
         <!--  Event="{Binding AddCommand}"-->
-        <local:ButtonSoft x:Name="Remove" Label="Effacer" Grid.Row="2" Grid.Column="1" />
+        <!--<local:ButtonSoft x:Name="Remove" Label="Effacer" Grid.Row="2" Grid.Column="1" />-->
         <!-- Event="{Binding RemoveCommand}"-->
+        <Button Name="Add" Grid.Row="3" Grid.Column="0" Content="Ajouter" Command="{Binding AddCommand}"/>
+        <Button Name="Remvoe" Grid.Row="3" Grid.Column="1" Content="Supprimer" Command="{Binding RemoveCommand}"/>
     </Grid>
 </UserControl>

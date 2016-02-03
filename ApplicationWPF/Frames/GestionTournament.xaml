@@ -11,15 +11,15 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
+
         <TabControl
             VerticalAlignment="Top"
             Grid.Row="0"
             FontSize="70" Style="{StaticResource TeleMarinesFont}">
-            
+
             <!-- Gestion des Jedis -->
             <TabItem Header="Jedi" FontWeight="Bold" Padding="25,20,25,20">
                 <userControls:JedisView x:Name="ucJedis"/>
@@ -40,6 +40,6 @@
                     <userControls:TournoisView x:Name="ucTournoi"/>
             </TabItem>
         </TabControl>
-        <UserControls:ButtonSoft Grid.Row="1"  HorizontalAlignment="Left" Label="Retour" Event="ButtonBak_Event" VerticalAlignment="Bottom" />
+        <UserControls:ButtonSoft Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Label="Retour" Event="ButtonBak_Event"/>
     </Grid>
 </Page>
