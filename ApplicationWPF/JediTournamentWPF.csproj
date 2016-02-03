@@ -83,31 +83,31 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\TournoisView.xaml.cs">
+    <Compile Include="UserControls\Tournoi\TournoisView.xaml.cs">
       <DependentUpon>TournoisView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\StadesView.xaml.cs">
+    <Compile Include="UserControls\Stade\StadesView.xaml.cs">
       <DependentUpon>StadesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\JedisView.xaml.cs">
+    <Compile Include="UserControls\Jedi\JedisView.xaml.cs">
       <DependentUpon>JedisView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MatchsView.xaml.cs">
+    <Compile Include="UserControls\Match\MatchsView.xaml.cs">
       <DependentUpon>MatchsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlayChoice.xaml.cs">
       <DependentUpon>PlayChoice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\Gestion\CtrlJedi.xaml.cs">
+    <Compile Include="UserControls\Jedi\CtrlJedi.xaml.cs">
       <DependentUpon>CtrlJedi.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\Gestion\CtrlMatch.xaml.cs">
+    <Compile Include="UserControls\Match\CtrlMatch.xaml.cs">
       <DependentUpon>CtrlMatch.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Gestion\CtrlResearch.xaml.cs">
       <DependentUpon>CtrlResearch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\Gestion\CtrlStade.xaml.cs">
+    <Compile Include="UserControls\Stade\CtrlStade.xaml.cs">
       <DependentUpon>CtrlStade.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\GestionTournament.xaml.cs">
@@ -171,19 +171,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\TournoisView.xaml">
+    <Page Include="UserControls\Tournoi\TournoisView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\StadesView.xaml">
+    <Page Include="UserControls\Stade\StadesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\JedisView.xaml">
+    <Page Include="UserControls\Jedi\JedisView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\MatchsView.xaml">
+    <Page Include="UserControls\Match\MatchsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -191,11 +191,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModel\Gestion\CtrlJedi.xaml">
+    <Page Include="UserControls\Jedi\CtrlJedi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModel\Gestion\CtrlMatch.xaml">
+    <Page Include="UserControls\Match\CtrlMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,7 +203,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModel\Gestion\CtrlStade.xaml">
+    <Page Include="UserControls\Stade\CtrlStade.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ApplicationWPF.ViewModel.Gestion
+namespace ApplicationWPF.UserControls
 {
     /// <summary>
     /// Interaction logic for CtrlJedi.xaml

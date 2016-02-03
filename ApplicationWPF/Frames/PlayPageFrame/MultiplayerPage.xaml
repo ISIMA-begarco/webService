@@ -1,4 +1,4 @@
-﻿<Page xmlns:Gestion="clr-namespace:ApplicationWPF.ViewModel.Gestion"  x:Class="ApplicationWPF.Frames.PlayPageFrame.MultiplayerPage"
+﻿<Page xmlns:Gestion="clr-namespace:ApplicationWPF.UserControls"  x:Class="ApplicationWPF.Frames.PlayPageFrame.MultiplayerPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
