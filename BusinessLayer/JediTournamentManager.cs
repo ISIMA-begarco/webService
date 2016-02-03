@@ -286,6 +286,7 @@ namespace BusinessLayer
                 writer.WriteStartElement("Caracteristiques");
                 foreach (Caracteristique carac in jedi.Caracteristiques)
                 {
+                    Console.WriteLine("bleu");
                     writer.WriteElementString("ID", carac.Id.ToString());
                     writer.WriteElementString("Nom", carac.Nom.ToString());
                     writer.WriteElementString("Type", carac.Type.ToString());
