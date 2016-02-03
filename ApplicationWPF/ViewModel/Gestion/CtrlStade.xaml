@@ -24,7 +24,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="{Binding NbPlaces}" Style="{StaticResource StarWarsFontStyle}" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Column="1" Text=" Places"  Style="{StaticResource StarWarsFontStyle}" HorizontalAlignment="Left" />
+            <TextBlock Grid.Column="1" Text="{Binding NombrePlace + Places}"  Style="{StaticResource StarWarsFontStyle}" HorizontalAlignment="Left" />
         </Grid>
         <!--
         <ListBox Grid.Column="1" Grid.RowSpan="2" Background="Transparent" ItemsSource="{Binding Caracteristiques}">

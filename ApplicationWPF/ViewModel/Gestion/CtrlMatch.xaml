@@ -6,12 +6,13 @@
              xmlns:local="clr-namespace:ApplicationWPF.ViewModel.Gestion" x:Class="ApplicationWPF.ViewModel.Gestion.CtrlMatch" 
              mc:Ignorable="d" Height="213.669" Width="1026.691">
     <Grid Margin="0,0,-0.6,-0.4">
-
+        
         <local:CtrlJedi HorizontalAlignment="Right" Margin="0,61,592,0" VerticalAlignment="Top" Width="425"/>
         <local:CtrlJedi HorizontalAlignment="Left" Margin="587,61,0,0" VerticalAlignment="Top" Width="430"/>
         <Image HorizontalAlignment="Left" Height="114" Margin="453,31,0,0" VerticalAlignment="Top" Width="114" Source="C:\Users\Sara\Documents\Dot_NET\Projet\ApplicationWPF\Resources\VS_Icon.gif"/>
-        <Label Content="PhaseTournoi" HorizontalAlignment="Left" Margin="453,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.242,0.275" FontFamily="MV Boli" FontWeight="Bold" Height="47" Width="127" Foreground="Red" FontSize="18"/>
+        <Label Content="{Binding PhaseTournoi}" HorizontalAlignment="Left" Margin="453,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.242,0.275" FontFamily="MV Boli" FontWeight="Bold" Height="47" Width="127" Foreground="Red" FontSize="18"/>
         <local:CtrlStade HorizontalAlignment="Left" VerticalAlignment="Top" Height="61" Width="1005" Margin="10,-5,0,0"/>
+  
 
 
 
