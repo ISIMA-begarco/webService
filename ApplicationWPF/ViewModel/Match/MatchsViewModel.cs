@@ -27,7 +27,7 @@ namespace ApplicationWPF.ViewModel.Match
             }
         }
 
-        public MatchViewModel SelectedItem
+        public MatchViewModel SelectedMatch
         {
             get { return m_selectedItem; }
             set
@@ -73,8 +73,8 @@ namespace ApplicationWPF.ViewModel.Match
                                                             new EntitiesLayer.Jedi(0, null, false, ""),
                                                             new EntitiesLayer.EPhaseTournoi(),
                                                             new EntitiesLayer.Stade(0, 0, "", null));
-            this.SelectedItem = new MatchViewModel(m);
-            m_matchs.Add(this.SelectedItem);
+            this.SelectedMatch = new MatchViewModel(m);
+            m_matchs.Add(this.SelectedMatch);
         }
 
         public System.Windows.Input.ICommand RemoveCommand
@@ -94,12 +94,12 @@ namespace ApplicationWPF.ViewModel.Match
 
         private bool CanRemove()
         {
-            return (this.SelectedItem != null);
+            return (this.SelectedMatch != null);
         }
 
         private void Remove()
         {
-            if (this.SelectedItem != null) m_matchs.Remove(this.SelectedItem);
+            if (this.SelectedMatch != null) m_matchs.Remove(this.SelectedMatch);
         }
     }
 }

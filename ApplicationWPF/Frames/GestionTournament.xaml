@@ -4,108 +4,42 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ApplicationWPF.Frames" x:Class="ApplicationWPF.Frames.GestionTournament" 
-      xmlns:userControls="clr-namespace:ApplicationWPF.ViewModel.Gestion" d:DesignWidth="1000"
+      xmlns:userControls="clr-namespace:ApplicationWPF.UserControls" d:DesignWidth="1000"
       mc:Ignorable="d"
-	Title="GestionTournament" Height="1147.2">
+      Loaded="WindowLoaded"
+	Title="GestionTournament">
 
     <Grid>
-        <TabControl HorizontalAlignment="Stretch"
-		    Margin="10,45,0,0"
-		    VerticalAlignment="Stretch"
-            FontSize="70" Style="{StaticResource TeleMarinesFont}">
+        <TabControl
+            VerticalAlignment="Top"
+            FontSize="70" Style="{StaticResource TeleMarinesFont}"
+            Height="500">
             <TabItem Header="Jedi" FontWeight="Bold" Padding="25,20,25,20">
-                <Grid Margin="0,0,4.4,-7">
-                    <Grid.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="Black" Offset="0"/>
-                            <GradientStop Color="Black" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Grid.Background>
-                    <DockPanel LastChildFill="True">
-                        <!-- Barre de recherche des Jedis-->
-                        <StackPanel DockPanel.Dock="top" >
-                            <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="Recherche du Jedi" Margin="351,0,327.8,0" Width="302" />
-                            <ComboBox ItemsSource="{Binding Jedis}" SelectedItem="{Binding SelectedItem}" Height="40" Margin="10,10,9.8,10" />
-                            <UserControls:ButtonSoft HorizontalAlignment="Right" Label="Nouveau" Event="ButtonBak_Event" Margin="0,0,-0.2,0" Loaded="ButtonSoft_Loaded" />
-                        </StackPanel>
-                        <!-- Liste des Jedis -->
-                        <!-- <ScrollViewer Margin="0,-0.4,0,10">-->
-                        <ListBox
-                                ItemsSource="{Binding Jedis}"
-                                SelectedItem="{Binding SelectedJedi}" Margin="0,4.8,0,94.6" Width="987">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <ContentControl>
-                                            <userControls:CtrlJedi  DataContext="{Binding Jedi}"/>
-                                        </ContentControl>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        <!-- </ScrollViewer>-->
-                    </DockPanel>
+                <Grid>
+                    <userControls:JedisView x:Name="ucJedis"/>
+
                 </Grid>
             </TabItem>
 
             <TabItem Header="Match" FontWeight="Bold" Padding="25,20,25,20">
-                <Grid Background="#FFE5E5E5" Margin="0,0,4.4,-7">
-                    <DockPanel LastChildFill="True">
-                        <!-- Barre de recherche des Jedis-->
-                        <userControls:CtrlResearch DockPanel.Dock="top"/>
-                        <!-- Liste des Jedis -->
-                        <ScrollViewer Margin="0,-0.4,0,10">
-                            <StackPanel x:Name="sp3">
-                                <StackPanel.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="Black" Offset="0"/>
-                                        <GradientStop Color="#FF5F4848" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </StackPanel.Background>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </DockPanel>
+                <Grid>
+                    <userControls:MatchsView x:Name="ucMatchs"/>
+                    
                 </Grid>
             </TabItem>
             <TabItem Header="Stade" FontWeight="Bold" Padding="25,20,25,20">
-                <Grid Background="#FFE5E5E5">
-                    <DockPanel LastChildFill="True">
-                        <!-- Barre de recherche des Jedis-->
-                        <userControls:CtrlResearch DockPanel.Dock="top"/>
-                        <!-- Liste des Jedis -->
-                        <ScrollViewer Margin="0,-0.4,0,10">
-                            <StackPanel x:Name="sp4">
-                                <StackPanel.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="Black" Offset="0"/>
-                                        <GradientStop Color="#FF5F4848" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </StackPanel.Background>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </DockPanel>
+                <Grid>
+                    <userControls:StadesView x:Name="ucStade"/>
+                    
                 </Grid>
             </TabItem>
             <TabItem Header="Tournoi" FontWeight="Bold" Padding="25,20,25,20">
-                <Grid Background="#FFE5E5E5">
-                    <DockPanel LastChildFill="True">
-                        <!-- Barre de recherche des Jedis-->
-                        <userControls:CtrlResearch DockPanel.Dock="top"/>
-                        <!-- Liste des Jedis -->
-                        <ScrollViewer Margin="0,-0.4,0,10">
-                            <StackPanel x:Name="sp5">
-                                <StackPanel.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="Black" Offset="0"/>
-                                        <GradientStop Color="#FF5F4848" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </StackPanel.Background>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </DockPanel>
+                <Grid>
+                    <userControls:TournoisView x:Name="ucTournoi"/>
+
                 </Grid>
             </TabItem>
         </TabControl>
-        <UserControls:ButtonSoft Grid.Column="0" HorizontalAlignment="Left" Margin="28,529,0,-528.8" Label="Retour" Event="ButtonBak_Event" />
+        <UserControls:ButtonSoft HorizontalAlignment="Left" Label="Retour" Event="ButtonBak_Event" VerticalAlignment="Bottom" />
     </Grid>
 </Page>
