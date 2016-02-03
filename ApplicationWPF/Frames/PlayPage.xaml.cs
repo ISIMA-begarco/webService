@@ -18,7 +18,7 @@ namespace ApplicationWPF.Frames
     /// <summary>
     /// Logique d'interaction pour PlayPage.xaml
     /// </summary>
-    public partial class PlayPage : Page
+    public partial class PlayPage : Page,IFrameNavigator
     {
         public event EventHandler<FrameChangedEventArgs> m_changeFrame;
         public string m_nextFrame;
@@ -28,7 +28,24 @@ namespace ApplicationWPF.Frames
             InitializeComponent();
             this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/OnePlayerPage.xaml", UriKind.Relative));
 
-        }        
+        }
+
+        private void WindowLoaded(object sender, EventArgs args)
+        {
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+
+            // Gestion des Stades
+            IList<EntitiesLayer.Stade> stades = jtm.getStades();
+            ViewModel.Stade.StadesViewModel svm = new ViewModel.Stade.StadesViewModel(stades);
+            StadeCombo.DataContext = svm;
+
+            // Gestion des Tournois
+            IList<EntitiesLayer.Tournoi> tournaments = jtm.getTournois();
+            ViewModel.Tournament.TournamentsViewModel tvm = new ViewModel.Tournament.TournamentsViewModel(tournaments);
+            TournoiCombo.DataContext = tvm;
+
+        }
+
 
         public string NextFrame
         {

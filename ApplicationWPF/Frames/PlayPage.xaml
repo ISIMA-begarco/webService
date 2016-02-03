@@ -6,6 +6,7 @@
       xmlns:UserControls="clr-namespace:ApplicationWPF.UserControls" x:Class="ApplicationWPF.Frames.PlayPage" 
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1000"
+      Loaded="WindowLoaded"
 	Title="PlayPage">
     <Page.Background>
         <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround4}"/>
@@ -26,8 +27,7 @@
         </Grid.ColumnDefinitions>
         <UserControls:PlayChoice Grid.Row="0" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround1}" 
                                  PlayChoiceTitle="Armée d'un seul homme"
-                                 PlayChoiceDescription="Solo"
-                                 Event="OnPlayChoice_Click" Loaded="PlayChoice_Loaded"/>
+                                 PlayChoiceDescription="Solo"/>
         <UserControls:PlayChoice Grid.Row="1" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround8}" 
                                  PlayChoiceTitle="Bataille au sommet"
                                  PlayChoiceDescription="Multiplayer"
@@ -59,13 +59,7 @@
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Style="{StaticResource StarWarsFontStyle}" Text="Stade" />
-                    <ComboBox Grid.Column="1" ItemsSource="{Binding Stades}" SelectedItem="{Binding SelectedItem}" Height="40" Margin="10">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <Gestion:CtrlStade />
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
+                    <Gestion:ComboBoxStade x:Name="StadeCombo" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -73,17 +67,8 @@
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Style="{StaticResource StarWarsFontStyle}" Text="Tournoi" />
-                    <ComboBox Grid.Column="1" ItemsSource="{Binding Tournaments}" SelectedItem="{Binding SelectedItem}" Height="40" Margin="10">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding Name}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
+                    <UserControls:ComboBoxTournoi x:Name="TournoiCombo" Grid.Column="1"/>
                 </Grid>
-                <Gestion:CtrlStade Grid.Row="2"  Width="400"/>
             </Grid>
             <Frame x:Name="ModeChoice" Grid.Row="2" Padding="5" NavigationUIVisibility="Hidden" >
 
