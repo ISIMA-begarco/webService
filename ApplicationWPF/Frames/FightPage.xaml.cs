@@ -28,6 +28,18 @@ namespace ApplicationWPF.Frames
         {
             InitializeComponent();
         }
+
+        private void WindowLoaded(object sender, EventArgs args)
+        {
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+
+            // Gestion de la Partie
+            EntitiesLayer.Partie game = BusinessLayer.PartieManager.getCurrentGame();
+            ViewModel.Partie.PartieViewModel gvm = new ViewModel.Partie.PartieViewModel(game);
+            Concurent1Img.DataContext = gvm.Current_match.Jedi1;
+            Concurent2Img.DataContext = gvm.Current_match.Jedi2;
+        }
+
         public string NextFrame
         {
             get { return m_nextFrame; }

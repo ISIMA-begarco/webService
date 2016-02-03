@@ -15,6 +15,7 @@ namespace BusinessLayer
     public class JediTournamentManager
     {
         private static DataAccessLayer.DalManager bdd = DataAccessLayer.DalManager.Instance;
+       
 
         #region Stades management
         public List<Stade> getStades()
@@ -182,8 +183,11 @@ namespace BusinessLayer
         }
         #endregion
 
-        #region Game Simulation
+
         
+
+        #region Game Simulation       
+
         public int playRound(EShifumi choiceA, EShifumi choiceB)
         {
             return (choiceA == choiceB ? 0 :            // si egalite ZERO

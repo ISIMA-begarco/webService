@@ -42,8 +42,9 @@ namespace ApplicationWPF.Frames
             // Gestion des Tournois
             IList<EntitiesLayer.Tournoi> tournaments = jtm.getTournois();
             ViewModel.Tournament.TournamentsViewModel tvm = new ViewModel.Tournament.TournamentsViewModel(tournaments);
-            TournoiCombo.DataContext = tvm;
+            usrCtrlTournoiCombo.DataContext = tvm;
 
+            BusinessLayer.PartieManager.startNewGame();
         }
 
 
@@ -69,28 +70,44 @@ namespace ApplicationWPF.Frames
 
         private void ButtonStart_Event(object sender, EventArgs e)
         {
+
             string nextFrame = "Frames/FightPage.xaml";
+
+            switch (BusinessLayer.PartieManager.getCurrentGame().Mode)
+            {
+                case EntitiesLayer.Mode.Solo:
+                    ViewModel.Tournament.TournamentViewModel t = this.usrCtrlTournoiCombo.cbTournoi.SelectedItem as ViewModel.Tournament.TournamentViewModel;
+                    BusinessLayer.PartieManager.setCurrentGameTournament(t.Tournament);
+                    break;
+            }
+
+            
+
             OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
 
         private void OnPlayChoiceOnePlayer_Click(object sender, EventArgs e)
         {
             this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/OnePlayerPage.xaml", UriKind.Relative));
+            BusinessLayer.PartieManager.setCurrentGameMode(EntitiesLayer.Mode.Solo);
         }
 
         private void OnPlayChoiceMultiplayer_Click(object sender, EventArgs e)
         {
            this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/MultiplayerPage.xaml", UriKind.Relative));
+            BusinessLayer.PartieManager.setCurrentGameMode(EntitiesLayer.Mode.Multi);
         }
 
         private void OnPlayChoiceMultiplayerPari_Click(object sender, EventArgs e)
         {
             this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/PariMultiplayer.xaml", UriKind.Relative));
+            BusinessLayer.PartieManager.setCurrentGameMode(EntitiesLayer.Mode.MultiPari);
         }
 
         private void OnPlayChoiceSoloPari_Click(object sender, EventArgs e)
         {
             this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/PariOnePlayer.xaml", UriKind.Relative));
+            BusinessLayer.PartieManager.setCurrentGameMode(EntitiesLayer.Mode.SoloPari);
         }
     }
 }

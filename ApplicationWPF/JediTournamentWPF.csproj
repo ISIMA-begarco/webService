@@ -129,6 +129,7 @@
     <Compile Include="ViewModel\Jedi\JediViewModel.cs" />
     <Compile Include="ViewModel\Match\MatchsViewModel.cs" />
     <Compile Include="ViewModel\Match\MatchViewModel.cs" />
+    <Compile Include="ViewModel\Partie\PartieViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\Stade\StadesViewModel.cs" />
     <Compile Include="ViewModel\Stade\StadeViewModel.cs" />
