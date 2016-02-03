@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using EntitiesLayer;
 using StubDataAccessLayer;
 using DataAccessLayer;
+using System.Security.Cryptography;
+using System.Xml;
 
 namespace BusinessLayer
 {
@@ -85,7 +87,7 @@ namespace BusinessLayer
         #endregion
 
         #region Match management
-        public List<Match> getMatchs()
+        public List<Match> getMatches()
         {
             return bdd.getMatches();
         }
@@ -121,25 +123,7 @@ namespace BusinessLayer
         }
         #endregion
 
-        #region Bdd management
-        public static bool CheckConnexionUser(string login, string mdp)
-        {
-            bool isOk = false;
-            Utilisateur user = bdd.GetUtilisateurByLogin(login);
-
-            if (user != null)
-            {
-                if (user.Password.Equals(mdp))
-                {
-                    isOk = true;
-                }
-            }
-
-            return isOk;
-        }
-        #endregion
-
-        #region Tournoi
+        #region Tournoi management
         public List<Tournoi> getTournois()
         {
             return bdd.getTournois();
@@ -147,6 +131,54 @@ namespace BusinessLayer
         public int updateTournois(List<Tournoi> l)
         {
             return bdd.updateTournois(l);
+        }
+        #endregion
+
+        #region User management
+        public static bool CheckConnexionUser(string login, string mdp)
+        {
+            bool isOk = false;
+            string password = HashSHA1(mdp + login);
+            Utilisateur user = bdd.GetUtilisateurByLogin(login);
+
+            if (user != null)
+            {
+                if (user.Password.Equals(password))
+                {
+                    isOk = true;
+                }
+            }
+
+            return isOk;
+        }
+        public bool AddUser(string login, string mdp, string nom, string prenom)
+        {
+            bool isOk = false;
+            string password = HashSHA1(mdp + login);
+            Utilisateur user = new Utilisateur(0, login, password, nom, prenom);
+
+            isOk = bdd.addUser(user);
+
+            return isOk;
+        }
+
+        public List<Utilisateur> getUsers()
+        {
+            return bdd.getUsers();
+        }
+
+        public static string HashSHA1(string data)
+        {
+            SHA1 sha1 = SHA1.Create();
+            byte[] hashData = sha1.ComputeHash(Encoding.Default.GetBytes(data));
+            StringBuilder returnValue = new StringBuilder();
+
+            for(int i = 0 ; i < hashData.Length ; i++)
+            {
+                returnValue.Append(hashData[i].ToString());
+            }
+
+            return returnValue.ToString();
         }
         #endregion
 
@@ -234,6 +266,39 @@ namespace BusinessLayer
                     winners.Enqueue(simulateMatch(m));
                 }
             }
+        }
+        #endregion
+
+        #region XML
+        public void exportJedis(String filename)
+        {
+            XmlWriter writer = XmlWriter.Create(filename);
+            writer.WriteStartDocument();
+            writer.WriteStartElement("Jedis");
+
+            foreach (Jedi jedi in bdd.getJedis())
+            {
+                writer.WriteStartElement("Jedi");
+
+                writer.WriteElementString("ID", jedi.Id.ToString());
+                writer.WriteElementString("Nom", jedi.Nom.ToString());
+                writer.WriteElementString("IsSith", jedi.IsSith.ToString());
+                writer.WriteStartElement("Caracteristiques");
+                foreach (Caracteristique carac in jedi.Caracteristiques)
+                {
+                    writer.WriteElementString("ID", carac.Id.ToString());
+                    writer.WriteElementString("Nom", carac.Nom.ToString());
+                    writer.WriteElementString("Type", carac.Type.ToString());
+                    writer.WriteElementString("Valeur", carac.Valeur.ToString());
+                }
+                writer.WriteEndElement();
+
+                writer.WriteEndElement();
+            }
+
+            writer.WriteEndElement();
+            writer.WriteEndDocument();
+            writer.Close();
         }
         #endregion
     }

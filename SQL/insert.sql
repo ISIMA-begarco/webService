@@ -32,3 +32,6 @@ INSERT INTO [Caracteristiques] ([Id], [Nom], [Def], [Type], [Valeur]) VALUES
 INSERT INTO [JediCarac] ([IdJedi], [IdCarac]) VALUES
 (1, 30),
 (1, 35)
+
+INSERT INTO [Users] ([Id], [Login], [Password], [Prenom], [Nom]) VALUES
+(1, 'begarco', '9e0513b4d4dd9b954a043d3ccd0c9e6281f3fede', 'Benoît', 'Garçon')

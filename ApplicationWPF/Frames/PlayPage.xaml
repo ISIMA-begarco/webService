@@ -30,7 +30,8 @@
                                  Event="OnPlayChoice_Click"/>
         <UserControls:PlayChoice Grid.Row="1" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround8}" 
                                  PlayChoiceTitle="Bataille au sommet"
-                                 PlayChoiceDescription="Multiplayer"/>
+                                 PlayChoiceDescription="Multiplayer"
+                                 Event="OnPlayChoice_Click"/>
         <UserControls:PlayChoice Grid.Row="2" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround3}" 
                                  PlayChoiceTitle="Marchand de mort"
                                  PlayChoiceDescription="Pari Solo"/>
@@ -48,6 +49,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -74,11 +76,14 @@
                     <ComboBox Grid.Column="1" ItemsSource="{Binding Tournaments}" SelectedItem="{Binding SelectedItem}" Height="40" Margin="10">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <Gestion:CtrlStade />
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </Grid>
+                <Gestion:CtrlStade Grid.Row="2"  Width="400"/>
             </Grid>
             <Frame x:Name="ModeChoice" Grid.Row="2" Padding="5" NavigationUIVisibility="Hidden" >
 

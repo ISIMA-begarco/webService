@@ -84,10 +84,17 @@ namespace DataAccessLayer
         {
             return bdd.updateCaracteristiques(l);
         }
-
         public Utilisateur GetUtilisateurByLogin(string login)
         {
             return bdd.getUtilisateurByLogin(login);
+        }
+        public List<Utilisateur> getUsers()
+        {
+            return bdd.getUsers();
+        }
+        public bool addUser(Utilisateur u)
+        {
+            return bdd.addUser(u);
         }
     }
 }
