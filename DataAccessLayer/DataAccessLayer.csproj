@@ -45,6 +45,7 @@
     <Compile Include="IBridge.cs" />
     <Compile Include="MSSQLSFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StubDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntitiesLayer\EntitiesLayer.csproj">
