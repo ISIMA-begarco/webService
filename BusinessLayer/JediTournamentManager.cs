@@ -116,8 +116,8 @@ namespace BusinessLayer
         public IEnumerable<Match> getMatches200Sith()
         {
             IEnumerable<Match> matches = from x in bdd.getMatches()
-                                         where x.Stade.NbPlaces >= 200 && x.Jedi1.IsSith == true
-                                               && x.Jedi2.IsSith == true
+                                         where x.Stade.NbPlaces >= 200 && x.Jedi2 != null && x.Jedi1.IsSith == true
+                                               && x.Jedi2 != null && x.Jedi2.IsSith == true
                                          select x;
             return matches;
         }
