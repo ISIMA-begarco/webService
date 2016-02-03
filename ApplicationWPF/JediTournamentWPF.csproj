@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Frames\FightPage.xaml.cs">
+      <DependentUpon>FightPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\NewJediPagexaml.xaml.cs">
       <DependentUpon>NewJediPagexaml.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,15 @@
     </Compile>
     <Compile Include="UserControls\Tournoi\TournoisView.xaml.cs">
       <DependentUpon>TournoisView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ComboBoxJedi.xaml.cs">
+      <DependentUpon>ComboBoxJedi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ComboBoxStade.xaml.cs">
+      <DependentUpon>ComboBoxStade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ComboBoxTournoi.xaml.cs">
+      <DependentUpon>ComboBoxTournoi.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Stade\StadesView.xaml.cs">
       <DependentUpon>StadesView.xaml</DependentUpon>
@@ -117,12 +129,17 @@
     <Compile Include="ViewModel\Jedi\JediViewModel.cs" />
     <Compile Include="ViewModel\Match\MatchsViewModel.cs" />
     <Compile Include="ViewModel\Match\MatchViewModel.cs" />
+    <Compile Include="ViewModel\Partie\PartieViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\Stade\StadesViewModel.cs" />
     <Compile Include="ViewModel\Stade\StadeViewModel.cs" />
     <Compile Include="ViewModel\Tournament\TournamentsViewModel.cs" />
     <Compile Include="ViewModel\Tournament\TournamentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Page Include="Frames\FightPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Frames\NewJediPagexaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,6 +191,18 @@
     <Page Include="UserControls\Tournoi\TournoisView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ComboBoxJedi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ComboBoxStade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ComboBoxTournoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Stade\StadesView.xaml">
       <Generator>MSBuild:Compile</Generator>

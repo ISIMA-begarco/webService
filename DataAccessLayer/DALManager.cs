@@ -37,7 +37,9 @@ namespace DataAccessLayer
 
             //==> Sara  : à mettre  connectionString 
             //string root ="(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\Sara\\Documents\\Dot_NET\\Projet\\Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
-            string root = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + Environment.CurrentDirectory.Split(new string[] { "JediTournamentConsole" }, StringSplitOptions.None)[0] + "Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
+            //string root = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Kami\\Source\\Repos\\webService\\Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
+            //string root = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\Kami\\Source\\Repos\\webService\\Database\\JediTournament.mdf; Integrated Security = True; Connect Timeout = 30";
+            string root = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename=D:\\WorkPlace\\ISIMA\\ZZ2\\Service Reseau\\JediTournament\\Database\\JediTournament.mdf; Integrated Security = True; Connect Timeout = 30";
             //"Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\alnoel4\\Source\\Repos\\webService\\Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
             /// AVANT VISUAL STUDIO 15     string root = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + Environment.CurrentDirectory.Split(new string[] { "JediTournamentConsole" }, StringSplitOptions.None)[0] + "Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";//"Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\alnoel4\\Source\\Repos\\webService\\Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
 

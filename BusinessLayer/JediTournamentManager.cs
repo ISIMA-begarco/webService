@@ -15,6 +15,7 @@ namespace BusinessLayer
     public class JediTournamentManager
     {
         private static DataAccessLayer.DalManager bdd = DataAccessLayer.DalManager.Instance;
+       
 
         #region Stades management
         public List<Stade> getStades()
@@ -116,8 +117,8 @@ namespace BusinessLayer
         public IEnumerable<Match> getMatches200Sith()
         {
             IEnumerable<Match> matches = from x in bdd.getMatches()
-                                         where x.Stade.NbPlaces >= 200 && x.Jedi1.IsSith == true
-                                               && x.Jedi2.IsSith == true
+                                         where x.Stade.NbPlaces >= 200 && x.Jedi2 != null && x.Jedi1.IsSith == true
+                                               && x.Jedi2 != null && x.Jedi2.IsSith == true
                                          select x;
             return matches;
         }
@@ -182,13 +183,16 @@ namespace BusinessLayer
         }
         #endregion
 
-        #region Game Simulation
-        public enum Shifumi{ Pierre, Papier, Cizeaux };
-        public int playRound(Shifumi choiceA, Shifumi choiceB)
+
+        
+
+        #region Game Simulation       
+
+        public int playRound(EShifumi choiceA, EShifumi choiceB)
         {
             return (choiceA == choiceB ? 0 :            // si egalite ZERO
                     (choiceA == choiceB+1 ? -1 :        // si A gagne -1
-                    (choiceA == Shifumi.Pierre && choiceB == Shifumi.Cizeaux ? -1 : 1)));   // si B gagne 1
+                    (choiceA == EShifumi.Pierre && choiceB == EShifumi.Cizeaux ? -1 : 1)));   // si B gagne 1
         }
 
         public Jedi simulateMatch(Match m)

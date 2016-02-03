@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-
-using BusinessLayer;
 using EntitiesLayer;
+using BusinessLayer;
 
 namespace BusinessLayerTest
 {
@@ -85,44 +84,44 @@ namespace BusinessLayerTest
 
             // Les trois cas où il y a egalite
             int expectedValue = 0; 
-            int computedValue = jtm.playRound(JediTournamentManager.Shifumi.Papier, 
-                                              JediTournamentManager.Shifumi.Papier);
+            int computedValue = jtm.playRound(EShifumi.Papier, 
+                                              EShifumi.Papier);
             Assert.AreEqual(expectedValue, computedValue);
 
-            computedValue = jtm.playRound(JediTournamentManager.Shifumi.Pierre,
-                                          JediTournamentManager.Shifumi.Pierre);
+            computedValue = jtm.playRound(EShifumi.Pierre,
+                                          EShifumi.Pierre);
             Assert.AreEqual(expectedValue, computedValue);
 
-            computedValue = jtm.playRound(JediTournamentManager.Shifumi.Cizeaux,
-                                          JediTournamentManager.Shifumi.Cizeaux);
+            computedValue = jtm.playRound(EShifumi.Cizeaux,
+                                          EShifumi.Cizeaux);
             Assert.AreEqual(expectedValue, computedValue);
 
             // Les trois cas où le premier gagne
             expectedValue = -1;
-            computedValue = jtm.playRound(JediTournamentManager.Shifumi.Papier,
-                                          JediTournamentManager.Shifumi.Pierre);
+            computedValue = jtm.playRound(EShifumi.Papier,
+                                          EShifumi.Pierre);
             Assert.AreEqual(expectedValue, computedValue);
 
-            computedValue = jtm.playRound(JediTournamentManager.Shifumi.Pierre,
-                                          JediTournamentManager.Shifumi.Cizeaux);
+            computedValue = jtm.playRound(EShifumi.Pierre,
+                                          EShifumi.Cizeaux);
             Assert.AreEqual(expectedValue, computedValue);
 
-            computedValue = jtm.playRound(JediTournamentManager.Shifumi.Cizeaux,
-                                          JediTournamentManager.Shifumi.Papier);
+            computedValue = jtm.playRound(EShifumi.Cizeaux,
+                                          EShifumi.Papier);
             Assert.AreEqual(expectedValue, computedValue);
 
             // Les trois cas où le deuxième gagne
             expectedValue = 1;
-            computedValue = jtm.playRound(JediTournamentManager.Shifumi.Papier,
-                                          JediTournamentManager.Shifumi.Cizeaux);
+            computedValue = jtm.playRound(EShifumi.Papier,
+                                          EShifumi.Cizeaux);
             Assert.AreEqual(expectedValue, computedValue);
 
-            computedValue = jtm.playRound(JediTournamentManager.Shifumi.Pierre,
-                                          JediTournamentManager.Shifumi.Papier);
+            computedValue = jtm.playRound(EShifumi.Pierre,
+                                          EShifumi.Papier);
             Assert.AreEqual(expectedValue, computedValue);
 
-            computedValue = jtm.playRound(JediTournamentManager.Shifumi.Cizeaux,
-                                          JediTournamentManager.Shifumi.Pierre);
+            computedValue = jtm.playRound(EShifumi.Cizeaux,
+                                          EShifumi.Pierre);
             Assert.AreEqual(expectedValue, computedValue);
         }
     }
