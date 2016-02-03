@@ -13,6 +13,12 @@ namespace ApplicationWPF.ViewModel
     {
         private EntitiesLayer.Jedi m_jedi;
 
+        public EntitiesLayer.Jedi Jedi
+        {
+            get { return m_jedi; }
+            set { m_jedi = value; }
+        }
+
         public JediViewModel(EntitiesLayer.Jedi jedi)
         {
             m_jedi = jedi;

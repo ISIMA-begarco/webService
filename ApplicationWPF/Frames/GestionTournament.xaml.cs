@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using ApplicationWPF.ViewModel;
+
 namespace ApplicationWPF.Frames
 {
     /// <summary>
@@ -23,6 +25,14 @@ namespace ApplicationWPF.Frames
         public GestionTournament()
         {
             InitializeComponent();
+            //récupération des Jedis
+            BusinessLayer.JediTournamentManager j = new BusinessLayer.JediTournamentManager();
+            IList<EntitiesLayer.Jedi> jedis = j.getJedis();
+            //Initialisation du view Model
+            ViewModel.Jedi.JedisModelView jvm = new ViewModel.Jedi.JedisModelView(jedis);
+
+
         }
+        
     }
 }
