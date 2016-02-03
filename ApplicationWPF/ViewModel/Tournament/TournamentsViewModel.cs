@@ -33,7 +33,7 @@ namespace ApplicationWPF.ViewModel.Tournament
             set
             {
                 m_selectedItem = value;
-                OnPropertyChanged("SelectedItem");
+                OnPropertyChanged("SelectedTournament");
             }
         }
 

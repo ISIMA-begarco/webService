@@ -69,7 +69,7 @@
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Style="{StaticResource StarWarsFontStyle}" Text="Tournoi" />
-                    <UserControls:ComboBoxTournoi x:Name="TournoiCombo" Grid.Column="1"/>
+                    <UserControls:ComboBoxTournoi x:Name="usrCtrlTournoiCombo" Grid.Column="1"/>
                 </Grid>
             </Grid>
             <Frame x:Name="ModeChoice" Grid.Row="2" Padding="5" NavigationUIVisibility="Hidden" >

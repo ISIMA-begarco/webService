@@ -42,7 +42,7 @@ namespace ApplicationWPF.Frames
             // Gestion des Tournois
             IList<EntitiesLayer.Tournoi> tournaments = jtm.getTournois();
             ViewModel.Tournament.TournamentsViewModel tvm = new ViewModel.Tournament.TournamentsViewModel(tournaments);
-            TournoiCombo.DataContext = tvm;
+            usrCtrlTournoiCombo.DataContext = tvm;
 
             BusinessLayer.PartieManager.startNewGame();
         }
@@ -76,6 +76,8 @@ namespace ApplicationWPF.Frames
             switch (BusinessLayer.PartieManager.getCurrentGame().Mode)
             {
                 case EntitiesLayer.Mode.Solo:
+                    ViewModel.Tournament.TournamentViewModel t = this.usrCtrlTournoiCombo.cbTournoi.SelectedItem as ViewModel.Tournament.TournamentViewModel;
+                    BusinessLayer.PartieManager.setCurrentGameTournament(t.Tournament);
                     break;
             }
 

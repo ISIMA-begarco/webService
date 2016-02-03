@@ -20,6 +20,12 @@ namespace BusinessLayer
             game.Mode = m;
         }
 
+        public static void setCurrentGameTournament(EntitiesLayer.Tournoi t)
+        {
+            game.Tournament = t;
+            game.Current_match = t.Matchs.First();
+        }
+
         public static void setCurrentGameOptions()
         {
 
