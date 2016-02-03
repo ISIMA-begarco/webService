@@ -13,19 +13,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ApplicationWPF.ViewModel.Gestion
+namespace ApplicationWPF.UserControls
 {
     /// <summary>
-    /// Interaction logic for CtrlJedi.xaml
+    /// Logique d'interaction pour MatchsView.xaml
     /// </summary>
-    public partial class CtrlJedi : UserControl
+    public partial class JedisView : UserControl
     {
-        public CtrlJedi()
+        public JedisView()
         {
             InitializeComponent();
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void ButtonAdd_Event(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonRemove_Event(object sender, EventArgs e)
         {
 
         }

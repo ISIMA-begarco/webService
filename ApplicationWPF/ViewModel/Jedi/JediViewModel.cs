@@ -54,12 +54,18 @@ namespace ApplicationWPF.ViewModel.Jedi
             }
         }
 
-        public List<EntitiesLayer.Caracteristique> Caracteristiques
+        public string Caracteristiques
         {
-            get { return m_jedi.Caracteristiques; }
+            get
+            {
+                string res = "";
+                foreach (EntitiesLayer.Caracteristique carac in m_jedi.Caracteristiques)
+                    res += carac.Nom + ' ';
+                return res;
+            }
             set
             {
-                m_jedi.Caracteristiques = value;
+                //m_jedi.Caracteristiques = value;
                 OnPropertyChanged("Caracteristiques");
             }
         }

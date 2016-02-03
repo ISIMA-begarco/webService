@@ -7,16 +7,31 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <ListView  
             ItemsSource="{Binding Jedis}" 
             SelectedItem="{Binding SelectedJedi}"
-            Grid.Row="1" Grid.ColumnSpan="2">
+            Grid.Row="0" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
                     <GridViewColumn Header="Sith" DisplayMemberBinding="{Binding IsSith}"/>
+                    <GridViewColumn Header="Caracteristiques" DisplayMemberBinding="{Binding Caracteristiques}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <local:CtrlJedi x:Name="InfoJedi" Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding SelectedJedi}"/>
+        <local:ButtonSoft x:Name="Add" Label="Ajouter" Grid.Row="2" Grid.Column="0"/>
+        <!--  Event="{Binding AddCommand}"-->
+        <local:ButtonSoft x:Name="Remove" Label="Effacer" Grid.Row="2" Grid.Column="1" />
+        <!-- Event="{Binding RemoveCommand}"-->
     </Grid>
 </UserControl>

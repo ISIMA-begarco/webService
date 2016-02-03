@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ApplicationWPF.UserControls
 {
     /// <summary>
-    /// Logique d'interaction pour MatchsView.xaml
+    /// Interaction logic for CtrlJedi.xaml
     /// </summary>
-    public partial class JedisView : UserControl
+    public partial class CtrlJedi : UserControl
     {
-        public JedisView()
+        public CtrlJedi()
         {
             InitializeComponent();
         }

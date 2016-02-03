@@ -17,7 +17,6 @@
             <TabItem Header="Jedi" FontWeight="Bold" Padding="25,20,25,20">
                 <Grid>
                     <userControls:JedisView x:Name="ucJedis"/>
-
                 </Grid>
             </TabItem>
 
