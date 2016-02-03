@@ -276,7 +276,10 @@ namespace BusinessLayer
         #region XML
         public void exportJedis(String filename)
         {
-            XmlWriter writer = XmlWriter.Create(filename);
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.IndentChars = "\t";
+            XmlWriter writer = XmlWriter.Create(filename, settings);
             writer.WriteStartDocument();
             writer.WriteStartElement("Jedis");
 
@@ -290,11 +293,12 @@ namespace BusinessLayer
                 writer.WriteStartElement("Caracteristiques");
                 foreach (Caracteristique carac in jedi.Caracteristiques)
                 {
-                    Console.WriteLine("bleu");
+                    writer.WriteStartElement("Caracteristique");
                     writer.WriteElementString("ID", carac.Id.ToString());
                     writer.WriteElementString("Nom", carac.Nom.ToString());
                     writer.WriteElementString("Type", carac.Type.ToString());
                     writer.WriteElementString("Valeur", carac.Valeur.ToString());
+                    writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
 
