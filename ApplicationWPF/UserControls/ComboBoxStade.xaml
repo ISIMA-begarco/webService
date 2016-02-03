@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             d:DesignHeight="100" d:DesignWidth="500"
-             mc:Ignorable="d">
-    <ComboBox ItemsSource="{Binding Tournaments}" SelectedItem="{Binding SelectedTournament}" Height="50" Margin="10" Background="Transparent">
+             xmlns:local="clr-namespace:ApplicationWPF.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="600">
+    <ComboBox ItemsSource="{Binding Stades}" SelectedItem="{Binding SelectedItem}" Height="50" Margin="10" Background="Transparent">
         <ComboBox.Resources>
-
             <Style x:Key="ComboBoxItemStyle1" TargetType="{x:Type ComboBoxItem}">
                 <Setter Property="SnapsToDevicePixels" Value="True"/>
                 <Setter Property="Padding" Value="4,1"/>
@@ -34,9 +34,12 @@
         <ComboBox.ItemTemplate>
             <DataTemplate>
                 <StackPanel Orientation="Horizontal" Background="Transparent">
-                    <TextBlock Text="{Binding Name}" Style="{StaticResource StarWarsFontStyle}"/>
+                    <TextBlock Text="{Binding Planete}" Style="{StaticResource StarWarsFontStyle}"/>
+                    <TextBlock Text=" (" Style="{StaticResource StarWarsFontStyle}"/>
+                    <TextBlock Text="{Binding NbPlaces}" Style="{StaticResource StarWarsFontStyle}"/>
+                    <TextBlock Text=" places)" Style="{StaticResource StarWarsFontStyle}"/>
                 </StackPanel>
             </DataTemplate>
         </ComboBox.ItemTemplate>
-    </ComboBox>    
+    </ComboBox>
 </UserControl>

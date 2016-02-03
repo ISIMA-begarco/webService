@@ -83,6 +83,12 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ComboBoxStade.xaml.cs">
+      <DependentUpon>ComboBoxStade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ComboBoxTournoi.xaml.cs">
+      <DependentUpon>ComboBoxTournoi.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\TournoisView.xaml.cs">
       <DependentUpon>TournoisView.xaml</DependentUpon>
     </Compile>
@@ -171,6 +177,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ComboBoxStade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ComboBoxTournoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\TournoisView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -186,14 +200,6 @@
     <Page Include="UserControls\MatchsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\ComboBoxStade.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\ComboBoxTournoi.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\PlayChoice.xaml">
       <SubType>Designer</SubType>

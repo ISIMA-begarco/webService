@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ApplicationWPF.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <ComboBox ItemsSource="{Binding Tournois}" SelectedItem="{Binding SelectedStade}" Height="50" Margin="10" Background="Transparent">
+    <ComboBox ItemsSource="{Binding Tournois}" SelectedItem="{Binding SelectedItem}" Height="50" Margin="10" Background="Transparent">
         <ComboBox.Resources>
 
             <Style x:Key="ComboBoxItemStyle1" TargetType="{x:Type ComboBoxItem}">
@@ -35,10 +35,7 @@
         <ComboBox.ItemTemplate>
             <DataTemplate>
                 <StackPanel Orientation="Horizontal" Background="Transparent">
-                    <TextBlock Text="{Binding Planete}" Style="{StaticResource StarWarsFontStyle}"/>
-                    <TextBlock Text=" ("  Style="{StaticResource StarWarsFontStyle}"/>
-                    <TextBlock Text="{Binding NbPlaces}"  Style="{StaticResource StarWarsFontStyle}" />
-                    <TextBlock Text=" places)"  Style="{StaticResource StarWarsFontStyle}" />
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource StarWarsFontStyle}"/>
                 </StackPanel>
             </DataTemplate>
         </ComboBox.ItemTemplate>

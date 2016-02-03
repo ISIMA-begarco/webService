@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace ApplicationWPF.UserControls
 {
     /// <summary>
-    /// Interaction logic for CtrlStade.xaml
+    /// Logique d'interaction pour ComboBoxStade.xaml
     /// </summary>
     public partial class ComboBoxStade : UserControl
     {
