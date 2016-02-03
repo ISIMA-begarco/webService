@@ -1,0 +1,36 @@
+﻿<Page x:Class="ApplicationWPF.Frames.FightPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ApplicationWPF.Frames"
+      xmlns:UserControls="clr-namespace:ApplicationWPF.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="1000"
+      Title="FightPage">
+    <Page.Background>
+        <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround1}"/>
+    </Page.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0" Grid.Column="0" Source="{Binding ImJedi1}"/>
+        <Image Grid.Row="0" Grid.Column="1"/>
+        <Image Grid.Row="0" Grid.Column="2" Source="{Binding ImJedi2}"/>
+        <Frame x:Name="Affiche1" Grid.Row="1" Grid.Column="0">
+            
+        </Frame>
+        <Frame x:Name="Affiche2" Grid.Row="1" Grid.Column="2">
+
+        </Frame>
+        <UserControls:ButtonSoft Grid.Row="2" Grid.Column="0" Label="Retour" HorizontalAlignment="Left" Margin="50,0,0,0" Event="ButtonBack_Event"/>
+    </Grid> 
+</Page>

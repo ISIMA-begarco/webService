@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Frames\FightPage.xaml.cs">
+      <DependentUpon>FightPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\NewJediPagexaml.xaml.cs">
+      <DependentUpon>NewJediPagexaml.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\PlayPageFrame\MultiplayerPage.xaml.cs">
       <DependentUpon>MultiplayerPage.xaml</DependentUpon>
     </Compile>
@@ -79,6 +85,27 @@
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ComboBoxJedi.xaml.cs">
+      <DependentUpon>ComboBoxJedi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ComboBoxStade.xaml.cs">
+      <DependentUpon>ComboBoxStade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ComboBoxTournoi.xaml.cs">
+      <DependentUpon>ComboBoxTournoi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TournoisView.xaml.cs">
+      <DependentUpon>TournoisView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StadesView.xaml.cs">
+      <DependentUpon>StadesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\JedisView.xaml.cs">
+      <DependentUpon>JedisView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MatchsView.xaml.cs">
+      <DependentUpon>MatchsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlayChoice.xaml.cs">
       <DependentUpon>PlayChoice.xaml</DependentUpon>
@@ -108,6 +135,14 @@
     <Compile Include="ViewModel\Tournament\TournamentsViewModel.cs" />
     <Compile Include="ViewModel\Tournament\TournamentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Page Include="Frames\FightPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\NewJediPagexaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Frames\PlayPageFrame\MultiplayerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,6 +186,34 @@
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ComboBoxJedi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ComboBoxStade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ComboBoxTournoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TournoisView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\StadesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\JedisView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MatchsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\PlayChoice.xaml">
       <SubType>Designer</SubType>

@@ -183,12 +183,12 @@ namespace BusinessLayer
         #endregion
 
         #region Game Simulation
-        public enum Shifumi{ Pierre, Papier, Cizeaux };
-        public int playRound(Shifumi choiceA, Shifumi choiceB)
+        
+        public int playRound(EShifumi choiceA, EShifumi choiceB)
         {
             return (choiceA == choiceB ? 0 :            // si egalite ZERO
                     (choiceA == choiceB+1 ? -1 :        // si A gagne -1
-                    (choiceA == Shifumi.Pierre && choiceB == Shifumi.Cizeaux ? -1 : 1)));   // si B gagne 1
+                    (choiceA == EShifumi.Pierre && choiceB == EShifumi.Cizeaux ? -1 : 1)));   // si B gagne 1
         }
 
         public Jedi simulateMatch(Match m)

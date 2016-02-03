@@ -15,7 +15,6 @@ namespace ApplicationWPF.ViewModel.Stade
 
         private RelayCommand m_addCommand;
         private RelayCommand m_removeCommand;
-        private RelayCommand m_closeCommand;
 
         public ObservableCollection<StadeViewModel> Stades
         {
@@ -28,7 +27,7 @@ namespace ApplicationWPF.ViewModel.Stade
         }
 
 
-        public StadeViewModel SelectedItem
+        public StadeViewModel SelectedStade
         {
             get { return m_selectedItem; }
             set
@@ -72,8 +71,8 @@ namespace ApplicationWPF.ViewModel.Stade
         private void Add()
         {
             EntitiesLayer.Stade s = new EntitiesLayer.Stade(0, 0, "", null);
-            this.SelectedItem = new StadeViewModel(s);
-            m_stades.Add(this.SelectedItem);
+            this.SelectedStade = new StadeViewModel(s);
+            m_stades.Add(this.SelectedStade);
         }
 
         public System.Windows.Input.ICommand RemoveCommand
@@ -93,12 +92,12 @@ namespace ApplicationWPF.ViewModel.Stade
 
         private bool CanRemove()
         {
-            return (this.SelectedItem != null);
+            return (this.SelectedStade != null);
         }
 
         private void Remove()
         {
-            if (this.SelectedItem != null) m_stades.Remove(this.SelectedItem);
+            if (this.SelectedStade != null) m_stades.Remove(this.SelectedStade);
         }
     }
 }

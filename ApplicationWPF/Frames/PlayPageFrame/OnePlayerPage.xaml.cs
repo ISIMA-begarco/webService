@@ -24,5 +24,15 @@ namespace ApplicationWPF.Frames.PlayPageFrame
         {
             InitializeComponent();
         }
+
+        private void WindowLoaded(object sender, EventArgs args)
+        {
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+
+            // Initialisation des Jedis
+            IList<EntitiesLayer.Jedi> jedis = jtm.getJedis();
+            ViewModel.Jedi.JedisModelView jvm = new ViewModel.Jedi.JedisModelView(jedis);
+            J1Jedi.DataContext = jvm;
+        }
     }
 }

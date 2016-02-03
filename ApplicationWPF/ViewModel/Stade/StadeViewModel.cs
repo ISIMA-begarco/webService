@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BiblioWPF.ViewModel;
 
-namespace ApplicationWPF.ViewModel
+namespace ApplicationWPF.ViewModel.Stade
 {
     class StadeViewModel : ViewModelBase
     {

@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 
 using BiblioWPF.ViewModel;
 
-namespace ApplicationWPF.ViewModel
+namespace ApplicationWPF.ViewModel.Jedi
 {
     class JediViewModel : ViewModelBase
     {
         private EntitiesLayer.Jedi m_jedi;
+
+        public EntitiesLayer.Jedi Jedi
+        {
+            get { return m_jedi; }
+            set { m_jedi = value; }
+        }
 
         public JediViewModel(EntitiesLayer.Jedi jedi)
         {
