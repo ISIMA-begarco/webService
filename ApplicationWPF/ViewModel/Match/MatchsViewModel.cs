@@ -33,7 +33,7 @@ namespace ApplicationWPF.ViewModel.Match
             set
             {
                 m_selectedItem = value;
-                OnPropertyChanged("SelectedItem");
+                OnPropertyChanged("SelectedMatch");
             }
         }
 

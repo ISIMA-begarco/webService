@@ -34,7 +34,7 @@ namespace ApplicationWPF.ViewModel.Stade
             set
             {
                 m_selectedItem = value;
-                OnPropertyChanged("SelectedItem");
+                OnPropertyChanged("SelectedStade");
             }
         }
 

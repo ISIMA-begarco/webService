@@ -15,7 +15,6 @@ namespace ApplicationWPF.ViewModel.Jedi
 
         private RelayCommand m_addCommand;
         private RelayCommand m_removeCommand;
-        private RelayCommand m_closeCommand;
         
 
         public ObservableCollection<JediViewModel> Jedis
@@ -34,7 +33,7 @@ namespace ApplicationWPF.ViewModel.Jedi
             set
             {
                 m_selectedItem = value;
-                OnPropertyChanged("SelectedItem");
+                OnPropertyChanged("SelectedJedi");
             }
         }
 
