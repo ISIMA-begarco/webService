@@ -15,7 +15,6 @@ namespace ApplicationWPF.ViewModel.Tournament
 
         private RelayCommand m_addCommand;
         private RelayCommand m_removeCommand;
-        private RelayCommand m_closeCommand;
         
         public ObservableCollection<TournamentViewModel> Tournaments
         {

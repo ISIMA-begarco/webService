@@ -15,7 +15,6 @@ namespace ApplicationWPF.ViewModel.Stade
 
         private RelayCommand m_addCommand;
         private RelayCommand m_removeCommand;
-        private RelayCommand m_closeCommand;
 
         public ObservableCollection<StadeViewModel> Stades
         {

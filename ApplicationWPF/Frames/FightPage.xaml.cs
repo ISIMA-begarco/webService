@@ -18,11 +18,34 @@ namespace ApplicationWPF.Frames
     /// <summary>
     /// Logique d'interaction pour FightPage.xaml
     /// </summary>
-    public partial class FightPage : Page
+    public partial class FightPage : Page, IFrameNavigator
     {
+
+        public event EventHandler<FrameChangedEventArgs> m_changeFrame;
+        public string m_nextFrame;
+
         public FightPage()
         {
             InitializeComponent();
+        }
+        public string NextFrame
+        {
+            get { return m_nextFrame; }
+            set { m_nextFrame = value; }
+        }
+
+        public EventHandler<FrameChangedEventArgs> OnFrameChanged
+        {
+            get { return m_changeFrame; }
+            set { m_changeFrame = value; }
+        }
+
+
+
+        private void ButtonBack_Event(object sender, EventArgs e)
+        {
+            string nextFrame = "Frames/MainMenu.xaml";
+            OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
     }
 }
