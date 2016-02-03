@@ -211,7 +211,7 @@ namespace DataAccessLayer
             List<Jedi> allJedis = this.getJedis();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                String request = "SELECT M.id, J1.nom, J2.nom, S.nom, V.nom, M.phase FROM matches M, jedis J1, jedis J2, stades S, jedis V WHERE M.jedi1=J1.id AND M.jedi2=J2.id AND M.stade=S.id AND M.vainqueur=V.id;";
+                String request = "SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;";
                 SqlCommand sqlCommand = new SqlCommand(request, sqlConnection);
                 sqlConnection.Open();
 
@@ -219,10 +219,10 @@ namespace DataAccessLayer
 
                 while (sqlDataReader.Read())
                 {
-                    List<Jedi> j1 = allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.JEDI1))).ToList();
-                    List<Jedi> j2 = allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.JEDI2))).ToList();
-                    List<Jedi> j3 = allJedis.Where(j => j.Nom.Equals(sqlDataReader.GetString((int)MatchField.WINNER))).ToList();
-                    List<Stade> s1 = allStade.Where(s => s.Planete.Equals(sqlDataReader.GetString((int)MatchField.STADE))).ToList();
+                    List<Jedi> j1 = allJedis.Where(j => j.Id.Equals(sqlDataReader.GetInt32((int)MatchField.JEDI1))).ToList();
+                    List<Jedi> j2 = allJedis.Where(j => j.Id.Equals(sqlDataReader.GetInt32((int)MatchField.JEDI2))).ToList();
+                    List<Jedi> j3 = allJedis.Where(j => j.Id.Equals(sqlDataReader.GetInt32((int)MatchField.WINNER))).ToList();
+                    List<Stade> s1 = allStade.Where(s => s.Id.Equals(sqlDataReader.GetInt32((int)MatchField.STADE))).ToList();
                     allMatches.Add(new Match(   sqlDataReader.GetInt32((int)MatchField.ID),
                                                 (j1.Count != 0 ? j1.First() : null),
                                                 (j2.Count != 0 ? j2.First() : null),
