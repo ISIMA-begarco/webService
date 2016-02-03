@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ApplicationWPF.UserControls
 {
     /// <summary>
-    /// Interaction logic for CtrlStade.xaml
+    /// Logique d'interaction pour MatchsView.xaml
     /// </summary>
-    public partial class ComboBoxStade : UserControl
+    public partial class MatchsView : UserControl
     {
-        public ComboBoxStade()
+        public MatchsView()
         {
             InitializeComponent();
         }

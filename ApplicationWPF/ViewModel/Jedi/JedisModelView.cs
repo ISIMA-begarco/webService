@@ -28,7 +28,7 @@ namespace ApplicationWPF.ViewModel.Jedi
             }
         }
 
-        public JediViewModel SelectedItem
+        public JediViewModel SelectedJedi
         {
             get { return m_selectedItem; }
             set
@@ -72,8 +72,8 @@ namespace ApplicationWPF.ViewModel.Jedi
         private void Add() 
         {
             EntitiesLayer.Jedi j = new EntitiesLayer.Jedi(0, null, false, "");   
-            this.SelectedItem = new JediViewModel(j);
-            m_jedis.Add(this.SelectedItem);
+            this.SelectedJedi = new JediViewModel(j);
+            m_jedis.Add(this.SelectedJedi);
         }
 
         public System.Windows.Input.ICommand RemoveCommand
@@ -93,12 +93,12 @@ namespace ApplicationWPF.ViewModel.Jedi
 
         private bool CanRemove() 
         {
-            return (this.SelectedItem != null);
+            return (this.SelectedJedi != null);
         }
 
         private void Remove()
         {
-            if (this.SelectedItem != null) m_jedis.Remove(this.SelectedItem);
+            if (this.SelectedJedi != null) m_jedis.Remove(this.SelectedJedi);
         }
     }
 }

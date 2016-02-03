@@ -28,7 +28,7 @@ namespace ApplicationWPF.ViewModel.Tournament
         }
 
 
-        public TournamentViewModel SelectedItem
+        public TournamentViewModel SelectedTournament
         {
             get { return m_selectedItem; }
             set
@@ -72,8 +72,8 @@ namespace ApplicationWPF.ViewModel.Tournament
         private void Add()
         {
             EntitiesLayer.Tournoi t = new EntitiesLayer.Tournoi(0, "", null);
-            this.SelectedItem = new TournamentViewModel(t);
-            m_tournaments.Add(this.SelectedItem);
+            this.SelectedTournament = new TournamentViewModel(t);
+            m_tournaments.Add(this.SelectedTournament);
         }
 
         public System.Windows.Input.ICommand RemoveCommand
@@ -93,12 +93,12 @@ namespace ApplicationWPF.ViewModel.Tournament
 
         private bool CanRemove()
         {
-            return (this.SelectedItem != null);
+            return (this.SelectedTournament != null);
         }
 
         private void Remove()
         {
-            if (this.SelectedItem != null) m_tournaments.Remove(this.SelectedItem);
+            if (this.SelectedTournament != null) m_tournaments.Remove(this.SelectedTournament);
         }
     }
 }

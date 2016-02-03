@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using BiblioWPF.ViewModel;
 
-namespace ApplicationWPF.ViewModel
+namespace ApplicationWPF.ViewModel.Jedi
 {
     class JediViewModel : ViewModelBase
     {
