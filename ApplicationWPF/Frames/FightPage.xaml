@@ -7,6 +7,7 @@
       xmlns:UserControls="clr-namespace:ApplicationWPF.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1000"
+      Loaded="WindowLoaded"
       Title="FightPage">
     <Page.Background>
         <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround1}"/>
@@ -22,9 +23,16 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Row="0" Grid.Column="0" Source="{Binding ImJedi1}"/>
+        <StackPanel x:Name="Concurent1Img" Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+            <Image Source="{Binding Image}"/>
+            <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}"/>
+        </StackPanel>
+        
         <Image Grid.Row="0" Grid.Column="1"/>
-        <Image Grid.Row="0" Grid.Column="2" Source="{Binding ImJedi2}"/>
+        <StackPanel x:Name="Concurent2Img" Grid.Row="0" Grid.Column="2" Orientation="Vertical">
+            <Image Source="{Binding Image}"/>
+            <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}"/>
+        </StackPanel>
         <Frame x:Name="Affiche1" Grid.Row="1" Grid.Column="0">
             
         </Frame>

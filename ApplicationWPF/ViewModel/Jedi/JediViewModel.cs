@@ -34,6 +34,16 @@ namespace ApplicationWPF.ViewModel.Jedi
             }
         }
 
+        public string Image
+        {
+            get { return m_jedi.Image; }
+            set
+            {
+                m_jedi.Image = value;
+                OnPropertyChanged("Image");
+            }
+        }
+
         public bool IsSith
         {
             get { return m_jedi.IsSith; }

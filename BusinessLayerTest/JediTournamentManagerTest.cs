@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using EntitiesLayer;
 using BusinessLayer;
-using EntitiesLayer;
 
 namespace BusinessLayerTest
 {
