@@ -27,7 +27,7 @@
         <UserControls:PlayChoice Grid.Row="0" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround1}" 
                                  PlayChoiceTitle="Armée d'un seul homme"
                                  PlayChoiceDescription="Solo"
-                                 Event="OnPlayChoice_Click"/>
+                                 Event="OnPlayChoice_Click" Loaded="PlayChoice_Loaded"/>
         <UserControls:PlayChoice Grid.Row="1" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround8}" 
                                  PlayChoiceTitle="Bataille au sommet"
                                  PlayChoiceDescription="Multiplayer"
