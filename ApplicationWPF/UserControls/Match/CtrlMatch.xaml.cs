@@ -23,6 +23,21 @@ namespace ApplicationWPF.UserControls
         public CtrlMatch()
         {
             InitializeComponent();
+
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+
+            // Recuperation des jedis
+            List<EntitiesLayer.Jedi> jedis = jtm.getJedis();
+            ViewModel.Jedi.JedisModelView jvm1 = new ViewModel.Jedi.JedisModelView(jedis);
+            jedi1.DataContext = jvm1;
+
+            ViewModel.Jedi.JedisModelView jvm2 = new ViewModel.Jedi.JedisModelView(jedis);
+            jedi2.DataContext = jvm2;
+
+            // Recuperation des stades
+            List<EntitiesLayer.Stade> stades = jtm.getStades();
+            ViewModel.Stade.StadesViewModel svm = new ViewModel.Stade.StadesViewModel(stades);
+            stade.DataContext = svm;
         }
     }
 }

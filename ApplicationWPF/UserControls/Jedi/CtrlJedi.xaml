@@ -10,8 +10,18 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" VerticalAlignment="Center" Text="{Binding Nom}" FontSize="25"/>
-        <TextBox Grid.Row="1" VerticalAlignment="Center" Text="{Binding Caracteristiques}" FontSize="25"/>
-        <CheckBox Grid.Row="2" VerticalAlignment="Center" IsChecked="{Binding IsSith}" Content="Seigneur Sith" FontSize="25"/>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Nom" FontSize="25"/>
+        <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Nom}" FontSize="25"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Caracteristiques" FontSize="25"/>
+        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Caracteristiques}" FontSize="25"/>
+        
+        <CheckBox Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding IsSith}" Content="Seigneur Sith" FontSize="25"/>
     </Grid>
 </UserControl>

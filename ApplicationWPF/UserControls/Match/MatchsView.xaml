@@ -21,11 +21,11 @@
             Grid.Row="0" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Jedi 1" DisplayMemberBinding="{Binding Jedi1.Nom}"/>
-                    <GridViewColumn Header="Jedi 2" DisplayMemberBinding="{Binding Jedi2.Nom}"/>
-                    <GridViewColumn Header="Phase" DisplayMemberBinding="{Binding Phase}"/>
-                    <GridViewColumn Header="Stade" DisplayMemberBinding="{Binding Stade.Planete}"/>
-                    <GridViewColumn Header="Vaiqueur" DisplayMemberBinding="{Binding Vainqueur.Nom}"/>
+                    <GridViewColumn Header="Jedi 1" DisplayMemberBinding="{Binding Jedi1}"/>
+                    <GridViewColumn Header="Jedi 2" DisplayMemberBinding="{Binding Jedi2}"/>
+                    <GridViewColumn Header="Phase" DisplayMemberBinding="{Binding PhaseTournoi}"/>
+                    <GridViewColumn Header="Stade" DisplayMemberBinding="{Binding Stade}"/>
+                    <GridViewColumn Header="Vaiqueur" DisplayMemberBinding="{Binding Vainqueur}"/>
                 </GridView>
             </ListView.View>
         </ListView>

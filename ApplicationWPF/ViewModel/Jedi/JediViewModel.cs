@@ -26,7 +26,13 @@ namespace ApplicationWPF.ViewModel.Jedi
 
         public string Nom
         {
-            get { return m_jedi.Nom; }
+            get
+            {
+                string res = "New";
+                if (m_jedi != null)
+                    res = m_jedi.Nom;
+                return res;
+            }
             set
             {
                 m_jedi.Nom = value;
@@ -36,7 +42,13 @@ namespace ApplicationWPF.ViewModel.Jedi
 
         public string Image
         {
-            get { return m_jedi.Image; }
+            get
+            {
+                string res = "New";
+                if (m_jedi != null)
+                    res = m_jedi.Image;
+                return res;
+            }
             set
             {
                 m_jedi.Image = value;
@@ -49,7 +61,9 @@ namespace ApplicationWPF.ViewModel.Jedi
             get { return m_jedi.IsSith; }
             set
             {
-                m_jedi.IsSith = value;
+                bool res = false;
+                if (m_jedi != null)
+                    res = m_jedi.IsSith;
                 OnPropertyChanged("IsSith");
             }
         }
@@ -60,7 +74,7 @@ namespace ApplicationWPF.ViewModel.Jedi
             {
                 string res = "";
                 foreach (EntitiesLayer.Caracteristique carac in m_jedi.Caracteristiques)
-                    res += carac.Nom + ' ';
+                    res += carac.Nom + ',';
                 return res;
             }
             set
