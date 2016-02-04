@@ -61,7 +61,6 @@ namespace StubDataAccessLayer
             return users;
         }
 
-
         public Utilisateur GetUtilisateurByLogin(string login)
         {
             Utilisateur user_found = null;
