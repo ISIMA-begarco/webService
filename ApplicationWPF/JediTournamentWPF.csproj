@@ -58,9 +58,6 @@
     <Compile Include="Frames\FightPage.xaml.cs">
       <DependentUpon>FightPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\GamePadFrame\PariPage.xaml.cs">
-      <DependentUpon>PariPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Frames\NewJediPagexaml.xaml.cs">
       <DependentUpon>NewJediPagexaml.xaml</DependentUpon>
     </Compile>
@@ -75,6 +72,9 @@
     </Compile>
     <Compile Include="Frames\PlayPageFrame\PariOnePlayer.xaml.cs">
       <DependentUpon>PariOnePlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\WinnerPage.xaml.cs">
+      <DependentUpon>WinnerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ButtonSoft.xaml.cs">
       <DependentUpon>ButtonSoft.xaml</DependentUpon>
@@ -146,10 +146,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\GamePadFrame\PariPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Frames\NewJediPagexaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Frames\PlayPageFrame\PariOnePlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\WinnerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

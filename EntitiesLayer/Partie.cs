@@ -37,6 +37,13 @@ namespace EntitiesLayer
             Jedi_j1 = null;
             Jedi_j2 = null;
             Tournament = null;
+            Mode = Mode.Solo;
+            Choice_j1 = EShifumi.Aucun;
+            Choice_j2 = EShifumi.Aucun;
+            Bourse_j1 = 0;
+            Bourse_j2 = 0;
+            Pari_j1 = 0;
+            Pari_j2 = 0;
         }
 
         public Mode Mode

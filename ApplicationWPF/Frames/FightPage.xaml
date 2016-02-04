@@ -14,7 +14,7 @@
     <Page.Background>
         <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround1}"/>
     </Page.Background>
-    <Grid>
+    <Grid KeyDown="Page_KeyDown">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="1*"/>
