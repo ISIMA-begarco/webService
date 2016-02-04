@@ -22,19 +22,7 @@ namespace DataAccessLayerTest
             Assert.AreNotEqual<int>(liste.Count, 0);
             if(liste.Count > 0)
             {
-                Jedi j = liste[0];
-                Assert.AreEqual<int>(liste.Count, bdd.getJedis().Count);
-                liste.Remove(j);
-                bdd.updateJedis(liste);
-                taille = liste.Count;
-                liste = bdd.getJedis();
-                Assert.AreEqual<int>(taille, liste.Count);
-                liste.Add(j);
-                bdd.updateJedis(liste);
-                taille = liste.Count;
-                liste = bdd.getJedis();
-                Assert.AreEqual<int>(taille, liste.Count);
-                j = new Jedi(0, null, true, "Testman", "John.png");
+                Jedi j = new Jedi(0, null, true, "Testman", "John.png");
                 liste.Add(j);
                 bdd.updateJedis(liste);
                 taille = liste.Count;
@@ -57,19 +45,7 @@ namespace DataAccessLayerTest
             Assert.AreNotEqual<int>(liste.Count, 0);
             if (liste.Count > 0)
             {
-                Stade j = liste[0];
-                Assert.AreEqual<int>(liste.Count, bdd.getStades().Count);
-                liste.Remove(j);
-                bdd.updateStades(liste);
-                taille = liste.Count;
-                liste = bdd.getStades();
-                Assert.AreEqual<int>(taille, liste.Count);
-                liste.Add(j);
-                bdd.updateStades(liste);
-                taille = liste.Count;
-                liste = bdd.getStades();
-                Assert.AreEqual<int>(taille, liste.Count);
-                j = new Stade(0, 999, "Planete Test", new List<Caracteristique>() { bdd.getCaracteristiques().First() });
+                Stade j = new Stade(0, 999, "Planete Test", new List<Caracteristique>() { bdd.getCaracteristiques().First() });
                 liste.Add(j);
                 bdd.updateStades(liste);
                 taille = liste.Count;

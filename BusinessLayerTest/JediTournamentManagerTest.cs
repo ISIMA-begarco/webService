@@ -26,7 +26,7 @@ namespace BusinessLayerTest
             // Verifie que l'on ne peut pas ajouter dans les listes de
             // manière non controlée
             int expectedSize = stades.Count;
-            stades.Add(new Stade(1, 125, "Tatouine", null));
+            stades.Add(new Stade(0, 125, "Tatouine", null));
             List<Stade> stades2 = jtm.getStades();
             Assert.AreEqual(expectedSize, stades2.Count);
 
