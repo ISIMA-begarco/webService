@@ -16,7 +16,7 @@
     </Page.Background>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="100"/>
@@ -26,8 +26,8 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
-            <TextBlock x:Name="PhaseTournoi" Style="{StaticResource StarWarsFontStyle}" />
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="3">
+            <TextBlock x:Name="PhaseTournoi" Style="{StaticResource StarWarsFontStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </StackPanel>
         <StackPanel x:Name="Concurent1Img" Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}"/>

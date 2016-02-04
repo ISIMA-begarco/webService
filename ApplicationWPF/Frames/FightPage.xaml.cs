@@ -84,20 +84,7 @@ namespace ApplicationWPF.Frames
             }
             else
             {
-                Random rd = new Random();
-                int rand = rd.Next();
-                if (rand % 3 == 0)
-                {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Ciseau;
-                }
-                if (rand % 3 == 1)
-                {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Papier;
-                }
-                if (rand % 3 == 2)
-                {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Pierre;
-                }
+                BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = BusinessLayer.PartieManager.getIAChoice();
             }
 
             if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom)
@@ -108,20 +95,7 @@ namespace ApplicationWPF.Frames
             }
             else
             {
-                Random rd = new Random();
-                int rand  = rd.Next();
-                if (rand % 3 == 0)
-                {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Ciseau;
-                }
-                if (rand % 3 == 1)
-                {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Papier;
-                }
-                if (rand % 3 == 2)
-                {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Pierre;
-                }
+                BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = BusinessLayer.PartieManager.getIAChoice();
             }
 
            resolve();

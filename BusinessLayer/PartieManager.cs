@@ -10,11 +10,13 @@ namespace BusinessLayer
     {
         private static EntitiesLayer.Partie game;
         private static BusinessLayer.JediTournamentManager jtm;
+        private static Random rd;
 
         public static void startNewGame()
         {
             jtm = new BusinessLayer.JediTournamentManager();
             game = new EntitiesLayer.Partie();
+            rd = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
         }
 
         public static void nextMatch()
@@ -26,12 +28,16 @@ namespace BusinessLayer
                 game.Current_match = matchRestant.First();
                 if(game.Current_match.Jedi1 == null)
                 {
-                    game.Current_match.Jedi1 = game.Tournament.Matchs.OrderBy(m => m, new JediTournamentManager.MatchOrderComparer()).ToList()[(int)game.Current_match.PhaseTournoi * 2 + 1].JediVainqueur;
+                    int hep = (int)game.Current_match.PhaseTournoi * 2 + 1;
+                    List<EntitiesLayer.Match> hi = game.Tournament.Matchs.OrderBy(m => m, new JediTournamentManager.MatchOrderComparer()).Reverse().ToList();
+                    game.Current_match.Jedi1 = hi[hep].JediVainqueur;
                 }
 
                 if (game.Current_match.Jedi2 == null)
                 {
-                    game.Current_match.Jedi2 = game.Tournament.Matchs.OrderBy(m=>m, new JediTournamentManager.MatchOrderComparer()).ToList()[(int)game.Current_match.PhaseTournoi * 2 + 2].JediVainqueur;
+                    int hep = (int)game.Current_match.PhaseTournoi * 2 + 2;
+                    List<EntitiesLayer.Match> hi = game.Tournament.Matchs.OrderBy(m => m, new JediTournamentManager.MatchOrderComparer()).Reverse().ToList();
+                    game.Current_match.Jedi2 = hi[hep].JediVainqueur;
                 }
 
 
@@ -39,11 +45,27 @@ namespace BusinessLayer
                         
         }
 
-        private EntitiesLayer.EPhaseTournoi getNextPhase(EntitiesLayer.EPhaseTournoi phase)
+        public static EntitiesLayer.EShifumi getIAChoice()
         {
+            EntitiesLayer.EShifumi ret = EntitiesLayer.EShifumi.Aucun;
+            int rand = rd.Next();
+            if (rand % 3 == 0)
+            {
+                ret =  EntitiesLayer.EShifumi.Ciseau;
+            }
+            if (rand % 3 == 1)
+            {
+                ret = EntitiesLayer.EShifumi.Papier;
+            }
+            if (rand % 3 == 2)
+            {
+                ret = EntitiesLayer.EShifumi.Pierre;
+            }
 
-            return EntitiesLayer.EPhaseTournoi.Finale;
-        }
+            return ret;
+        } 
+
+            
 
         public static bool resolve()
         {
