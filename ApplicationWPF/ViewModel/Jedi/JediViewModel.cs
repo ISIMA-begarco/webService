@@ -52,6 +52,19 @@ namespace ApplicationWPF.ViewModel.Jedi
             }
         }
 
+        public Uri ImageUri
+        {
+            get
+            {
+                return m_jedi.ImageUri;
+            }
+            set
+            {
+                m_jedi.Image = value.ToString();
+                OnPropertyChanged("ImageUri");
+            }
+        }
+
         public bool IsSith
         {
             get
@@ -65,19 +78,29 @@ namespace ApplicationWPF.ViewModel.Jedi
             }
         }
 
-        public string Caracteristiques
+        public List<EntitiesLayer.Caracteristique> Caracteristiques
+        {
+            get
+            {
+                return m_jedi.Caracteristiques;
+            }
+            set
+            {
+                m_jedi.Caracteristiques = value;
+                OnPropertyChanged("Caracteristiques");
+                OnPropertyChanged("CaracteristiquesString");
+            }
+        }
+
+
+        public string CaracteristiquesString
         {
             get
             {
                 string res = "";
                 foreach (EntitiesLayer.Caracteristique carac in m_jedi.Caracteristiques)
-                    res += carac.Nom + ',';
+                    res += carac.Nom + ", ";
                 return res;
-            }
-            set
-            {
-                //m_jedi.Caracteristiques = value;
-                OnPropertyChanged("Caracteristiques");
             }
         }
     }

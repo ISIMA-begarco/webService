@@ -29,7 +29,7 @@
             </ListView.View>
         </ListView>
         <local:CtrlStade x:Name="InfoStade" Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding SelectedStade}"/>
-        <Button Name="Add" Grid.Row="2" Grid.Column="0" Content="Ajouter" Command="{Binding AddCommand}"/>
-        <Button Name="Remvoe" Grid.Row="2" Grid.Column="1" Content="Supprimer" Command="{Binding RemoveCommand}"/>
+        <Button Name="Add" Grid.Row="2" Grid.Column="0" Content="Ajouter" Command="{Binding AddCommand}" Style="{StaticResource TeleMarinesFont}"/>
+        <Button Name="Remvoe" Grid.Row="2" Grid.Column="1" Content="Supprimer" Command="{Binding RemoveCommand}" Style="{StaticResource TeleMarinesFont}"/>
     </Grid>
 </UserControl>

@@ -16,13 +16,47 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
-        <Label Grid.Row="0" Grid.Column="0" Content="Nom" FontSize="25"/>
-        <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Nom, UpdateSourceTrigger=PropertyChanged}" FontSize="25"/>
-
-        <Label Grid.Row="1" Grid.Column="0" Content="Caracteristiques" FontSize="25"/>
-        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Caracteristiques, UpdateSourceTrigger=PropertyChanged}" FontSize="25"/>
         
-        <CheckBox Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding IsSith}" Content="Seigneur Sith" FontSize="25"/>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Name="jediImage" Source="{Binding ImageUri, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Name="btnLoad" Click="OnChangeImageClick" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Parcourir</Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="8*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Nom" Grid.Column="0" VerticalAlignment="Center"  FontSize="30"/>
+            <TextBox Text="{Binding Nom, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" FontSize="30" VerticalAlignment="Center"/>
+        </Grid>
+
+        <CheckBox Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding IsSith}">
+            <TextBlock Text="Seigneur Sith"  Margin="0,-10,0,0" FontFamily="Calibri"  FontSize="30"/>
+        </CheckBox>
+
+        <GroupBox Header="Caracteristiques" Grid.RowSpan="3" Grid.Column="1" Margin="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <ComboBox x:Name="caracBox" VerticalAlignment="Top" Grid.Row="0" SelectionChanged="caracBox_SelectionChanged"/>
+                <ListView x:Name="displayCarac" Grid.Row="1" ItemsSource="{Binding Caracteristiques, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="displayCarac_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Caracteristiques" DisplayMemberBinding="{Binding Nom}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </GroupBox>
+
     </Grid>
 </UserControl>

@@ -35,31 +35,6 @@ namespace ApplicationWPF.Frames
             InitializeComponent();
         }
 
-        private void WindowLoaded (object sender, EventArgs e)
-        {
-            BusinessLayer.JediTournamentManager tm = new BusinessLayer.JediTournamentManager();
-
-            // Initialisation des Jedis
-            IList<EntitiesLayer.Jedi> jedis = tm.getJedis();
-            ViewModel.Jedi.JedisModelView jvm = new ViewModel.Jedi.JedisModelView(jedis);
-            ucJedis.DataContext = jvm;
-
-            // Initialisation des Stade
-            IList<EntitiesLayer.Stade> stades = tm.getStades();
-            ViewModel.Stade.StadesViewModel svm = new ViewModel.Stade.StadesViewModel(stades);
-            ucStade.DataContext = svm;
-
-            // Initialisation des Matchs
-            IList<EntitiesLayer.Match> matchs = tm.getMatches();
-            ViewModel.Match.MatchsViewModel mvm = new ViewModel.Match.MatchsViewModel(matchs);
-            ucMatchs.DataContext = mvm;
-
-            // Initialisation des Tournois
-            IList<EntitiesLayer.Tournoi> tournois = tm.getTournois();
-            ViewModel.Tournament.TournamentsViewModel tvm = new ViewModel.Tournament.TournamentsViewModel(tournois);
-            ucTournoi.DataContext = tvm;
-        }
-
         private void ButtonSoft_Loaded(object sender, RoutedEventArgs e)
         {
             //passage à la page newJedi depuis le boutton Ajouter
@@ -71,6 +46,42 @@ namespace ApplicationWPF.Frames
         {
             string nextFrame = "Frames/MainMenu.xaml";
             OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
+        }
+
+        private void JediLoaded(object sender, RoutedEventArgs e)
+        {
+            // Initialisation des Jedis
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            IList<EntitiesLayer.Jedi> jedis = jtm.getJedis();
+            ViewModel.Jedi.JedisModelView jvm = new ViewModel.Jedi.JedisModelView(jedis);
+            ucJedis.DataContext = jvm;
+        }
+
+        private void StadeLoaded(object sender, RoutedEventArgs e)
+        {
+            // Initialisation des Stade
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            IList<EntitiesLayer.Stade> stades = jtm.getStades();
+            ViewModel.Stade.StadesViewModel svm = new ViewModel.Stade.StadesViewModel(stades);
+            ucStade.DataContext = svm;
+        }
+
+        private void MatchLoaded(object sender, RoutedEventArgs e)
+        {
+            // Initialisation des Matchs
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            IList<EntitiesLayer.Match> matchs = jtm.getMatches();
+            ViewModel.Match.MatchsViewModel mvm = new ViewModel.Match.MatchsViewModel(matchs);
+            ucMatchs.DataContext = mvm;
+        }
+
+        private void TournoiLoaded(object sender, RoutedEventArgs e)
+        {
+            // Initialisation des Tournois
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            IList<EntitiesLayer.Tournoi> tournois = jtm.getTournois();
+            ViewModel.Tournament.TournamentsViewModel tvm = new ViewModel.Tournament.TournamentsViewModel(tournois);
+            ucTournoi.DataContext = tvm;
         }
     }
 }
