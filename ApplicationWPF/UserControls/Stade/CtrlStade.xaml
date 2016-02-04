@@ -5,45 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              d:DesignHeight="100" d:DesignWidth="500"
              mc:Ignorable="d">
-    <ComboBox Grid.Column="1" ItemsSource="{Binding Stades}" SelectedItem="{Binding SelectedItem}" Height="40" Margin="10" Background="Transparent">
-        <ComboBox.ItemTemplate>
-            <DataTemplate>
-                <Grid>
-                    <Grid.Background>
-                        <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround5}"/>
-                    </Grid.Background>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="{Binding Planete}" Style="{StaticResource StarWarsFontStyle}"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding NbPlaces}" Style="{StaticResource StarWarsFontStyle}" HorizontalAlignment="Right"/>
-                        <TextBlock Grid.Column="1" Text="{Binding NombrePlace + Places}"  Style="{StaticResource StarWarsFontStyle}" HorizontalAlignment="Left" />
-                    </Grid>
-                    <!--
-        <ListBox Grid.Column="1" Grid.RowSpan="2" Background="Transparent" ItemsSource="{Binding Caracteristiques}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Nom}" />
-                        <TextBlock Text=" : " />
-                        <TextBlock Text="{Binding Valeur}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        -->
-                </Grid>
-            </DataTemplate>
-        </ComboBox.ItemTemplate>
-    </ComboBox>    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" Content="Planete"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Planete, UpdateSourceTrigger=PropertyChanged}" />
+        
+        <Label Grid.Row="1" Grid.Column="0" Content="Nombre de place"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NbPlaces, UpdateSourceTrigger=PropertyChanged}"/>
+        
+        <Label Grid.Row="2" Grid.Column="0" Content="Caracteristiques"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Caracteristiques, UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>
 </UserControl>

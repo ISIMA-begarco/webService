@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ApplicationWPF.UserControls
+namespace ApplicationWPF.Frames.GamePadFrame
 {
     /// <summary>
-    /// Logique d'interaction pour MatchsView.xaml
+    /// Logique d'interaction pour PariPage.xaml
     /// </summary>
-    public partial class JedisView : UserControl
+    public partial class PariPage : Page
     {
-        public JedisView()
+        public PariPage()
         {
             InitializeComponent();
         }

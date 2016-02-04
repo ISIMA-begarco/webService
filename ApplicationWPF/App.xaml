@@ -55,6 +55,7 @@
         <BitmapImage x:Key="StarWarsImagePlanet1" UriSource="../Solution Items/img/planet.png" />
         <BitmapImage x:Key="JediTournamentLogo" UriSource="./Picture/JediTournamentLogo.png" />
         <BitmapImage x:Key="JediLogo" UriSource="./Picture/Jedi.jpg" />
+        <BitmapImage x:Key="VersusPicture" UriSource="./Resources/VS_Icon.gif" />
 
     </Application.Resources>
 </Application>

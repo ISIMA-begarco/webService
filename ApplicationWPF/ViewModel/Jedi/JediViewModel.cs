@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using BiblioWPF.ViewModel;
+using System.Windows.Media.Imaging;
 
 namespace ApplicationWPF.ViewModel.Jedi
 {
@@ -26,17 +27,24 @@ namespace ApplicationWPF.ViewModel.Jedi
 
         public string Nom
         {
-            get { return m_jedi.Nom; }
+            get
+            {
+                return m_jedi.Nom;
+            }
             set
             {
                 m_jedi.Nom = value;
                 OnPropertyChanged("Nom");
             }
         }
+        
 
-        public string Image
+        public String Image
         {
-            get { return m_jedi.Image; }
+            get
+            {
+                return m_jedi.Image;
+            }
             set
             {
                 m_jedi.Image = value;
@@ -46,7 +54,10 @@ namespace ApplicationWPF.ViewModel.Jedi
 
         public bool IsSith
         {
-            get { return m_jedi.IsSith; }
+            get
+            {
+                return m_jedi.IsSith;
+            }
             set
             {
                 m_jedi.IsSith = value;
@@ -60,7 +71,7 @@ namespace ApplicationWPF.ViewModel.Jedi
             {
                 string res = "";
                 foreach (EntitiesLayer.Caracteristique carac in m_jedi.Caracteristiques)
-                    res += carac.Nom + ' ';
+                    res += carac.Nom + ',';
                 return res;
             }
             set

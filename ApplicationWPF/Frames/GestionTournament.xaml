@@ -10,35 +10,36 @@
 	Title="GestionTournament">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
         <TabControl
             VerticalAlignment="Top"
-            FontSize="70" Style="{StaticResource TeleMarinesFont}"
-            Height="500">
+            Grid.Row="0"
+            FontSize="70" Style="{StaticResource TeleMarinesFont}">
+
+            <!-- Gestion des Jedis -->
             <TabItem Header="Jedi" FontWeight="Bold" Padding="25,20,25,20">
-                <Grid>
-                    <userControls:JedisView x:Name="ucJedis"/>
-                </Grid>
+                <userControls:JedisView x:Name="ucJedis"/>
             </TabItem>
 
+            <!-- Gestion des Matchs -->
             <TabItem Header="Match" FontWeight="Bold" Padding="25,20,25,20">
-                <Grid>
-                    <userControls:MatchsView x:Name="ucMatchs"/>
-                    
-                </Grid>
+                <userControls:MatchsView x:Name="ucMatchs"/>
             </TabItem>
-            <TabItem Header="Stade" FontWeight="Bold" Padding="25,20,25,20">
-                <Grid>
-                    <userControls:StadesView x:Name="ucStade"/>
-                    
-                </Grid>
-            </TabItem>
-            <TabItem Header="Tournoi" FontWeight="Bold" Padding="25,20,25,20">
-                <Grid>
-                    <userControls:TournoisView x:Name="ucTournoi"/>
 
-                </Grid>
+            <!-- Gestion des Stades -->
+            <TabItem Header="Stade" FontWeight="Bold" Padding="25,20,25,20">
+                    <userControls:StadesView x:Name="ucStade"/>
+            </TabItem>
+
+            <!-- Gestion des Tournois -->
+            <TabItem Header="Tournoi" FontWeight="Bold" Padding="25,20,25,20">
+                    <userControls:TournoisView x:Name="ucTournoi"/>
             </TabItem>
         </TabControl>
-        <UserControls:ButtonSoft HorizontalAlignment="Left" Label="Retour" Event="ButtonBak_Event" VerticalAlignment="Bottom" />
+        <UserControls:ButtonSoft Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Label="Retour" Event="ButtonBak_Event"/>
     </Grid>
 </Page>

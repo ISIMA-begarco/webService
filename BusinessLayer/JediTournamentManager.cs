@@ -192,7 +192,7 @@ namespace BusinessLayer
         {
             return (choiceA == choiceB ? 0 :            // si egalite ZERO
                     (choiceA == choiceB+1 ? -1 :        // si A gagne -1
-                    (choiceA == EShifumi.Pierre && choiceB == EShifumi.Cizeaux ? -1 : 1)));   // si B gagne 1
+                    (choiceA == EShifumi.Pierre && choiceB == EShifumi.Ciseau ? -1 : 1)));   // si B gagne 1
         }
 
         public Jedi simulateMatch(Match m)

@@ -8,30 +8,32 @@
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1000"
       Loaded="WindowLoaded"
-      Title="FightPage">
+      Title="FightPage"
+      KeyDown="Page_KeyDown"
+      x:Name="fightPage">
     <Page.Background>
         <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround1}"/>
     </Page.Background>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="Concurent1Img" Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-            <Image Source="{Binding Image}"/>
+        <StackPanel x:Name="Concurent1Img" Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}"/>
+            <Image Source="{Binding ImageUri}" Width="400" Height="400"/>
         </StackPanel>
         
         <Image Grid.Row="0" Grid.Column="1"/>
-        <StackPanel x:Name="Concurent2Img" Grid.Row="0" Grid.Column="2" Orientation="Vertical">
-            <Image Source="{Binding Image}"/>
+        <StackPanel x:Name="Concurent2Img" Grid.Row="0" Grid.Column="2" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}"/>
+            <Image Source="{Binding ImageUri}" Width="400" Height="400"/>
         </StackPanel>
         <Frame x:Name="Affiche1" Grid.Row="1" Grid.Column="0">
             
@@ -39,6 +41,11 @@
         <Frame x:Name="Affiche2" Grid.Row="1" Grid.Column="2">
 
         </Frame>
-        <UserControls:ButtonSoft Grid.Row="2" Grid.Column="0" Label="Retour" HorizontalAlignment="Left" Margin="50,0,0,0" Event="ButtonBack_Event"/>
+        <UserControls:ButtonSoft Grid.Row="2" Grid.Column="0" Label="Quitter" HorizontalAlignment="Left" Margin="50,0,0,0" Event="ButtonBack_Event"/>
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <UserControls:ButtonSoft  Label="Fight" HorizontalAlignment="Right" Margin="20,0,0,0" Event="ButtonStart_Event"/>
+            <UserControls:ButtonSoft  Label="Suivant" HorizontalAlignment="Right" Margin="20,0,20,0" Event="ButtonNext_Event"/>
+        </StackPanel>
+        
     </Grid> 
 </Page>

@@ -70,7 +70,7 @@ namespace ApplicationWPF.ViewModel.Tournament
 
         private void Add()
         {
-            EntitiesLayer.Tournoi t = new EntitiesLayer.Tournoi(0, "", null);
+            EntitiesLayer.Tournoi t = new EntitiesLayer.Tournoi(0, "<New>", new List<EntitiesLayer.Match>());
             this.SelectedTournament = new TournamentViewModel(t);
             m_tournaments.Add(this.SelectedTournament);
         }
