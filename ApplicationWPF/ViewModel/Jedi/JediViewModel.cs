@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using BiblioWPF.ViewModel;
+using System.Windows.Media.Imaging;
 
 namespace ApplicationWPF.ViewModel.Jedi
 {
@@ -33,8 +34,9 @@ namespace ApplicationWPF.ViewModel.Jedi
                 OnPropertyChanged("Nom");
             }
         }
+        
 
-        public string Image
+        public String Image
         {
             get { return m_jedi.Image; }
             set

@@ -10,6 +10,7 @@ namespace EntitiesLayer
     {
         Pierre,
         Papier,
-        Cizeaux
+        Ciseau,
+        Aucun
     };
 }

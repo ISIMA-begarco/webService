@@ -92,8 +92,8 @@ namespace BusinessLayerTest
                                           EShifumi.Pierre);
             Assert.AreEqual(expectedValue, computedValue);
 
-            computedValue = jtm.playRound(EShifumi.Cizeaux,
-                                          EShifumi.Cizeaux);
+            computedValue = jtm.playRound(EShifumi.Ciseau,
+                                          EShifumi.Ciseau);
             Assert.AreEqual(expectedValue, computedValue);
 
             // Les trois cas où le premier gagne
@@ -103,24 +103,24 @@ namespace BusinessLayerTest
             Assert.AreEqual(expectedValue, computedValue);
 
             computedValue = jtm.playRound(EShifumi.Pierre,
-                                          EShifumi.Cizeaux);
+                                          EShifumi.Ciseau);
             Assert.AreEqual(expectedValue, computedValue);
 
-            computedValue = jtm.playRound(EShifumi.Cizeaux,
+            computedValue = jtm.playRound(EShifumi.Ciseau,
                                           EShifumi.Papier);
             Assert.AreEqual(expectedValue, computedValue);
 
             // Les trois cas où le deuxième gagne
             expectedValue = 1;
             computedValue = jtm.playRound(EShifumi.Papier,
-                                          EShifumi.Cizeaux);
+                                          EShifumi.Ciseau);
             Assert.AreEqual(expectedValue, computedValue);
 
             computedValue = jtm.playRound(EShifumi.Pierre,
                                           EShifumi.Papier);
             Assert.AreEqual(expectedValue, computedValue);
 
-            computedValue = jtm.playRound(EShifumi.Cizeaux,
+            computedValue = jtm.playRound(EShifumi.Ciseau,
                                           EShifumi.Pierre);
             Assert.AreEqual(expectedValue, computedValue);
         }

@@ -38,11 +38,16 @@ namespace EntitiesLayer
             set { nom = value; }
         }
 
+        public Uri ImageUri
+        {
+            get { return new Uri(Image,UriKind.Relative); }
+        }
+
         public string Image
         {
             get
             {
-                return image;
+                return "../../Picture/" + image;
             }
 
             set

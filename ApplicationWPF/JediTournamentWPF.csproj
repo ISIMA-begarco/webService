@@ -58,6 +58,12 @@
     <Compile Include="Frames\FightPage.xaml.cs">
       <DependentUpon>FightPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Frames\GamePadFrame\PariPage.xaml.cs">
+      <DependentUpon>PariPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\GamePadFrame\ShifumiPageJ1.xaml.cs">
+      <DependentUpon>ShifumiPageJ1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\NewJediPagexaml.xaml.cs">
       <DependentUpon>NewJediPagexaml.xaml</DependentUpon>
     </Compile>
@@ -137,6 +143,14 @@
     <Compile Include="ViewModel\Tournament\TournamentViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Page Include="Frames\FightPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\GamePadFrame\PariPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\GamePadFrame\ShifumiPageJ1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -319,6 +333,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Jedi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\default.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

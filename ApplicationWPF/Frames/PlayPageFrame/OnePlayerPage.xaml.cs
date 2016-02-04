@@ -33,6 +33,13 @@ namespace ApplicationWPF.Frames.PlayPageFrame
             IList<EntitiesLayer.Jedi> jedis = jtm.getJedis();
             ViewModel.Jedi.JedisModelView jvm = new ViewModel.Jedi.JedisModelView(jedis);
             J1Jedi.DataContext = jvm;
+            //jvm.Jedis.First();
+        }
+
+        private void J1Jedi_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if((this.J1Jedi.ComboJedi.SelectedItem as ViewModel.Jedi.JediViewModel) != null)
+                BusinessLayer.PartieManager.getCurrentGame().Jedi_j1 = (this.J1Jedi.ComboJedi.SelectedItem as ViewModel.Jedi.JediViewModel).Jedi;
         }
     }
 }
