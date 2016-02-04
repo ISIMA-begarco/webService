@@ -27,8 +27,12 @@ namespace BusinessLayer
             }
             else
             {
+                for(int i = 0; i < game.Tournament.Matchs.Count; i+=2){
+                    //EntitiesLayer.Match new_match = new EntitiesLayer.Match(0,game.Tournament.Matchs.ElementAt(i).JediVainqueur, game.Tournament.Matchs.ElementAt(i).JediVainqueur);
 
+                }
             }
+
             
         }
 

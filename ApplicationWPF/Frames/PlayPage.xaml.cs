@@ -66,7 +66,7 @@ namespace ApplicationWPF.Frames
         private void ButtonStart_Event(object sender, EventArgs e)
         {
 
-            if(this.usrCtrlTournoiCombo.cbTournoi.SelectedItem != null)
+            if(this.usrCtrlTournoiCombo.cbTournoi.SelectedItem != null && BusinessLayer.PartieManager.getCurrentGame().Jedi_j1 != null )
             {
                 string nextFrame = "Frames/FightPage.xaml";
 

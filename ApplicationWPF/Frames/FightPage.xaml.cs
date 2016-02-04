@@ -73,7 +73,9 @@ namespace ApplicationWPF.Frames
 
         private void ButtonStart_Event(object sender, EventArgs e)
         {
-            if (BusinessLayer.PartieManager.getCurrentGame().J1 != null && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)) && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom)
+            if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom) 
+                || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom) )
+                && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
             {
                 Affiche1.NavigationService.Navigate(new System.Uri("Frames/GamePadFrame/ShifumiPageJ1.xaml", UriKind.Relative));
             }
@@ -95,7 +97,9 @@ namespace ApplicationWPF.Frames
                 }
             }
 
-            if (BusinessLayer.PartieManager.getCurrentGame().J2 != null && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
+            if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom)
+               || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom))
+               && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
             {
                 Affiche2.NavigationService.Navigate(new System.Uri("Frames/GamePadFrame/ShifumiPageJ2.xaml", UriKind.Relative));
             }
@@ -116,14 +120,15 @@ namespace ApplicationWPF.Frames
                     BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Pierre;
                 }
             }
+
+            BusinessLayer.PartieManager.resolve();
         }
 
         private void ButtonNext_Event(object sender, EventArgs e)
         {
             if(BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur != null) {
-                string nextFrame = "Frames/FightPage.xaml";
                 BusinessLayer.PartieManager.nextMatch();
-                OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
+                this.NavigationService.Refresh();
             }
         }
             
