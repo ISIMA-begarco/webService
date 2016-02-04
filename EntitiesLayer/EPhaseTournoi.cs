@@ -2,20 +2,20 @@
 {
     public enum EPhaseTournoi
     {
-        HuitiemeFinale1 = 0,
-        HuitiemeFinale2 = 1,
-        HuitiemeFinale3 = 2,
-        HuitiemeFinale4 = 3,
-        HuitiemeFinale5 = 4,
-        HuitiemeFinale6 = 5,
-        HuitiemeFinale7 = 6,
+        HuitiemeFinale1 = 14,
+        HuitiemeFinale2 = 13,
+        HuitiemeFinale3 = 12,
+        HuitiemeFinale4 = 11,
+        HuitiemeFinale5 = 10,
+        HuitiemeFinale6 = 9,
+        HuitiemeFinale7 = 8,
         HuitiemeFinale8 = 7,
-        QuartFinale1 = 8,
-        QuartFinale2 = 9,
-        QuartFinale3 = 10,
-        QuartFinale4 = 11,
-        DemiFinale1 = 12,
-        DemiFinale2 = 13,
-        Finale = 14
+        QuartFinale1 = 6,
+        QuartFinale2 = 5,
+        QuartFinale3 = 4,
+        QuartFinale4 = 3,
+        DemiFinale1 = 2,
+        DemiFinale2 = 1,
+        Finale = 0
     }
 }

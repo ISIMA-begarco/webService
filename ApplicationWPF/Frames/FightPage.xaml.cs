@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -45,8 +46,10 @@ namespace ApplicationWPF.Frames
             game.Pari_j1 = 0;
             game.Pari_j2 = 0;
 
-            Affiche1.NavigationService.Navigate(null);
-            Affiche2.NavigationService.Navigate(null);
+            PhaseTournoi.Text = gvm.Current_match.PhaseTournoi.ToString();
+
+            Affiche1.Visibility = Visibility.Hidden;
+            Affiche2.Visibility = Visibility.Hidden;
         }
 
         public string NextFrame
@@ -77,7 +80,7 @@ namespace ApplicationWPF.Frames
                 || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom) )
                 && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
             {
-                Affiche1.NavigationService.Navigate(new System.Uri("Frames/GamePadFrame/ShifumiPageJ1.xaml", UriKind.Relative));
+                Affiche1.Visibility = Visibility.Visible;
             }
             else
             {
@@ -101,7 +104,7 @@ namespace ApplicationWPF.Frames
                || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom))
                && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
             {
-                Affiche2.NavigationService.Navigate(new System.Uri("Frames/GamePadFrame/ShifumiPageJ2.xaml", UriKind.Relative));
+                Affiche2.Visibility = Visibility.Visible;
             }
             else
             {
@@ -121,7 +124,7 @@ namespace ApplicationWPF.Frames
                 }
             }
 
-            BusinessLayer.PartieManager.resolve();
+           resolve();
         }
 
         private void ButtonNext_Event(object sender, EventArgs e)
@@ -131,7 +134,65 @@ namespace ApplicationWPF.Frames
                 this.NavigationService.Refresh();
             }
         }
-            
+
+        private void ButtonPierre_Event(object sender, EventArgs e)
+        {
+            BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Pierre;
+            resolve();
+        }
+
+        private void ButtonPapier_Event(object sender, EventArgs e)
+        {
+            BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Papier;
+            resolve();
+        }
+
+        private void ButtonCiseau_Event(object sender, EventArgs e)
+        {
+            BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Ciseau;
+            resolve();
+        }
+
+
+        private void ButtonPierre2_Event(object sender, EventArgs e)
+        {
+            BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Pierre;
+            resolve();
+        }
+
+        private void ButtonPapier2_Event(object sender, EventArgs e)
+        {
+            BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Papier;
+            resolve();
+        }
+
+        private void ButtonCiseau2_Event(object sender, EventArgs e)
+        {
+            BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Ciseau;
+            resolve();
+        }
+
+        private void resolve()
+        {
+            if (BusinessLayer.PartieManager.resolve())
+            {
+                DropShadowEffect o = new DropShadowEffect();
+                o.Direction = 0;
+                o.Color = Colors.Blue;
+                o.ShadowDepth = 0;
+                o.BlurRadius = 10;
+
+                if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1)
+                {          
+                    this.Concurent1Img.Effect = o;
+                }
+                else
+                {
+                    this.Concurent2Img.Effect = o;
+                }
+            }
+        }
+
 
         private void Page_KeyDown(object sender, KeyEventArgs e)
         {

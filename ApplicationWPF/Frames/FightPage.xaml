@@ -16,6 +16,7 @@
     </Page.Background>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="100"/>
@@ -25,24 +26,31 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="Concurent1Img" Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel>
+            <TextBlock x:Name="PhaseTournoi" Style="{StaticResource StarWarsFontStyle}" />
+        </StackPanel>
+        <StackPanel x:Name="Concurent1Img" Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}"/>
             <Image Source="{Binding ImageUri}" Width="400" Height="400"/>
         </StackPanel>
         
         <Image Grid.Row="0" Grid.Column="1"/>
-        <StackPanel x:Name="Concurent2Img" Grid.Row="0" Grid.Column="2" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel x:Name="Concurent2Img" Grid.Row="1" Grid.Column="2" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}"/>
             <Image Source="{Binding ImageUri}" Width="400" Height="400"/>
         </StackPanel>
-        <Frame x:Name="Affiche1" Grid.Row="1" Grid.Column="0">
-            
-        </Frame>
-        <Frame x:Name="Affiche2" Grid.Row="1" Grid.Column="2">
-
-        </Frame>
-        <UserControls:ButtonSoft Grid.Row="2" Grid.Column="0" Label="Quitter" HorizontalAlignment="Left" Margin="50,0,0,0" Event="ButtonBack_Event"/>
-        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel x:Name="Affiche1" Grid.Row="2" Grid.Column="0" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <UserControls:ButtonSoft  Label="Pierre[E]" HorizontalAlignment="Right" Margin="10" Event="ButtonPierre_Event"/>
+            <UserControls:ButtonSoft  Label="Papier[D]" HorizontalAlignment="Right" Margin="10" Event="ButtonPapier_Event"/>
+            <UserControls:ButtonSoft  Label="Ciseau[X]" HorizontalAlignment="Right" Margin="10" Event="ButtonCiseau_Event"/>
+        </StackPanel>
+        <StackPanel x:Name="Affiche2" Grid.Row="2" Grid.Column="2" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <UserControls:ButtonSoft  Label="Pierre[U]" HorizontalAlignment="Right" Margin="10" Event="ButtonPierre2_Event"/>
+            <UserControls:ButtonSoft  Label="Papier[J]" HorizontalAlignment="Right" Margin="10" Event="ButtonPapier2_Event"/>
+            <UserControls:ButtonSoft  Label="Ciseau[N]" HorizontalAlignment="Right" Margin="10" Event="ButtonCiseau2_Event"/>
+        </StackPanel>
+        <UserControls:ButtonSoft Grid.Row="3" Grid.Column="0" Label="Quitter" HorizontalAlignment="Left" Margin="50,0,0,0" Event="ButtonBack_Event"/>
+        <StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <UserControls:ButtonSoft  Label="Fight" HorizontalAlignment="Right" Margin="20,0,0,0" Event="ButtonStart_Event"/>
             <UserControls:ButtonSoft  Label="Suivant" HorizontalAlignment="Right" Margin="20,0,20,0" Event="ButtonNext_Event"/>
         </StackPanel>

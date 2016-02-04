@@ -27,19 +27,19 @@ namespace ApplicationWPF.Frames.GamePadFrame
 
         private void ButtonPierre_Event(object sender, EventArgs e)
         {
-            BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Pierre;
+            BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Pierre;
             BusinessLayer.PartieManager.resolve();
         }
 
         private void ButtonPapier_Event(object sender, EventArgs e)
         {
-            BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Papier;
+            BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Papier;
             BusinessLayer.PartieManager.resolve();
         }
 
         private void ButtonCiseau_Event(object sender, EventArgs e)
         {
-            BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Ciseau;
+            BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Ciseau;
             BusinessLayer.PartieManager.resolve();
         }
 
