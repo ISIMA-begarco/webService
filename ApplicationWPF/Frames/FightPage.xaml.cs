@@ -81,6 +81,9 @@ namespace ApplicationWPF.Frames
                 }
             }
 
+            var window = Window.GetWindow(this);
+            window.KeyDown += Page_KeyDown;
+
         }
 
         public string NextFrame
@@ -182,8 +185,15 @@ namespace ApplicationWPF.Frames
         private void ButtonNext_Event(object sender, EventArgs e)
         {
             if(BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur != null) {
-                BusinessLayer.PartieManager.nextMatch();
-                this.NavigationService.Refresh();
+                bool ret = BusinessLayer.PartieManager.nextMatch();
+                if (ret == false)
+                {
+                    string nextFrame = "Frames/WinnerPage.xaml";
+                    OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
+                }
+                else {
+                    this.NavigationService.Refresh();
+                }
             }
         }
 
@@ -242,10 +252,12 @@ namespace ApplicationWPF.Frames
                         if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1)
                         {
                             this.Concurent1Img.Effect = o;
+                            this.fightPage.UpdateLayout();
                         }
                         else
                         {
                             this.Concurent2Img.Effect = o;
+                            this.fightPage.UpdateLayout();
                         }
                     }
                 }
@@ -257,10 +269,12 @@ namespace ApplicationWPF.Frames
                     if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1)
                     {
                         this.Concurent1Img.Effect = o;
+                        this.fightPage.UpdateLayout();
                     }
                     else
                     {
                         this.Concurent2Img.Effect = o;
+                        this.fightPage.UpdateLayout();
                     }
                 }
             }
@@ -269,7 +283,55 @@ namespace ApplicationWPF.Frames
 
         private void Page_KeyDown(object sender, KeyEventArgs e)
         {
+            if( (BusinessLayer.PartieManager.getCurrentGame().Mode == EntitiesLayer.Mode.Solo 
+                ||BusinessLayer.PartieManager.getCurrentGame().Mode == EntitiesLayer.Mode.Multi)
+                && BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == null)
+            {
+                if(this.Affiche1.Visibility.Equals(Visibility.Visible)
+                     && BusinessLayer.PartieManager.getCurrentGame().Choice_j1 == EntitiesLayer.EShifumi.Aucun)
+                {
+                    if (e.Key == Key.E)
+                    {
+                        BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Pierre;
+                        resolve();
+                    }
 
+                    if (e.Key == Key.D)
+                    {
+                        BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Papier;
+                        resolve();
+                    }
+
+                    if (e.Key == Key.X)
+                    {
+                        BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Ciseau;
+                        resolve();
+                    }
+                }
+
+                if (this.Affiche2.Visibility.Equals(Visibility.Visible)
+                    && BusinessLayer.PartieManager.getCurrentGame().Choice_j2 == EntitiesLayer.EShifumi.Aucun)
+                {
+                    if (e.Key == Key.U)
+                    {
+                        BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Pierre;
+                        resolve();
+                    }
+
+                    if (e.Key == Key.J)
+                    {
+                        BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Papier;
+                        resolve();
+                    }
+
+                    if (e.Key == Key.N)
+                    {
+                        BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Ciseau;
+                        resolve();
+                    }
+                }
+               
+            }
         }
 
         private void Bourse_j1_LostFocus(object sender, RoutedEventArgs e)

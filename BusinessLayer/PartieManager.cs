@@ -19,9 +19,9 @@ namespace BusinessLayer
             rd = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
         }
 
-        public static void nextMatch()
+        public static bool nextMatch()
         {
-
+            bool nextExist = false;
             List<EntitiesLayer.Match> matchRestant = game.Tournament.Matchs.Where(m => m.JediVainqueur == null).OrderBy(m => m,new JediTournamentManager.MatchOrderComparer()).ToList();
             if(matchRestant.Count > 0)
             {
@@ -31,6 +31,7 @@ namespace BusinessLayer
                     int hep = (int)game.Current_match.PhaseTournoi * 2 + 1;
                     List<EntitiesLayer.Match> hi = game.Tournament.Matchs.OrderBy(m => m, new JediTournamentManager.MatchOrderComparer()).Reverse().ToList();
                     game.Current_match.Jedi1 = hi[hep].JediVainqueur;
+                    
                 }
 
                 if (game.Current_match.Jedi2 == null)
@@ -38,11 +39,13 @@ namespace BusinessLayer
                     int hep = (int)game.Current_match.PhaseTournoi * 2 + 2;
                     List<EntitiesLayer.Match> hi = game.Tournament.Matchs.OrderBy(m => m, new JediTournamentManager.MatchOrderComparer()).Reverse().ToList();
                     game.Current_match.Jedi2 = hi[hep].JediVainqueur;
+                   
                 }
-
+                nextExist = true;
 
             }
-                        
+
+            return nextExist;
         }
 
         public static EntitiesLayer.EShifumi getIAChoice()
