@@ -27,7 +27,8 @@ namespace ApplicationWPF.ViewModel.Match
             }
             set
             {
-                //m_match.Jedi1 = value;
+                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+                m_match.Jedi1 = (from x in jtm.getJedis() where x.Nom == value select x).FirstOrDefault();
                 OnPropertyChanged("Jedi1");
             }
         }
@@ -43,7 +44,8 @@ namespace ApplicationWPF.ViewModel.Match
             }
             set
             {
-                //m_match.Jedi2 = value;
+                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+                m_match.Jedi2 = (from x in jtm.getJedis() where x.Nom == value select x).FirstOrDefault();
                 OnPropertyChanged("Jedi2");
             }
         }
@@ -56,7 +58,8 @@ namespace ApplicationWPF.ViewModel.Match
             }
             set
             {
-                //m_match.Stade = value;
+                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+                m_match.Stade = (from x in jtm.getStades() where x.Planete == value select x).FirstOrDefault();
                 OnPropertyChanged("Stade");
             }
         }
@@ -70,7 +73,7 @@ namespace ApplicationWPF.ViewModel.Match
             set
             {
                 m_match.PhaseTournoi = value;
-                OnPropertyChanged("Tournoi");
+                OnPropertyChanged("PhaseTournoi");
             }
         }
 

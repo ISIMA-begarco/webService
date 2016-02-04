@@ -27,17 +27,14 @@ namespace ApplicationWPF.UserControls
             BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
 
             // Recuperation des jedis
-            List<EntitiesLayer.Jedi> jedis = jtm.getJedis();
-            ViewModel.Jedi.JedisModelView jvm1 = new ViewModel.Jedi.JedisModelView(jedis);
-            jedi1.DataContext = jvm1;
-
-            ViewModel.Jedi.JedisModelView jvm2 = new ViewModel.Jedi.JedisModelView(jedis);
-            jedi2.DataContext = jvm2;
+            jedi1.ItemsSource = (from x in jtm.getJedis() select x.Nom).ToList();
+            jedi2.ItemsSource = (from x in jtm.getJedis() select x.Nom).ToList();
 
             // Recuperation des stades
-            List<EntitiesLayer.Stade> stades = jtm.getStades();
-            ViewModel.Stade.StadesViewModel svm = new ViewModel.Stade.StadesViewModel(stades);
-            stade.DataContext = svm;
+            stade.ItemsSource = (from x in jtm.getStades() select x.Planete).ToList();
+
+            // Recuperation des phases
+            phaseTournoi.ItemsSource = Enum.GetValues(typeof(EntitiesLayer.EPhaseTournoi)).Cast<EntitiesLayer.EPhaseTournoi>();
         }
     }
 }
