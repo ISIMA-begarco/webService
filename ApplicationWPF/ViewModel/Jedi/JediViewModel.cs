@@ -28,10 +28,7 @@ namespace ApplicationWPF.ViewModel.Jedi
         {
             get
             {
-                string res = "New";
-                if (m_jedi != null)
-                    res = m_jedi.Nom;
-                return res;
+                return m_jedi.Nom;
             }
             set
             {
@@ -44,10 +41,7 @@ namespace ApplicationWPF.ViewModel.Jedi
         {
             get
             {
-                string res = "New";
-                if (m_jedi != null)
-                    res = m_jedi.Image;
-                return res;
+                return m_jedi.Image;
             }
             set
             {
@@ -58,12 +52,13 @@ namespace ApplicationWPF.ViewModel.Jedi
 
         public bool IsSith
         {
-            get { return m_jedi.IsSith; }
+            get
+            {
+                return m_jedi.IsSith;
+            }
             set
             {
-                bool res = false;
-                if (m_jedi != null)
-                    res = m_jedi.IsSith;
+                m_jedi.IsSith = value;
                 OnPropertyChanged("IsSith");
             }
         }
