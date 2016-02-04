@@ -20,7 +20,10 @@ namespace ApplicationWPF.ViewModel.Match
         {
             get
             {
-                return m_match.Jedi1.Nom;
+                string res = "Inconnu";
+                if (m_match.Jedi1 != null)
+                    res = m_match.Jedi1.Nom;
+                return res;
             }
             set
             {
@@ -33,7 +36,10 @@ namespace ApplicationWPF.ViewModel.Match
         {
             get
             {
-                return m_match.Jedi2.Nom;
+                string res = "Inconnu";
+                if (m_match.Jedi2 != null)
+                    res = m_match.Jedi2.Nom;
+                return res;
             }
             set
             {
@@ -72,7 +78,10 @@ namespace ApplicationWPF.ViewModel.Match
         {
             get
             {
-                return m_match.JediVainqueur.Nom;
+                string res = "Inconnu";
+                if (m_match.JediVainqueur != null)
+                    res = m_match.JediVainqueur.Nom;
+                return res;
             }
             set
             {
