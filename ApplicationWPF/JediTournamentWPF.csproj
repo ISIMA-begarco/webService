@@ -89,6 +89,9 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Tournoi\CtrlTournoi.xaml.cs">
+      <DependentUpon>CtrlTournoi.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Tournoi\TournoisView.xaml.cs">
       <DependentUpon>TournoisView.xaml</DependentUpon>
     </Compile>
@@ -194,6 +197,10 @@
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Tournoi\CtrlTournoi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\Tournoi\TournoisView.xaml">
       <Generator>MSBuild:Compile</Generator>

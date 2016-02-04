@@ -27,13 +27,13 @@ namespace ApplicationWPF.ViewModel.Tournament
         }
 
 
-        public TournamentViewModel SelectedTournament
+        public TournamentViewModel SelectedTournoi
         {
             get { return m_selectedItem; }
             set
             {
                 m_selectedItem = value;
-                OnPropertyChanged("SelectedTournament");
+                OnPropertyChanged("SelectedTournoi");
             }
         }
 
@@ -70,9 +70,14 @@ namespace ApplicationWPF.ViewModel.Tournament
 
         private void Add()
         {
-            EntitiesLayer.Tournoi t = new EntitiesLayer.Tournoi(0, "<New>", new List<EntitiesLayer.Match>());
-            this.SelectedTournament = new TournamentViewModel(t);
-            m_tournaments.Add(this.SelectedTournament);
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            EntitiesLayer.Match placeholder = jtm.getMatches()[0];
+            EntitiesLayer.Match[] placeholders = {placeholder, placeholder, placeholder, placeholder,
+                                                   placeholder, placeholder, placeholder, placeholder};
+
+            EntitiesLayer.Tournoi t = new EntitiesLayer.Tournoi(0, "<New>", new List<EntitiesLayer.Match>(placeholders));
+            this.SelectedTournoi = new TournamentViewModel(t);
+            m_tournaments.Add(this.SelectedTournoi);
         }
 
         public System.Windows.Input.ICommand RemoveCommand
@@ -92,12 +97,12 @@ namespace ApplicationWPF.ViewModel.Tournament
 
         private bool CanRemove()
         {
-            return (this.SelectedTournament != null);
+            return (this.SelectedTournoi != null);
         }
 
         private void Remove()
         {
-            if (this.SelectedTournament != null) m_tournaments.Remove(this.SelectedTournament);
+            if (this.SelectedTournoi != null) m_tournaments.Remove(this.SelectedTournoi);
         }
     }
 }

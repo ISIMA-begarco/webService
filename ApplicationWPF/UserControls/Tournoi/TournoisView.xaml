@@ -7,16 +7,29 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
         <ListView  
             ItemsSource="{Binding Tournaments}" 
-            SelectedItem="{Binding SelectedTournament}"
-            Grid.Row="1" Grid.ColumnSpan="2">
+            SelectedItem="{Binding SelectedTournoi}"
+            Grid.Row="0" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Name}"/>
-                    <!--<GridViewColumn Header="Matchs" DisplayMemberBinding="Liste de matchs..."/>-->
+                    <GridViewColumn Header="Matchs" DisplayMemberBinding="{Binding MatchsString}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <local:CtrlTournoi x:Name="InfoTournoi" Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding SelectedTournoi}"/>
+        <Button Name="Add" Grid.Row="2" Grid.Column="0" Content="Ajouter" Command="{Binding AddCommand}" Style="{StaticResource TeleMarinesFont}"/>
+        <Button Name="Remvoe" Grid.Row="2" Grid.Column="1" Content="Supprimer" Command="{Binding RemoveCommand}" Style="{StaticResource TeleMarinesFont}"/>
     </Grid>
 </UserControl>
