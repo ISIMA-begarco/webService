@@ -41,8 +41,8 @@ namespace ApplicationWPF.ViewModel.Tournament
             get
             {
                 string res = "";
-                foreach (EntitiesLayer.Match match in m_tournament.Matchs)
-                    res += match.Stade.Planete + ", ";
+                for (int i = 0; i < 8; i++)
+                    res += getMatchText(i) + ", ";
                 return res;
             }
         }
@@ -57,124 +57,106 @@ namespace ApplicationWPF.ViewModel.Tournament
             }
         }
 
+
         public string Match1
         {
-            get { return m_tournament.Matchs[0].Stade.Planete; }
-            set
-            {
-                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-                m_tournament.Matchs[0] = (from x in jtm.getMatches()
-                                          where x.Stade.Planete == value
-                                          select x).FirstOrDefault();
-                OnPropertyChanged("Matchs");
-                OnPropertyChanged("Match1");
-                OnPropertyChanged("MatchsString");
-            }
+            get { return getMatchText(0); }
+            set { setMatch(0, value); }
         }
 
         public string Match2
         {
-            get { return m_tournament.Matchs[1].Stade.Planete; }
-            set
-            {
-                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-                m_tournament.Matchs[1] = (from x in jtm.getMatches()
-                                          where x.Stade.Planete == value
-                                          select x).FirstOrDefault();
-                OnPropertyChanged("Matchs");
-                OnPropertyChanged("Match2");
-                OnPropertyChanged("MatchsString");
-            }
+            get { return getMatchText(1); }
+            set { setMatch(1, value); }
         }
 
         public string Match3
         {
-            get { return m_tournament.Matchs[2].Stade.Planete; }
-            set
-            {
-                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-                m_tournament.Matchs[2] = (from x in jtm.getMatches()
-                                          where x.Stade.Planete == value
-                                          select x).FirstOrDefault();
-                OnPropertyChanged("Matchs");
-                OnPropertyChanged("Match3");
-                OnPropertyChanged("MatchsString");
-            }
+            get { return getMatchText(2); }
+            set { setMatch(2, value); }
         }
 
         public string Match4
         {
-            get { return m_tournament.Matchs[3].Stade.Planete; }
-            set
-            {
-                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-                m_tournament.Matchs[3] = (from x in jtm.getMatches()
-                                          where x.Stade.Planete == value
-                                          select x).FirstOrDefault();
-                OnPropertyChanged("Matchs");
-                OnPropertyChanged("Match4");
-                OnPropertyChanged("MatchsString");
-            }
+            get { return getMatchText(3); }
+            set { setMatch(3, value); }
         }
 
         public string Match5
         {
-            get { return m_tournament.Matchs[4].Stade.Planete; }
-            set
-            {
-                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-                m_tournament.Matchs[4] = (from x in jtm.getMatches()
-                                          where x.Stade.Planete == value
-                                          select x).FirstOrDefault();
-                OnPropertyChanged("Matchs");
-                OnPropertyChanged("Match5");
-                OnPropertyChanged("MatchsString");
-            }
+            get { return getMatchText(4); }
+            set { setMatch(4, value); }
         }
 
         public string Match6
         {
-            get { return m_tournament.Matchs[5].Stade.Planete; }
-            set
-            {
-                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-                m_tournament.Matchs[5] = (from x in jtm.getMatches()
-                                          where x.Stade.Planete == value
-                                          select x).FirstOrDefault();
-                OnPropertyChanged("Matchs");
-                OnPropertyChanged("Match6");
-                OnPropertyChanged("MatchsString");
-            }
+            get { return getMatchText(5); }
+            set { setMatch(5, value); }
         }
 
         public string Match7
         {
-            get { return m_tournament.Matchs[6].Stade.Planete; }
-            set
-            {
-                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-                m_tournament.Matchs[6] = (from x in jtm.getMatches()
-                                          where x.Stade.Planete == value
-                                          select x).FirstOrDefault();
-                OnPropertyChanged("Matchs");
-                OnPropertyChanged("Match7");
-                OnPropertyChanged("MatchsString");
-            }
+            get { return getMatchText(6); }
+            set { setMatch(6, value); }
         }
 
         public string Match8
         {
-            get { return m_tournament.Matchs[7].Stade.Planete; }
-            set
+            get { return getMatchText(7); }
+            set { setMatch(7, value); }
+        }
+
+        private string getMatchText(int index)
+        {
+            EntitiesLayer.Match match = m_tournament.Matchs[index];
+            string jedi1 = "Inconnu";
+            string jedi2 = "Inconnu";
+
+            if (match.Jedi1 != null)
+                jedi1 = match.Jedi1.Nom;
+            if (match.Jedi2 != null)
+                jedi2 = match.Jedi2.Nom;
+
+            return jedi1 + " VS " + jedi2;
+        }
+
+        private void setMatch(int index, string value)
+        {
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            string jedi1 = value.Split(new string[] { " VS " }, StringSplitOptions.None)[0];
+            string jedi2 = value.Split(new string[] { " VS " }, StringSplitOptions.None)[1];
+            if (jedi1 != "Inconnu" && jedi2 != "Inconnu")
             {
-                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-                m_tournament.Matchs[7] = (from x in jtm.getMatches()
-                                          where x.Stade.Planete == value
+                m_tournament.Matchs[0] = (from x in jtm.getMatches()
+                                          where x.Jedi1.Nom == jedi1
+                                          && x.Jedi2.Nom == jedi2
                                           select x).FirstOrDefault();
-                OnPropertyChanged("Matchs");
-                OnPropertyChanged("Match8");
-                OnPropertyChanged("MatchsString");
             }
+            else if (jedi1 == "Inconnu" && jedi2 != "Inconnu")
+            {
+                m_tournament.Matchs[0] = (from x in jtm.getMatches()
+                                          where x.Jedi1 == null
+                                          && x.Jedi2.Nom == jedi2
+                                          select x).FirstOrDefault();
+            }
+            else if (jedi1 != "Inconnu" && jedi2 == "Inconnu")
+            {
+                m_tournament.Matchs[0] = (from x in jtm.getMatches()
+                                          where x.Jedi1.Nom == jedi1
+                                          && x.Jedi2 == null
+                                          select x).FirstOrDefault();
+            }
+            else // if (jedi1 == "Inconnu" && jedi2 == "Inconnu")
+            {
+                m_tournament.Matchs[0] = (from x in jtm.getMatches()
+                                          where x.Jedi1 == null
+                                          && x.Jedi2 == null
+                                          select x).FirstOrDefault();
+            }
+
+            OnPropertyChanged("Matchs");
+            OnPropertyChanged("Match" + (index+1).ToString());
+            OnPropertyChanged("MatchsString");
         }
     }
 }
