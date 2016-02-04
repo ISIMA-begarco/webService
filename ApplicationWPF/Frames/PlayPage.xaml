@@ -46,11 +46,11 @@
 
         <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="20,10,10,10" Background="Black" Opacity="0.9">
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="100"/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="125"/>
                 </Grid.RowDefinitions>                
@@ -63,6 +63,19 @@
                     <UserControls:ComboBoxTournoi x:Name="usrCtrlTournoiCombo" Grid.Column="1"/>
                 </Grid>
             </Grid>
+            <ListBox x:Name="tournamentDetails" Grid.Row="1" Background="Transparent" VerticalAlignment="Stretch" ItemsSource="{Binding Matchs}" Margin="5" BorderThickness="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Image Source="{Binding obj_Jedi1.ImageUri}" Height="70" Width="50"/>
+                            <TextBlock Text="{Binding Jedi1}" Style="{StaticResource StarWarsFontStyle}" Margin="5" FontSize="24"/>
+                            <TextBlock Text=" Vs. " Style="{StaticResource StarWarsFontStyle}" Foreground="Red"  />
+                            <TextBlock Text="{Binding Jedi1}" Style="{StaticResource StarWarsFontStyle}" Margin="5"  FontSize="24" />
+                            <Image Source="{Binding  obj_Jedi2.ImageUri}" Height="70" Width="50"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>                
+            </ListBox>
             <Frame x:Name="ModeChoice" Grid.Row="2" Padding="5" NavigationUIVisibility="Hidden" >
 
             </Frame>

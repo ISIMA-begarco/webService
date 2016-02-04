@@ -40,9 +40,26 @@ namespace ApplicationWPF.Frames
             usrCtrlTournoiCombo.DataContext = tvm;
 
             BusinessLayer.PartieManager.startNewGame();
+            tournamentDetails.MouseLeave += SetDetails;
         }
 
+        public void SetDetails(object sender, MouseEventArgs e)
+        {
+            if (BusinessLayer.PartieManager.getCurrentGame().Tournament != null)
+            {
+                List<EntitiesLayer.Match> ms = new List<EntitiesLayer.Match>();
+                foreach (EntitiesLayer.Match m in BusinessLayer.PartieManager.getCurrentGame().Tournament.Matchs)
+                {
+                    if (m.Jedi1 != null && m.Jedi2 != null)
+                        ms.Add(m);
+                }
 
+                IList<EntitiesLayer.Match> matchs = ms;
+                ViewModel.Match.MatchsViewModel mvm = new ViewModel.Match.MatchsViewModel(matchs);
+                tournamentDetails.DataContext = mvm;
+            }
+        }
+        
         public string NextFrame
         {
             get { return m_nextFrame; }

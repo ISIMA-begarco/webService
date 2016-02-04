@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationWPF.Frames;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,8 +29,11 @@ namespace ApplicationWPF.UserControls
         private void cbTournoi_MouseLeave(object sender, MouseEventArgs e)
         {
             ViewModel.Tournament.TournamentViewModel t = this.cbTournoi.SelectedItem as ViewModel.Tournament.TournamentViewModel;
-            if(t != null)
+            if (t != null)
+            {
                 BusinessLayer.PartieManager.setCurrentGameTournament(t.Tournament);
+                
+            }
         }
     }
 }
