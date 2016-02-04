@@ -37,20 +37,6 @@ namespace ApplicationWPF.ViewModel.Jedi
                 OnPropertyChanged("Nom");
             }
         }
-        
-
-        public String Image
-        {
-            get
-            {
-                return m_jedi.Image;
-            }
-            set
-            {
-                m_jedi.Image = value;
-                OnPropertyChanged("Image");
-            }
-        }
 
         public Uri ImageUri
         {

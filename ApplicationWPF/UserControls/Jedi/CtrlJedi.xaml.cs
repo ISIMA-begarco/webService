@@ -34,16 +34,19 @@ namespace ApplicationWPF.UserControls
 
         private void OnChangeImageClick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
+            if (DataContext != null)
             {
-                //jediImage.Source = new BitmapImage(new Uri(op.FileName));
-                ViewModel.Jedi.JediViewModel jvm = DataContext as ViewModel.Jedi.JediViewModel;
-                jvm.ImageUri = new Uri(op.FileName, UriKind.Relative);
+                OpenFileDialog op = new OpenFileDialog();
+                op.Title = "Choisissez un message";
+                op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                  "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                  "Portable Network Graphic (*.png)|*.png";
+                if (op.ShowDialog() == true)
+                {
+                    ViewModel.Jedi.JediViewModel jvm = DataContext as ViewModel.Jedi.JediViewModel;
+                    string filename = op.FileName.Split('\\').Last();
+                    jvm.ImageUri = new Uri(filename, UriKind.Relative);
+                }
             }
         }
 
