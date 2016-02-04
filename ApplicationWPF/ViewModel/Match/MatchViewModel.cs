@@ -16,6 +16,23 @@ namespace ApplicationWPF.ViewModel.Match
             m_match = match;
         }
 
+        public EntitiesLayer.Jedi obj_Jedi1
+        {
+            get
+            {
+                return m_match.Jedi1;
+            }
+        }
+
+        public EntitiesLayer.Jedi obj_Jedi2
+        {
+            get
+            {
+                return m_match.Jedi2;
+            }
+        }
+
+
         public string Jedi1
         {
             get
