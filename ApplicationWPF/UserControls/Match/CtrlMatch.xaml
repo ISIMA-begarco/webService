@@ -17,10 +17,11 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox  x:Name="stade" Grid.Row="0" Grid.ColumnSpan="3" SelectedItem="{Binding Stade}"/>
+        <Label Grid.Row="0" Content="Stade" VerticalAlignment="Top" FontFamily="Calibri"/>
+        <ComboBox  x:Name="stade" Grid.Row="0" Grid.ColumnSpan="3" SelectedItem="{Binding Stade}" VerticalAlignment="Bottom"/>
         <ComboBox  x:Name="jedi1" Grid.Row="1" Grid.Column="0" SelectedItem="{Binding Jedi1}"/>
         <ComboBox  x:Name="jedi2" Grid.Row="1" Grid.Column="2" SelectedItem="{Binding Jedi2}"/>
-        <Image Grid.Row="1" Grid.Column ="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource VersusPicture}"/>
+        <Image Grid.Row="1" Grid.Column ="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource JediLogo}"/>
         <ComboBox  x:Name="phaseTournoi" SelectedItem="{Binding PhaseTournoi}" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

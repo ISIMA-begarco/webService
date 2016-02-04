@@ -329,10 +329,10 @@
     <None Include="Picture\Jedi.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\VS_Icon.gif" />
+    <None Include="Picture\VS_Icon.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Jedi.png" />
+    <None Include="Picture\Jedi.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Picture\default.png" />

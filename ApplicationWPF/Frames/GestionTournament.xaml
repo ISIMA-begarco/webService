@@ -10,36 +10,40 @@
 	Title="GestionTournament">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>-->
 
+        <UserControls:ButtonSoft HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20" Label="Retour" Event="ButtonBak_Event"/>
+        
         <TabControl
-            VerticalAlignment="Top"
-            Grid.Row="0"
-            FontSize="70" Style="{StaticResource TeleMarinesFont}">
+            FontSize="70"  Style="{StaticResource TeleMarinesFont}">
+            <TabControl.Resources>
+                <Style TargetType="TabPanel">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                </Style>
+            </TabControl.Resources>
 
             <!-- Gestion des Jedis -->
             <TabItem Header="Jedi" FontWeight="Bold" Padding="25,20,25,20">
-                <userControls:JedisView x:Name="ucJedis"/>
+                <userControls:JedisView x:Name="ucJedis" Style="{StaticResource Classic}"/>
             </TabItem>
 
             <!-- Gestion des Matchs -->
             <TabItem Header="Match" FontWeight="Bold" Padding="25,20,25,20">
-                <userControls:MatchsView x:Name="ucMatchs"/>
+                <userControls:MatchsView x:Name="ucMatchs" Style="{StaticResource Classic}"/>
             </TabItem>
 
             <!-- Gestion des Stades -->
             <TabItem Header="Stade" FontWeight="Bold" Padding="25,20,25,20">
-                    <userControls:StadesView x:Name="ucStade"/>
+                <userControls:StadesView x:Name="ucStade" Style="{StaticResource Classic}"/>
             </TabItem>
 
             <!-- Gestion des Tournois -->
             <TabItem Header="Tournoi" FontWeight="Bold" Padding="25,20,25,20">
-                    <userControls:TournoisView x:Name="ucTournoi"/>
+                <userControls:TournoisView x:Name="ucTournoi" Style="{StaticResource Classic}"/>
             </TabItem>
         </TabControl>
-        <UserControls:ButtonSoft Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Label="Retour" Event="ButtonBak_Event"/>
     </Grid>
 </Page>
