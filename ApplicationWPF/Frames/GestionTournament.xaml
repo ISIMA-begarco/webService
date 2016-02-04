@@ -9,16 +9,15 @@
       Loaded="WindowLoaded"
 	Title="GestionTournament">
 
+    <Page.Background>
+        <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround7}"/>
+    </Page.Background>
+    
     <Grid>
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="100"/>
-        </Grid.RowDefinitions>-->
-
         <UserControls:ButtonSoft HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20" Label="Retour" Event="ButtonBak_Event"/>
-        
+
         <TabControl
-            FontSize="70"  Style="{StaticResource TeleMarinesFont}">
+            FontSize="70"  Style="{StaticResource TeleMarinesFont}" Opacity="0.9">
             <TabControl.Resources>
                 <Style TargetType="TabPanel">
                     <Setter Property="HorizontalAlignment" Value="Right"/>

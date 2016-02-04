@@ -41,7 +41,9 @@ namespace ApplicationWPF.UserControls
               "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
             {
-                jediImage.Source = new BitmapImage(new Uri(op.FileName));
+                //jediImage.Source = new BitmapImage(new Uri(op.FileName));
+                ViewModel.Jedi.JediViewModel jvm = DataContext as ViewModel.Jedi.JediViewModel;
+                jvm.ImageUri = new Uri(op.FileName, UriKind.Relative);
             }
         }
 
