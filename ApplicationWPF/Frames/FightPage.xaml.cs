@@ -37,8 +37,8 @@ namespace ApplicationWPF.Frames
             // Gestion de la Partie
             EntitiesLayer.Partie game = BusinessLayer.PartieManager.getCurrentGame();
             ViewModel.Partie.PartieViewModel gvm = new ViewModel.Partie.PartieViewModel(game);
-            Concurent1Img.DataContext = gvm.Current_match.Jedi1;
-            Concurent2Img.DataContext = gvm.Current_match.Jedi2;
+            Concurent1.DataContext = gvm.Current_match.Jedi1;
+            Concurent2.DataContext = gvm.Current_match.Jedi2;
 
             game.Choice_j1 = EntitiesLayer.EShifumi.Aucun;
             game.Choice_j2 = EntitiesLayer.EShifumi.Aucun;
@@ -76,55 +76,32 @@ namespace ApplicationWPF.Frames
 
         private void ButtonStart_Event(object sender, EventArgs e)
         {
-            if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom) 
-                || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom) )
-                && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
-            {
-                Affiche1.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Random rd = new Random();
-                int rand = rd.Next();
-                if (rand % 3 == 0)
+            if(BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == null)
+            {           
+                if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom) 
+                    || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom) )
+                    && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
                 {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Ciseau;
+                    Affiche1.Visibility = Visibility.Visible;
                 }
-                if (rand % 3 == 1)
+                else
                 {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Papier;
+                    BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = BusinessLayer.PartieManager.getIAChoice();
                 }
-                if (rand % 3 == 2)
-                {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Pierre;
-                }
-            }
 
-            if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom)
-               || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom))
-               && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
-            {
-                Affiche2.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Random rd = new Random();
-                int rand  = rd.Next();
-                if (rand % 3 == 0)
+                if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom)
+                   || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom))
+                   && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
                 {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Ciseau;
+                    Affiche2.Visibility = Visibility.Visible;
                 }
-                if (rand % 3 == 1)
+                else
                 {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Papier;
+                    BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = BusinessLayer.PartieManager.getIAChoice();
                 }
-                if (rand % 3 == 2)
-                {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Pierre;
-                }
-            }
 
-           resolve();
+                resolve();
+            }
         }
 
         private void ButtonNext_Event(object sender, EventArgs e)
@@ -174,21 +151,24 @@ namespace ApplicationWPF.Frames
 
         private void resolve()
         {
-            if (BusinessLayer.PartieManager.resolve())
+            if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == null)
             {
-                DropShadowEffect o = new DropShadowEffect();
-                o.Direction = 0;
-                o.Color = Colors.Blue;
-                o.ShadowDepth = 0;
-                o.BlurRadius = 10;
-
-                if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1)
-                {          
-                    this.Concurent1Img.Effect = o;
-                }
-                else
+                if (BusinessLayer.PartieManager.resolve())
                 {
-                    this.Concurent2Img.Effect = o;
+                    DropShadowEffect o = new DropShadowEffect();
+                    o.Direction = 0;
+                    o.Color = Colors.Blue;
+                    o.ShadowDepth = 0;
+                    o.BlurRadius = 10;
+
+                    if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1)
+                    {
+                        this.Concurent1Img.Effect = o;
+                    }
+                    else
+                    {
+                        this.Concurent2Img.Effect = o;
+                    }
                 }
             }
         }

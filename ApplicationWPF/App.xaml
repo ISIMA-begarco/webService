@@ -11,6 +11,10 @@
         <Style x:Key="TeleMarinesFont">
             <Setter Property="TextElement.FontFamily" Value="Font/#Tele-Marines"/>
         </Style>
+        <Style x:Key="Classic">
+            <Setter Property="TextElement.FontFamily" Value="Calibri"/>
+            <Setter Property="TextElement.FontSize" Value="30"/>
+        </Style>
 
 
         <Style TargetType="{x:Type UserControl}"  x:Key="PlayChoiceStyle">
@@ -55,7 +59,7 @@
         <BitmapImage x:Key="StarWarsImagePlanet1" UriSource="../Solution Items/img/planet.png" />
         <BitmapImage x:Key="JediTournamentLogo" UriSource="./Picture/JediTournamentLogo.png" />
         <BitmapImage x:Key="JediLogo" UriSource="./Picture/Jedi.jpg" />
-        <BitmapImage x:Key="VersusPicture" UriSource="./Resources/VS_Icon.gif" />
+        <BitmapImage x:Key="VersusPicture" UriSource="./Picture/VS_Icon.gif" />
 
     </Application.Resources>
 </Application>

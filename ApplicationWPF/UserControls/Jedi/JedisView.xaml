@@ -17,19 +17,20 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <ListView  
+            x:Name="jedisList"
             ItemsSource="{Binding Jedis}" 
             SelectedItem="{Binding SelectedJedi}"
             Grid.Row="0" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
-                    <GridViewColumn Header="Sith" DisplayMemberBinding="{Binding IsSith}"/>
-                    <GridViewColumn Header="Caracteristiques" DisplayMemberBinding="{Binding Caracteristiques}"/>
+                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Header="Sith" DisplayMemberBinding="{Binding IsSith, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Header="Caracteristiques" DisplayMemberBinding="{Binding CaracteristiquesString, UpdateSourceTrigger=PropertyChanged}"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <local:CtrlJedi x:Name="InfoJedi" Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding SelectedJedi}"/>
-        <Button Name="Add" Grid.Row="3" Grid.Column="0" Content="Ajouter" Command="{Binding AddCommand}"/>
-        <Button Name="Remvoe" Grid.Row="3" Grid.Column="1" Content="Supprimer" Command="{Binding RemoveCommand}"/>
+        <Button Name="Add" Grid.Row="3" Grid.Column="0" Content="Ajouter" Command="{Binding AddCommand}" Style="{StaticResource TeleMarinesFont}"/>
+        <Button Name="Remvoe" Grid.Row="3" Grid.Column="1" Content="Supprimer" Command="{Binding RemoveCommand}" Style="{StaticResource TeleMarinesFont}"/>
     </Grid>
 </UserControl>
