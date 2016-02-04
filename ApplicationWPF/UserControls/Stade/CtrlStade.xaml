@@ -18,12 +18,12 @@
         </Grid.ColumnDefinitions>
         
         <Label Grid.Row="0" Grid.Column="0" Content="Planete"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Planete}" />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Planete, UpdateSourceTrigger=PropertyChanged}" />
         
         <Label Grid.Row="1" Grid.Column="0" Content="Nombre de place"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NbPlaces}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NbPlaces, UpdateSourceTrigger=PropertyChanged}"/>
         
         <Label Grid.Row="2" Grid.Column="0" Content="Caracteristiques"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Caracteristiques}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Caracteristiques, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </UserControl>
