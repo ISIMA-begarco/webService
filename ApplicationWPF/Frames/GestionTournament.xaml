@@ -6,7 +6,6 @@
       xmlns:local="clr-namespace:ApplicationWPF.Frames" x:Class="ApplicationWPF.Frames.GestionTournament" 
       xmlns:userControls="clr-namespace:ApplicationWPF.UserControls" d:DesignWidth="1000"
       mc:Ignorable="d"
-      Loaded="WindowLoaded"
 	Title="GestionTournament">
 
     <Page.Background>
@@ -26,22 +25,22 @@
 
             <!-- Gestion des Jedis -->
             <TabItem Header="Jedi" FontWeight="Bold" Padding="25,20,25,20">
-                <userControls:JedisView x:Name="ucJedis" Style="{StaticResource Classic}"/>
+                <userControls:JedisView x:Name="ucJedis" Style="{StaticResource Classic}" Loaded="JediLoaded"/>
             </TabItem>
 
             <!-- Gestion des Matchs -->
             <TabItem Header="Match" FontWeight="Bold" Padding="25,20,25,20">
-                <userControls:MatchsView x:Name="ucMatchs" Style="{StaticResource Classic}"/>
+                <userControls:MatchsView x:Name="ucMatchs" Style="{StaticResource Classic}" Loaded="MatchLoaded"/>
             </TabItem>
 
             <!-- Gestion des Stades -->
             <TabItem Header="Stade" FontWeight="Bold" Padding="25,20,25,20">
-                <userControls:StadesView x:Name="ucStade" Style="{StaticResource Classic}"/>
+                <userControls:StadesView x:Name="ucStade" Style="{StaticResource Classic}" Loaded="StadeLoaded"/>
             </TabItem>
 
             <!-- Gestion des Tournois -->
             <TabItem Header="Tournoi" FontWeight="Bold" Padding="25,20,25,20">
-                <userControls:TournoisView x:Name="ucTournoi" Style="{StaticResource Classic}"/>
+                <userControls:TournoisView x:Name="ucTournoi" Style="{StaticResource Classic}" Loaded="TournoiLoaded"/>
             </TabItem>
         </TabControl>
     </Grid>
