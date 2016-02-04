@@ -24,7 +24,7 @@
                 <GridView>
                     <GridViewColumn Header="Planete" DisplayMemberBinding="{Binding Planete}"/>
                     <GridViewColumn Header="NbPlaces" DisplayMemberBinding="{Binding NbPlaces}"/>
-                    <GridViewColumn Header="Caracs" DisplayMemberBinding="{Binding Caracteristiques}"/>
+                    <GridViewColumn Header="Caracs" DisplayMemberBinding="{Binding CaracteristiquesString}"/>
                 </GridView>
             </ListView.View>
         </ListView>
