@@ -24,15 +24,25 @@ namespace JediTournamentWPF
         public ConnexionWindow()
         {
             InitializeComponent();
+            var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
+            this.Left = desktopWorkingArea.Width/2 - this.Width/2;
+            this.Top = desktopWorkingArea.Height / 2 - this.Height/2;
         }
 
-        public void Connexion_Button_OnClick(object sender, RoutedEventArgs e)
-        {
-            if (JediTournamentManager.CheckConnexionUser(Login_TextBox.Text, Password_TextBox.Password))
+        public void Connexion_Button_OnClick(object sender, RoutedEventArgs e) {
+
+            if (!Login_TextBox.Text.Equals("") && !Password_TextBox.Password.Equals(""))
             {
-                this.Close();
+                if (JediTournamentManager.CheckConnexionUser(Login_TextBox.Text, Password_TextBox.Password))
+                {
+                    this.Close();
+                }
             }
         }
 
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
