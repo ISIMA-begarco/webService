@@ -40,14 +40,14 @@ namespace EntitiesLayer
 
         public Uri ImageUri
         {
-            get { return new Uri(Image,UriKind.Relative); }
+            get { return new Uri("../../Picture/" +  Image, UriKind.Relative); }
         }
 
         public string Image
         {
             get
             {
-                return "../../Picture/" + image;
+                return image;
             }
 
             set

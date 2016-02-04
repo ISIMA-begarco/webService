@@ -81,18 +81,16 @@ namespace ApplicationWPF.Frames
                         break;
                     case EntitiesLayer.Mode.Multi:
                         BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J2", 0), 2);
+                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(1, "J2", 0), 2);
                         break;
                     case EntitiesLayer.Mode.MultiPari:
                         BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J2", 0), 2);
+                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(1, "J2", 0), 2);
                         break;
                     case EntitiesLayer.Mode.SoloPari:
                         BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
                         break;
                 }
-
-
 
                 OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
             }
