@@ -20,24 +20,34 @@ namespace BusinessLayer
         public static void nextMatch()
         {
 
-            List<EntitiesLayer.Match> matchRestant = game.Tournament.Matchs.Where(m => m.JediVainqueur == null).ToList();
+            List<EntitiesLayer.Match> matchRestant = game.Tournament.Matchs.Where(m => m.JediVainqueur == null).OrderBy(m => m,new JediTournamentManager.MatchOrderComparer()).ToList();
             if(matchRestant.Count > 0)
             {
                 game.Current_match = matchRestant.First();
-            }
-            else
-            {
-                for(int i = 0; i < game.Tournament.Matchs.Count; i+=2){
-                    //EntitiesLayer.Match new_match = new EntitiesLayer.Match(0,game.Tournament.Matchs.ElementAt(i).JediVainqueur, game.Tournament.Matchs.ElementAt(i).JediVainqueur);
-
+                if(game.Current_match.Jedi1 == null)
+                {
+                    game.Current_match.Jedi1 = game.Tournament.Matchs.OrderBy(m => m, new JediTournamentManager.MatchOrderComparer()).ToList()[(int)game.Current_match.PhaseTournoi * 2 + 1].JediVainqueur;
                 }
-            }
 
-            
+                if (game.Current_match.Jedi2 == null)
+                {
+                    game.Current_match.Jedi2 = game.Tournament.Matchs.OrderBy(m=>m, new JediTournamentManager.MatchOrderComparer()).ToList()[(int)game.Current_match.PhaseTournoi * 2 + 2].JediVainqueur;
+                }
+
+
+            }
+                        
         }
 
-        public static void resolve()
+        private EntitiesLayer.EPhaseTournoi getNextPhase(EntitiesLayer.EPhaseTournoi phase)
         {
+
+            return EntitiesLayer.EPhaseTournoi.Finale;
+        }
+
+        public static bool resolve()
+        {
+            bool solved = false;
             if(game.Choice_j1 != EntitiesLayer.EShifumi.Aucun && game.Choice_j2 != EntitiesLayer.EShifumi.Aucun)
             {
                 int res = jtm.playRound(game.Choice_j1, game.Choice_j2);
@@ -61,7 +71,11 @@ namespace BusinessLayer
                 {
                     game.Current_match.JediVainqueur = game.Current_match.Jedi2;
                 }
+
+                solved = true;
             }
+
+            return solved;
         }
 
         public static void setCurrentPlayer(EntitiesLayer.Joueur j,int num_j)
