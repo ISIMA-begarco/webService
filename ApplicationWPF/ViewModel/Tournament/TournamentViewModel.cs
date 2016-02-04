@@ -111,25 +111,33 @@ namespace ApplicationWPF.ViewModel.Tournament
             EntitiesLayer.Match match = m_tournament.Matchs[index];
             string jedi1 = "Inconnu";
             string jedi2 = "Inconnu";
+            //string stade = "Inconnu";
 
             if (match.Jedi1 != null)
                 jedi1 = match.Jedi1.Nom;
             if (match.Jedi2 != null)
                 jedi2 = match.Jedi2.Nom;
+            //if (match.Stade != null)
+                string stade = match.Stade.Planete;
 
-            return jedi1 + " VS " + jedi2;
+            return jedi1 + " VS " + jedi2 + " (" + stade + ")";
         }
 
         private void setMatch(int index, string value)
         {
             BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
             string jedi1 = value.Split(new string[] { " VS " }, StringSplitOptions.None)[0];
-            string jedi2 = value.Split(new string[] { " VS " }, StringSplitOptions.None)[1];
+            string jedi2 = value.Split(new string[] { " VS " }, StringSplitOptions.None)[1]
+                            .Split(new string[] { " (" }, StringSplitOptions.None)[0];
+            string stade = value.Split(new string[] { " (" }, StringSplitOptions.None)[1]
+                            .Split(new string[] { ")" }, StringSplitOptions.None)[0];
+
             if (jedi1 != "Inconnu" && jedi2 != "Inconnu")
             {
                 m_tournament.Matchs[0] = (from x in jtm.getMatches()
                                           where x.Jedi1.Nom == jedi1
                                           && x.Jedi2.Nom == jedi2
+                                          && x.Stade.Planete == stade
                                           select x).FirstOrDefault();
             }
             else if (jedi1 == "Inconnu" && jedi2 != "Inconnu")
@@ -137,6 +145,7 @@ namespace ApplicationWPF.ViewModel.Tournament
                 m_tournament.Matchs[0] = (from x in jtm.getMatches()
                                           where x.Jedi1 == null
                                           && x.Jedi2.Nom == jedi2
+                                          && x.Stade.Planete == stade
                                           select x).FirstOrDefault();
             }
             else if (jedi1 != "Inconnu" && jedi2 == "Inconnu")
@@ -144,6 +153,7 @@ namespace ApplicationWPF.ViewModel.Tournament
                 m_tournament.Matchs[0] = (from x in jtm.getMatches()
                                           where x.Jedi1.Nom == jedi1
                                           && x.Jedi2 == null
+                                          && x.Stade.Planete == stade
                                           select x).FirstOrDefault();
             }
             else // if (jedi1 == "Inconnu" && jedi2 == "Inconnu")
@@ -151,6 +161,7 @@ namespace ApplicationWPF.ViewModel.Tournament
                 m_tournament.Matchs[0] = (from x in jtm.getMatches()
                                           where x.Jedi1 == null
                                           && x.Jedi2 == null
+                                          && x.Stade.Planete == stade
                                           select x).FirstOrDefault();
             }
 

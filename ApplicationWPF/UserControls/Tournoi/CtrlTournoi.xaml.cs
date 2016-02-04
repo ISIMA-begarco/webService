@@ -35,13 +35,14 @@ namespace ApplicationWPF.UserControls
             {
                 string jedi1 = "Inconnu";
                 string jedi2 = "Inconnu";
+                string stade = jtm.getMatches()[i].Stade.Planete;
 
                 if (jedis1[i] != null)
                     jedi1 = jedis1[i].Nom;
                 if (jedis1[i] != null)
                     jedi2 = jedis2[i].Nom;
 
-                matchs.Add(jedi1 + " VS " + jedi2);
+                matchs.Add(jedi1 + " VS " + jedi2 + " (" + stade + ")");
             }
 
             Match1.ItemsSource = matchs;
