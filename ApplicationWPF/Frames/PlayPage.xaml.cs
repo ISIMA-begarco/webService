@@ -69,10 +69,7 @@ namespace ApplicationWPF.Frames
             if(this.usrCtrlTournoiCombo.cbTournoi.SelectedItem != null)
             {
                 string nextFrame = "Frames/FightPage.xaml";
-                bool launch = false;
-
-                ViewModel.Tournament.TournamentViewModel t = this.usrCtrlTournoiCombo.cbTournoi.SelectedItem as ViewModel.Tournament.TournamentViewModel;
-                BusinessLayer.PartieManager.setCurrentGameTournament(t.Tournament);
+                bool launch = false;                
 
                 switch (BusinessLayer.PartieManager.getCurrentGame().Mode)
 
@@ -95,12 +92,22 @@ namespace ApplicationWPF.Frames
                         }
                         break;
                     case EntitiesLayer.Mode.MultiPari:
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(1, "J2", 0), 2);
+                        if(BusinessLayer.PartieManager.getCurrentGame().Bourse_j1 != 0 
+                            && BusinessLayer.PartieManager.getCurrentGame().Bourse_j2 != 0)
+                        {
+                            BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                            BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(1, "J2", 0), 2);
+                            launch = true;
+                        }
                         break;
                     case EntitiesLayer.Mode.SoloPari:
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                        if (BusinessLayer.PartieManager.getCurrentGame().Bourse_j1 != 0)
+                        {
+                            BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                            launch = true;
+                        }
                         break;
+                        
                 }
 
                 if(launch)

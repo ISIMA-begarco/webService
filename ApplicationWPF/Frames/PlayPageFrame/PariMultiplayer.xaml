@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="Mise de base J1 :" Style="{StaticResource StarWarsFontStyle}"/>
-            <TextBox Grid.Column="1" Height="50" Background="Transparent" BorderBrush="Red" Foreground="White" FontSize="30"/>
+            <TextBox x:Name="Bourse_j1" Text="10000" Grid.Column="1" Height="50" Background="Transparent" BorderBrush="Red" Foreground="White" FontSize="30" MouseLeave="Bourse_j1_LostFocus" LostFocus="Bourse_j1_LostFocus"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="Mise de base J2 :" Style="{StaticResource StarWarsFontStyle}"/>
-            <TextBox Grid.Column="1" Height="50" Background="Transparent" BorderBrush="Red"/>
+            <TextBox x:Name="Bourse_j2" Text="10000" Grid.Column="1" Height="50" Background="Transparent" BorderBrush="Red" Foreground="White" FontSize="30" MouseLeave="Bourse_j2_LostFocus" LostFocus="Bourse_j2_LostFocus"/>
         </Grid>
     </Grid>
 </Page>

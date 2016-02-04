@@ -24,5 +24,12 @@ namespace ApplicationWPF.UserControls
         {
             InitializeComponent();
         }
+
+        private void cbTournoi_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ViewModel.Tournament.TournamentViewModel t = this.cbTournoi.SelectedItem as ViewModel.Tournament.TournamentViewModel;
+            if(t != null)
+                BusinessLayer.PartieManager.setCurrentGameTournament(t.Tournament);
+        }
     }
 }
