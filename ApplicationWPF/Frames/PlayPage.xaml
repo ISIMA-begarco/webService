@@ -70,7 +70,7 @@
                             <Image Source="{Binding obj_Jedi1.ImageUri}" Height="70" Width="50"/>
                             <TextBlock Text="{Binding Jedi1}" Style="{StaticResource StarWarsFontStyle}" Margin="5" FontSize="24"/>
                             <TextBlock Text=" Vs. " Style="{StaticResource StarWarsFontStyle}" Foreground="Red"  />
-                            <TextBlock Text="{Binding Jedi1}" Style="{StaticResource StarWarsFontStyle}" Margin="5"  FontSize="24" />
+                            <TextBlock Text="{Binding Jedi2}" Style="{StaticResource StarWarsFontStyle}" Margin="5"  FontSize="24" />
                             <Image Source="{Binding  obj_Jedi2.ImageUri}" Height="70" Width="50"/>
                         </StackPanel>
                     </DataTemplate>
