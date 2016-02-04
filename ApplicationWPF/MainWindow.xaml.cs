@@ -32,9 +32,6 @@ namespace ApplicationWPF
         public MainWindow()
         {
             InitializeComponent();
-
-            this.MainFrame.NavigationService.Navigate(new System.Uri("Frames/MainMenu.xaml", UriKind.Relative));
-            MainFrame.NavigationService.LoadCompleted += FrameLoadCompleted;
         }
 
         void ChangeFrame (object sender, FrameChangedEventArgs e)
@@ -60,6 +57,12 @@ namespace ApplicationWPF
             {
                 this.MainFrame.NavigationService.Navigate(new System.Uri("Frames/MainMenu.xaml", UriKind.Relative));
             }*/
+        }
+
+        private void WindowLoaded(object sender, EventArgs e)
+        {
+            this.MainFrame.NavigationService.Navigate(new System.Uri("Frames/MainMenu.xaml", UriKind.Relative));
+            MainFrame.NavigationService.LoadCompleted += FrameLoadCompleted;
         }
     }
 }
