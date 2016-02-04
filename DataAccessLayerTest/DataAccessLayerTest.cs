@@ -161,6 +161,8 @@ namespace DataAccessLayerTest
             {
                 Utilisateur j = new Utilisateur(0, "test", "test", "Jean", "Bernard");
                 bdd.addUser(j);
+                Assert.AreEqual<int>(debTaille+1, bdd.getUsers().Count);
+                bdd.deleteUserByLogin("test");
                 Assert.AreEqual<int>(debTaille, bdd.getUsers().Count);
             }
         }
@@ -183,6 +185,7 @@ namespace DataAccessLayerTest
                 liste = bdd.getTournois();
                 Assert.AreEqual<int>(taille, liste.Count);
                 liste.Add(j);
+                Assert.AreEqual<int>(15, liste.First().Matchs.Count);
                 bdd.updateTournois(liste);
                 taille = liste.Count;
                 liste = bdd.getTournois();

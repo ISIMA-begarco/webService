@@ -22,5 +22,6 @@ namespace DataAccessLayer
         int updateTournois(List<Tournoi> l);
         bool addUser(Utilisateur u);
         Utilisateur getUtilisateurByLogin(string login);
+        bool deleteUserByLogin(string login);
     }
 }

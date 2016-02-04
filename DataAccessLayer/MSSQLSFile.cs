@@ -353,7 +353,7 @@ namespace DataAccessLayer
                     using (SqlConnection sqlConnection2 = new SqlConnection(connectionString))
                     {
                         String id = sqlDataReader.GetInt32((int)TournoiField.ID).ToString();
-                        String request2 = "SELECT idMatch FROM MatchTournoi WHERE idMatch=" + id;
+                        String request2 = "SELECT idMatch FROM MatchTournoi WHERE idTournoi=" + id;
                         SqlCommand sqlCommand2 = new SqlCommand(request2, sqlConnection2);
                         sqlConnection2.Open();
 
@@ -744,9 +744,11 @@ namespace DataAccessLayer
                 sqlConnection.Close();
             }
 
-            foreach (DataRow c in dt.Select("Login = " + u.Login))
+
+            foreach (DataRow c in dt.Select())
             {
-                result = false;
+                if(u.Login == c.Field<string>("Login"))
+                    result = false;
             }
 
             if (result)
@@ -766,6 +768,33 @@ namespace DataAccessLayer
                 UpdateByCommandBuilder("SELECT id, login, password, nom, prenom FROM Users;", dt);
             }
 
+            return result;
+        }
+        public bool deleteUserByLogin(string login)
+        {
+            bool result = true;
+            DataTable dt = new DataTable();
+
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                String request = "SELECT id, login, password, nom, prenom FROM Users;";
+                SqlCommand sqlCommand = new SqlCommand(request, sqlConnection);
+                sqlConnection.Open();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                sqlDataAdapter.Fill(dt);
+                sqlConnection.Close();
+            }
+
+
+            foreach (DataRow c in dt.Select())
+            {
+                if (login == c.Field<string>("Login"))
+                    c.Delete();
+            }
+
+            UpdateByCommandBuilder("SELECT id, login, password, nom, prenom FROM Users;", dt);
+            
             return result;
         }
         #endregion

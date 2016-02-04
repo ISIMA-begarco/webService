@@ -97,5 +97,9 @@ namespace DataAccessLayer
         {
             return bdd.addUser(u);
         }
+        public bool deleteUserByLogin(string login)
+        {
+            return bdd.deleteUserByLogin(login);
+        }
     }
 }
