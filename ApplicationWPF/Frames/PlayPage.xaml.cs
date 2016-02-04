@@ -34,11 +34,6 @@ namespace ApplicationWPF.Frames
         {
             BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
 
-            // Gestion des Stades
-            IList<EntitiesLayer.Stade> stades = jtm.getStades();
-            ViewModel.Stade.StadesViewModel svm = new ViewModel.Stade.StadesViewModel(stades);
-            StadeCombo.DataContext = svm;
-
             // Gestion des Tournois
             IList<EntitiesLayer.Tournoi> tournaments = jtm.getTournois();
             ViewModel.Tournament.TournamentsViewModel tvm = new ViewModel.Tournament.TournamentsViewModel(tournaments);
@@ -71,19 +66,37 @@ namespace ApplicationWPF.Frames
         private void ButtonStart_Event(object sender, EventArgs e)
         {
 
-            string nextFrame = "Frames/FightPage.xaml";
-
-            switch (BusinessLayer.PartieManager.getCurrentGame().Mode)
+            if(this.usrCtrlTournoiCombo.cbTournoi.SelectedItem != null)
             {
-                case EntitiesLayer.Mode.Solo:
-                    ViewModel.Tournament.TournamentViewModel t = this.usrCtrlTournoiCombo.cbTournoi.SelectedItem as ViewModel.Tournament.TournamentViewModel;
-                    BusinessLayer.PartieManager.setCurrentGameTournament(t.Tournament);
-                    break;
+                string nextFrame = "Frames/FightPage.xaml";
+
+                ViewModel.Tournament.TournamentViewModel t = this.usrCtrlTournoiCombo.cbTournoi.SelectedItem as ViewModel.Tournament.TournamentViewModel;
+                BusinessLayer.PartieManager.setCurrentGameTournament(t.Tournament);
+
+                switch (BusinessLayer.PartieManager.getCurrentGame().Mode)
+
+                {
+                    case EntitiesLayer.Mode.Solo:
+                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                        break;
+                    case EntitiesLayer.Mode.Multi:
+                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J2", 0), 2);
+                        break;
+                    case EntitiesLayer.Mode.MultiPari:
+                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J2", 0), 2);
+                        break;
+                    case EntitiesLayer.Mode.SoloPari:
+                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                        break;
+                }
+
+
+
+                OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
             }
-
             
-
-            OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
         }
 
         private void OnPlayChoiceOnePlayer_Click(object sender, EventArgs e)
