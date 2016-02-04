@@ -41,8 +41,9 @@ namespace DataAccessLayer
             string root = Environment.CurrentDirectory.Split(new string[] { "JediTournamentConsole", "ApplicationWPF", "DataAccessLayerTest", "BusinessLayerTest" }, StringSplitOptions.None)[0];
             string url = "Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + root + "Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
             /// AVANT VISUAL STUDIO 15     string root = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + Environment.CurrentDirectory.Split(new string[] { "JediTournamentConsole" }, StringSplitOptions.None)[0] + "Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";//"Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\alnoel4\\Source\\Repos\\webService\\Database\\JediTournament.mdf;Integrated Security=True;Connect Timeout=30";
-            
-            bdd = new StubDatabase();
+
+            bdd = new MSSQLSFile(url);
+            //bdd = new StubDatabase();
         }
 
         public List<Jedi> getJedis()
@@ -96,6 +97,10 @@ namespace DataAccessLayer
         public bool addUser(Utilisateur u)
         {
             return bdd.addUser(u);
+        }
+        public bool deleteUserByLogin(string login)
+        {
+            return bdd.deleteUserByLogin(login);
         }
     }
 }

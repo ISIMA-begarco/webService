@@ -235,5 +235,19 @@ namespace DataAccessLayer
             tournois = l;
             return 0;
         }
+
+        public bool deleteUserByLogin(string login)
+        {
+            bool retour = false;
+
+            List<Utilisateur> liste = getUsers().Where(x => x.Login == login).ToList();
+            if(liste.Count != 0)
+            {
+                liste.Remove(liste.First());
+                retour = true;
+            }
+
+            return retour;
+        }
     }
 }
