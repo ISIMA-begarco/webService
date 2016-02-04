@@ -36,19 +36,25 @@ namespace ApplicationWPF.ViewModel.Stade
             }
         }
 
-        public string Caracteristiques
+        public string CaracteristiquesString
         {
             get
             {
                 string res = "";
                 foreach (EntitiesLayer.Caracteristique carac in m_stade.Caracteristiques)
-                    res += carac.Nom + ';';
+                    res += carac.Nom + ',';
                 return res;
             }
+        }
+
+        public List<EntitiesLayer.Caracteristique> Caracteristiques
+        {
+            get { return m_stade.Caracteristiques; }
             set
             {
-                //m_stade.Caracteristiques = value;
+                m_stade.Caracteristiques = value;
                 OnPropertyChanged("Caracteristiques");
+                OnPropertyChanged("CaracteristiquesString");
             }
         }
     }

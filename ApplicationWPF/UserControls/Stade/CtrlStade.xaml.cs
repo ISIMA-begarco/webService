@@ -22,6 +22,48 @@ namespace ApplicationWPF.UserControls
         public CtrlStade()
         {
             InitializeComponent();
+
+            // Recuperation des caracteristiques
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            List<EntitiesLayer.Caracteristique> caracs = jtm.getCaracteristiques();
+
+            caracBox.ItemsSource = (from x in caracs
+                                    where x.Type == EntitiesLayer.ETypeCaracteristique.Stade
+                                    select x.Nom).ToList();
+        }
+
+        private void caracBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataContext != null)
+            {
+                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+                string carac = caracBox.SelectedItem as string;
+
+                EntitiesLayer.Caracteristique car = (from x in jtm.getCaracteristiques()
+                                                     where x.Nom == carac &&
+                                                     x.Type == EntitiesLayer.ETypeCaracteristique.Stade
+                                                     select x).FirstOrDefault();
+
+                ViewModel.Stade.StadeViewModel svm = DataContext as ViewModel.Stade.StadeViewModel;
+                List<EntitiesLayer.Caracteristique> stadeCarac = svm.Caracteristiques;
+                stadeCarac.Add(car);
+                svm.Caracteristiques = stadeCarac;
+                displayCarac.Items.Refresh();
+            }
+        }
+
+        private void displayCarac_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataContext != null)
+            {
+                EntitiesLayer.Caracteristique car = displayCarac.SelectedItem as EntitiesLayer.Caracteristique;
+
+                ViewModel.Stade.StadeViewModel svm = DataContext as ViewModel.Stade.StadeViewModel;
+                List<EntitiesLayer.Caracteristique> stadeCarac = svm.Caracteristiques;
+                stadeCarac.Remove(car);
+                svm.Caracteristiques = stadeCarac;
+                displayCarac.Items.Refresh();
+            }
         }
     }
 }

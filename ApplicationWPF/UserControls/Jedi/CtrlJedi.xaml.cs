@@ -29,7 +29,9 @@ namespace ApplicationWPF.UserControls
             BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
             List<EntitiesLayer.Caracteristique> caracs = jtm.getCaracteristiques();
 
-            caracBox.ItemsSource = (from x in caracs select x.Nom).ToList();
+            caracBox.ItemsSource = (from x in caracs
+                                    where x.Type == EntitiesLayer.ETypeCaracteristique.Jedi
+                                    select x.Nom).ToList();
         }
 
         private void OnChangeImageClick(object sender, RoutedEventArgs e)
@@ -58,7 +60,8 @@ namespace ApplicationWPF.UserControls
                 string carac = caracBox.SelectedItem as string;
 
                 EntitiesLayer.Caracteristique car = (from x in jtm.getCaracteristiques()
-                                                     where x.Nom == carac
+                                                     where x.Nom == carac &&
+                                                     x.Type == EntitiesLayer.ETypeCaracteristique.Jedi
                                                      select x).FirstOrDefault();
 
                 ViewModel.Jedi.JediViewModel jvm = DataContext as ViewModel.Jedi.JediViewModel;
@@ -73,7 +76,6 @@ namespace ApplicationWPF.UserControls
         {
             if (DataContext != null)
             {
-                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
                 EntitiesLayer.Caracteristique car = displayCarac.SelectedItem as EntitiesLayer.Caracteristique;
 
                 ViewModel.Jedi.JediViewModel jvm = DataContext as ViewModel.Jedi.JediViewModel;
