@@ -26,6 +26,20 @@ namespace EntitiesLayer
             set { caracteristiques = value; }
         }
 
+        public Uri IsSithUri
+        {
+            get {
+                if (IsSith)
+                {
+                    return new Uri("../../Picture/logo_sith.png", UriKind.Relative);
+                }
+                else {
+                    return new Uri("",UriKind.Relative);
+                }
+            }
+        }
+
+
         public bool IsSith
         {
             get { return isSith; }
