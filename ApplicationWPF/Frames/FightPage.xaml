@@ -16,8 +16,8 @@
     </Page.Background>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
@@ -26,23 +26,43 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
-            <TextBlock x:Name="PhaseTournoi" Style="{StaticResource StarWarsFontStyle}" />
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="3">
+            <TextBlock x:Name="PhaseTournoi" Style="{StaticResource StarWarsFontStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </StackPanel>
-        <StackPanel x:Name="Concurent1Img" Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}"/>
-            <Image Source="{Binding ImageUri}" Width="400" Height="400"/>
+        <StackPanel  x:Name="Concurent1" Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Opacity="0.9">
+            <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}" Opacity="1"/>
+            <Image x:Name="Concurent1Img" Source="{Binding ImageUri}" Height="300" Width="300" Opacity="1"/>
         </StackPanel>
         
         <Image Grid.Row="0" Grid.Column="1"/>
-        <StackPanel x:Name="Concurent2Img" Grid.Row="1" Grid.Column="2" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}"/>
-            <Image Source="{Binding ImageUri}" Width="400" Height="400"/>
+        <StackPanel x:Name="Concurent2" Grid.Row="1" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Opacity="0.9">
+            <TextBlock Style="{StaticResource StarWarsFontStyle}" Text="{Binding Nom}" Opacity="1"/>
+            <Image x:Name="Concurent2Img"  Source="{Binding ImageUri}" Width="300" Height="300" Opacity="1"/>
+        </StackPanel>
+        <StackPanel x:Name="Pari1" Grid.Row="2" Grid.Column="0" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Votre richesse :" Style="{StaticResource StarWarsFontStyle}" />
+                <TextBlock Text="{Binding Bourse_j1}" Style="{StaticResource StarWarsFontStyle}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Mise :" Style="{StaticResource StarWarsFontStyle}" />
+                <TextBox x:Name="mise_j1" Grid.Column="1" Height="50" Background="Transparent" BorderBrush="Red" Foreground="White" FontSize="30"/>
+            </StackPanel>
         </StackPanel>
         <StackPanel x:Name="Affiche1" Grid.Row="2" Grid.Column="0" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <UserControls:ButtonSoft  Label="Pierre[E]" HorizontalAlignment="Right" Margin="10" Event="ButtonPierre_Event"/>
             <UserControls:ButtonSoft  Label="Papier[D]" HorizontalAlignment="Right" Margin="10" Event="ButtonPapier_Event"/>
             <UserControls:ButtonSoft  Label="Ciseau[X]" HorizontalAlignment="Right" Margin="10" Event="ButtonCiseau_Event"/>
+        </StackPanel>
+        <StackPanel x:Name="Pari2" Grid.Row="2" Grid.Column="0" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Votre richesse :" Style="{StaticResource StarWarsFontStyle}" />
+                <TextBlock Text="{Binding Bourse_j2}" Style="{StaticResource StarWarsFontStyle}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Mise :" Style="{StaticResource StarWarsFontStyle}" />
+                <TextBox x:Name="mise_j2" Grid.Column="1" Height="50" Background="Transparent" BorderBrush="Red" Foreground="White" FontSize="30"/>
+            </StackPanel>
         </StackPanel>
         <StackPanel x:Name="Affiche2" Grid.Row="2" Grid.Column="2" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <UserControls:ButtonSoft  Label="Pierre[U]" HorizontalAlignment="Right" Margin="10" Event="ButtonPierre2_Event"/>

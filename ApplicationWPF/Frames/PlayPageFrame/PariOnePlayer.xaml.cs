@@ -24,5 +24,32 @@ namespace ApplicationWPF.Frames.PlayPageFrame
         {
             InitializeComponent();
         }
+
+        private void Bourse_j1_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string val = this.Bourse_j1.Text;
+
+            try {
+                int bourse = int.Parse(val);
+
+                if(bourse < 0)
+                {
+                    this.Bourse_j1.Text = "0";
+                    BusinessLayer.PartieManager.getCurrentGame().Bourse_j1 = 0;
+                }
+                else
+                {
+                    BusinessLayer.PartieManager.getCurrentGame().Bourse_j1 = bourse;
+                }
+
+
+            }
+            catch(Exception)
+            {
+                this.Bourse_j1.Text = "0";
+                BusinessLayer.PartieManager.getCurrentGame().Bourse_j1 = 0;
+            }
+
+        }
     }
 }

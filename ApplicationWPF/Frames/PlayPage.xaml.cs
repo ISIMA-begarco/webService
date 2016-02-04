@@ -66,33 +66,52 @@ namespace ApplicationWPF.Frames
         private void ButtonStart_Event(object sender, EventArgs e)
         {
 
-            if(this.usrCtrlTournoiCombo.cbTournoi.SelectedItem != null && BusinessLayer.PartieManager.getCurrentGame().Jedi_j1 != null )
+            if(this.usrCtrlTournoiCombo.cbTournoi.SelectedItem != null)
             {
                 string nextFrame = "Frames/FightPage.xaml";
-
-                ViewModel.Tournament.TournamentViewModel t = this.usrCtrlTournoiCombo.cbTournoi.SelectedItem as ViewModel.Tournament.TournamentViewModel;
-                BusinessLayer.PartieManager.setCurrentGameTournament(t.Tournament);
+                bool launch = false;                
 
                 switch (BusinessLayer.PartieManager.getCurrentGame().Mode)
 
                 {
                     case EntitiesLayer.Mode.Solo:
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                        if (BusinessLayer.PartieManager.getCurrentGame().Jedi_j1 != null)
+                        {
+                            BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                            launch = true;
+                        }
                         break;
                     case EntitiesLayer.Mode.Multi:
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(1, "J2", 0), 2);
+                        if (BusinessLayer.PartieManager.getCurrentGame().Jedi_j1 != null 
+                            && BusinessLayer.PartieManager.getCurrentGame().Jedi_j2 != null 
+                            && BusinessLayer.PartieManager.getCurrentGame().Jedi_j1 != BusinessLayer.PartieManager.getCurrentGame().Jedi_j2)
+                        {
+                            BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                            BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(1, "J2", 0), 2);
+                            launch = true;
+                        }
                         break;
                     case EntitiesLayer.Mode.MultiPari:
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(1, "J2", 0), 2);
+                        if(BusinessLayer.PartieManager.getCurrentGame().Bourse_j1 != 0 
+                            && BusinessLayer.PartieManager.getCurrentGame().Bourse_j2 != 0)
+                        {
+                            BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                            BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(1, "J2", 0), 2);
+                            launch = true;
+                        }
                         break;
                     case EntitiesLayer.Mode.SoloPari:
-                        BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                        if (BusinessLayer.PartieManager.getCurrentGame().Bourse_j1 != 0)
+                        {
+                            BusinessLayer.PartieManager.setCurrentPlayer(new EntitiesLayer.Joueur(0, "J1", 0), 1);
+                            launch = true;
+                        }
                         break;
+                        
                 }
 
-                OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
+                if(launch)
+                    OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
             }
             
         }
@@ -101,12 +120,15 @@ namespace ApplicationWPF.Frames
         {
             this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/OnePlayerPage.xaml", UriKind.Relative));
             BusinessLayer.PartieManager.setCurrentGameMode(EntitiesLayer.Mode.Solo);
+            BusinessLayer.PartieManager.getCurrentGame().Jedi_j1 = null;
         }
 
         private void OnPlayChoiceMultiplayer_Click(object sender, EventArgs e)
         {
            this.ModeChoice.NavigationService.Navigate(new System.Uri("Frames/PlayPageFrame/MultiplayerPage.xaml", UriKind.Relative));
             BusinessLayer.PartieManager.setCurrentGameMode(EntitiesLayer.Mode.Multi);
+            BusinessLayer.PartieManager.getCurrentGame().Jedi_j1 = null;
+            BusinessLayer.PartieManager.getCurrentGame().Jedi_j2 = null;
         }
 
         private void OnPlayChoiceMultiplayerPari_Click(object sender, EventArgs e)

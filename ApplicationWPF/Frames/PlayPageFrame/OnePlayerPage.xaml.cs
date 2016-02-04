@@ -25,15 +25,29 @@ namespace ApplicationWPF.Frames.PlayPageFrame
             InitializeComponent();
         }
 
-        private void WindowLoaded(object sender, EventArgs args)
-        {
-            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
 
-            // Initialisation des Jedis
-            IList<EntitiesLayer.Jedi> jedis = jtm.getJedis();
-            ViewModel.Jedi.JedisModelView jvm = new ViewModel.Jedi.JedisModelView(jedis);
-            J1Jedi.DataContext = jvm;
-            //jvm.Jedis.First();
+        private void J1Jedi_MouseEnter(object sender, MouseEventArgs e)
+        {
+            EntitiesLayer.Partie game = BusinessLayer.PartieManager.getCurrentGame();
+            if (game.Tournament != null && (this.J1Jedi.ComboJedi.SelectedItem as ViewModel.Jedi.JediViewModel) == null)
+            {
+                BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+
+
+                List<EntitiesLayer.Jedi> jedis = new List<EntitiesLayer.Jedi>();
+                foreach (EntitiesLayer.Match m in game.Tournament.Matchs)
+                {
+                    if(m.Jedi1 != null)
+                        jedis.Add(m.Jedi1);
+                    if(m.Jedi2 != null)
+                        jedis.Add(m.Jedi2);
+                }
+
+                IList<EntitiesLayer.Jedi> jedis2 = jedis;
+                ViewModel.Jedi.JedisModelView jvm = new ViewModel.Jedi.JedisModelView(jedis);
+                J1Jedi.DataContext = jvm;
+                //jvm.Jedis.First();
+            }
         }
 
         private void J1Jedi_MouseLeave(object sender, MouseEventArgs e)
@@ -41,5 +55,6 @@ namespace ApplicationWPF.Frames.PlayPageFrame
             if((this.J1Jedi.ComboJedi.SelectedItem as ViewModel.Jedi.JediViewModel) != null)
                 BusinessLayer.PartieManager.getCurrentGame().Jedi_j1 = (this.J1Jedi.ComboJedi.SelectedItem as ViewModel.Jedi.JediViewModel).Jedi;
         }
+        
     }
 }

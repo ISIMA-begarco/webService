@@ -7,7 +7,6 @@
       xmlns:local="clr-namespace:ApplicationWPF.Frames.PlayPageFrame"
       mc:Ignorable="d" 
       d:DesignHeight="100" d:DesignWidth="1000"
-     Loaded="WindowLoaded"
       Title="OnePlayerPage">
 
     <Grid>
@@ -19,6 +18,6 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource StarWarsFontStyle}" Text="Joueur 1" />
-        <UserControls:ComboBoxJedi Grid.Row="0" Grid.Column="1" x:Name="J1Jedi" MouseLeave="J1Jedi_MouseLeave"/>
+        <UserControls:ComboBoxJedi Grid.Row="0" Grid.Column="1" x:Name="J1Jedi" MouseLeave="J1Jedi_MouseLeave" MouseEnter="J1Jedi_MouseEnter"/>
     </Grid>
 </Page>
