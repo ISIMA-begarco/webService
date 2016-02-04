@@ -9,7 +9,8 @@
       d:DesignHeight="1000" d:DesignWidth="1000"
       Loaded="WindowLoaded"
       Title="FightPage"
-      KeyDown="Page_KeyDown">
+      KeyDown="Page_KeyDown"
+      x:Name="fightPage">
     <Page.Background>
         <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround1}"/>
     </Page.Background>

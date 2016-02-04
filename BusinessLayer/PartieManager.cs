@@ -17,6 +17,20 @@ namespace BusinessLayer
             game = new EntitiesLayer.Partie();
         }
 
+        public static void nextMatch()
+        {
+
+            List<EntitiesLayer.Match> matchRestant = game.Tournament.Matchs.Where(m => m.JediVainqueur == null).ToList();
+            if(matchRestant.Count > 0)
+            {
+                game.Current_match = matchRestant.First();
+            }
+            else
+            {
+
+            }
+            
+        }
 
         public static void resolve()
         {

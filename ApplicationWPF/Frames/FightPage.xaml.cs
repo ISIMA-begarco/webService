@@ -80,15 +80,16 @@ namespace ApplicationWPF.Frames
             else
             {
                 Random rd = new Random();
-                if (rd.NextDouble() % 3 == 0)
+                int rand = rd.Next();
+                if (rand % 3 == 0)
                 {
                     BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Ciseau;
                 }
-                if (rd.NextDouble() % 3 == 1)
+                if (rand % 3 == 1)
                 {
                     BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Papier;
                 }
-                if (rd.NextDouble() % 3 == 2)
+                if (rand % 3 == 2)
                 {
                     BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = EntitiesLayer.EShifumi.Pierre;
                 }
@@ -101,15 +102,16 @@ namespace ApplicationWPF.Frames
             else
             {
                 Random rd = new Random();
-                if(rd.NextDouble()%3 == 0)
+                int rand  = rd.Next();
+                if (rand % 3 == 0)
                 {
                     BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Ciseau;
                 }
-                if (rd.NextDouble() % 3 == 1)
+                if (rand % 3 == 1)
                 {
                     BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Papier;
                 }
-                if (rd.NextDouble() % 3 == 2)
+                if (rand % 3 == 2)
                 {
                     BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = EntitiesLayer.EShifumi.Pierre;
                 }
@@ -120,7 +122,7 @@ namespace ApplicationWPF.Frames
         {
             if(BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur != null) {
                 string nextFrame = "Frames/FightPage.xaml";
-                BusinessLayer.PartieManager.getCurrentGame().Current_match = BusinessLayer.PartieManager.getCurrentGame().Tournament.Matchs.Where(m => m.JediVainqueur == null).ToList().First();
+                BusinessLayer.PartieManager.nextMatch();
                 OnFrameChanged(this, new FrameChangedEventArgs(nextFrame));
             }
         }
