@@ -497,10 +497,10 @@ namespace DataAccessLayer
                         lineJC.Delete();
                     }
                     // suppression des matches ou le jedi joue
-                    foreach (DataRow lineM in dataTables[(int)DTName.MATCHES].Select("IdJedi1 = " + ligne["Id"].ToString() + " OR IdJedi2 = " + ligne["Id"].ToString()))
+                    foreach (DataRow lineM in dataTables[(int)DTName.MATCHES].Select("jedi1 = " + ligne["Id"].ToString() + " OR jedi2 = " + ligne["Id"].ToString()))
                     {
                         // suppression de la reference
-                        foreach (DataRow lineMT in dataTables[(int)DTName.MATCHTOURNOI].Select("IdMatch = " + lineM["IdMatch"].ToString()))
+                        foreach (DataRow lineMT in dataTables[(int)DTName.MATCHTOURNOI].Select("IdMatch = " + lineM["Id"].ToString()))
                         {
                             lineMT.Delete();
                         }
@@ -571,7 +571,7 @@ namespace DataAccessLayer
                 }
             }
 
-            UpdateByCommandBuilder("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", dataTables[(int)DTName.TOURNOIS]);
+            UpdateByCommandBuilder("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", dataTables[(int)DTName.MATCHES]);
             UpdateByCommandBuilder("SELECT idtournoi, idmatch FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
 
             return result;
@@ -632,10 +632,10 @@ namespace DataAccessLayer
                         lineJC.Delete();
                     }
                     // suppression des matches ou le stade est utilise
-                    foreach (DataRow lineM in dataTables[(int)DTName.MATCHES].Select("IdMatch = " + ligne["Id"].ToString()))
+                    foreach (DataRow lineM in dataTables[(int)DTName.MATCHES].Select("stade = " + ligne["Id"].ToString()))
                     {
                         // suppression de la reference du match
-                        foreach (DataRow lineMT in dataTables[(int)DTName.MATCHTOURNOI].Select("IdMatch = " + lineM["IdMatch"].ToString()))
+                        foreach (DataRow lineMT in dataTables[(int)DTName.MATCHTOURNOI].Select("IdMatch = " + lineM["Id"].ToString()))
                         {
                             lineMT.Delete();
                         }
