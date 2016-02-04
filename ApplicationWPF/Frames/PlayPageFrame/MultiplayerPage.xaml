@@ -19,8 +19,8 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource StarWarsFontStyle}" Text="Joueur 1" />
-        <UserControls:ComboBoxJedi Grid.Row="0" Grid.Column="1" x:Name="J1Jedi" />
+        <UserControls:ComboBoxJedi Grid.Row="0" Grid.Column="1" x:Name="J1Jedi"  MouseLeave="J1Jedi_MouseLeave"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource StarWarsFontStyle}" Text="Joueur 2"/>
-        <UserControls:ComboBoxJedi Grid.Row="1" Grid.Column="1" x:Name="J2Jedi"/>
+        <UserControls:ComboBoxJedi Grid.Row="1" Grid.Column="1" x:Name="J2Jedi"  MouseLeave="J2Jedi_MouseLeave"/>
     </Grid>
 </Page>
