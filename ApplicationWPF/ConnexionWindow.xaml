@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Connexion" Height="500" Width="700" 
         ResizeMode="NoResize"  WindowStyle="None">
-    <Grid Opacity="0.9">
+    <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround7}" />
         </Grid.Background>
