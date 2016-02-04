@@ -4,17 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ApplicationWPF.UserControls" x:Class="ApplicationWPF.UserControls.CtrlMatch" 
-             mc:Ignorable="d" Height="213.669" Width="1026.691">
-    <Grid Margin="0,0,-0.6,-0.4">
-        
-        <local:CtrlJedi HorizontalAlignment="Right" Margin="0,61,592,0" VerticalAlignment="Top" Width="425"/>
-        <local:CtrlJedi HorizontalAlignment="Left" Margin="587,61,0,0" VerticalAlignment="Top" Width="430"/>
-        <Image HorizontalAlignment="Left" Height="114" Margin="453,31,0,0" VerticalAlignment="Top" Width="114" Source="C:\Users\Sara\Documents\Dot_NET\Projet\ApplicationWPF\Resources\VS_Icon.gif"/>
-        <Label Content="{Binding PhaseTournoi}" HorizontalAlignment="Left" Margin="453,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.242,0.275" FontFamily="MV Boli" FontWeight="Bold" Height="47" Width="127" Foreground="Red" FontSize="18"/>
-        <local:CtrlStade HorizontalAlignment="Left" VerticalAlignment="Top" Height="61" Width="1005" Margin="10,-5,0,0"/>
-  
-
-
-
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <local:ComboBoxStade x:Name="stade" Grid.Row="0" Grid.ColumnSpan="3"/>
+        <local:ComboBoxJedi x:Name="jedi1" Grid.Row="1" Grid.Column ="0"/>
+        <local:ComboBoxJedi x:Name="jedi2" Grid.Row="1" Grid.Column ="2"/>
+        <Image Grid.Row="1" Grid.Column ="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{StaticResource VersusPicture}"/>
+        <Label Content="{Binding PhaseTournoi}" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

@@ -24,15 +24,5 @@ namespace ApplicationWPF.UserControls
         {
             InitializeComponent();
         }
-
-        private void ButtonAdd_Event(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ButtonRemove_Event(object sender, EventArgs e)
-        {
-
-        }
     }
 }

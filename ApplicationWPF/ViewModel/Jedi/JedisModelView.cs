@@ -70,7 +70,7 @@ namespace ApplicationWPF.ViewModel.Jedi
 
         private void Add() 
         {
-            EntitiesLayer.Jedi j = new EntitiesLayer.Jedi(0, null, false, "");   
+            EntitiesLayer.Jedi j = new EntitiesLayer.Jedi(0, new List<EntitiesLayer.Caracteristique>(), false, "New");   
             this.SelectedJedi = new JediViewModel(j);
             m_jedis.Add(this.SelectedJedi);
         }

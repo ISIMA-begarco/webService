@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ApplicationWPF.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="600">
-    <ComboBox ItemsSource="{Binding Stades}" SelectedItem="{Binding SelectedItem}" Height="50" Margin="10" Background="Transparent">
+    <ComboBox ItemsSource="{Binding Stades}" SelectedItem="{Binding SelectedStade}" Height="50" Margin="10" Background="Transparent">
         <ComboBox.Resources>
             <Style x:Key="ComboBoxItemStyle1" TargetType="{x:Type ComboBoxItem}">
                 <Setter Property="SnapsToDevicePixels" Value="True"/>
