@@ -40,6 +40,9 @@ namespace ApplicationWPF.Frames
             Concurent1.DataContext = gvm.Current_match.Jedi1;
             Concurent2.DataContext = gvm.Current_match.Jedi2;
 
+            Pari1.DataContext = gvm;
+            Pari2.DataContext = gvm;
+
             game.Choice_j1 = EntitiesLayer.EShifumi.Aucun;
             game.Choice_j2 = EntitiesLayer.EShifumi.Aucun;
 
@@ -50,6 +53,34 @@ namespace ApplicationWPF.Frames
 
             Affiche1.Visibility = Visibility.Hidden;
             Affiche2.Visibility = Visibility.Hidden;
+
+
+            if(BusinessLayer.PartieManager.getCurrentGame().Mode == EntitiesLayer.Mode.SoloPari || BusinessLayer.PartieManager.getCurrentGame().Mode == EntitiesLayer.Mode.MultiPari)
+            {
+                
+                List<EntitiesLayer.Jedi> jedis = new List<EntitiesLayer.Jedi>();   
+                jedis.Add(game.Current_match.Jedi1);
+                jedis.Add(game.Current_match.Jedi2);
+                
+
+                IList<EntitiesLayer.Jedi> jedis2 = jedis;
+                ViewModel.Jedi.JedisModelView jvm = new ViewModel.Jedi.JedisModelView(jedis);
+                J1Jedi.DataContext = jvm;
+
+                ViewModel.Jedi.JedisModelView jvm2 = new ViewModel.Jedi.JedisModelView(jedis);
+                J2Jedi.DataContext = jvm2;
+
+                if (BusinessLayer.PartieManager.getCurrentGame().J1 != null)
+                {
+                    Pari1.Visibility = Visibility.Visible;
+                }
+
+                if (BusinessLayer.PartieManager.getCurrentGame().J2 != null)
+                {
+                    Pari2.Visibility = Visibility.Visible;
+                }
+            }
+
         }
 
         public string NextFrame
@@ -76,31 +107,75 @@ namespace ApplicationWPF.Frames
 
         private void ButtonStart_Event(object sender, EventArgs e)
         {
-            if(BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == null)
-            {           
-                if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom) 
-                    || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom) )
-                    && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
+            if (BusinessLayer.PartieManager.getCurrentGame().Mode == EntitiesLayer.Mode.Multi || BusinessLayer.PartieManager.getCurrentGame().Mode == EntitiesLayer.Mode.Solo)
+            {
+                if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == null)
                 {
-                    Affiche1.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = BusinessLayer.PartieManager.getIAChoice();
-                }
+                    if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom)
+                        || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom))
+                        && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
+                    {
+                        Affiche1.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        BusinessLayer.PartieManager.getCurrentGame().Choice_j1 = BusinessLayer.PartieManager.getIAChoice();
+                    }
 
-                if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom)
-                   || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom))
-                   && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
-                {
-                    Affiche2.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = BusinessLayer.PartieManager.getIAChoice();
-                }
+                    if (((BusinessLayer.PartieManager.getCurrentGame().J1 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j1.Nom)
+                       || (BusinessLayer.PartieManager.getCurrentGame().J2 != null && BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi2.Nom == BusinessLayer.PartieManager.getCurrentGame().Jedi_j2.Nom))
+                       && (BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Solo) || BusinessLayer.PartieManager.getCurrentGame().Mode.Equals(EntitiesLayer.Mode.Multi)))
+                    {
+                        Affiche2.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        BusinessLayer.PartieManager.getCurrentGame().Choice_j2 = BusinessLayer.PartieManager.getIAChoice();
+                    }
 
-                resolve();
+                    resolve();
+                }
+            }
+            else
+            {
+                Bourse_j1_LostFocus(this, null);
+                Bourse_j2_LostFocus(this, null);
+
+                if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == null)
+                {
+                    BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+                    resolve();
+                    EntitiesLayer.Jedi winner = BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur;
+                     
+                    if (BusinessLayer.PartieManager.getCurrentGame().J1 != null 
+                        && (this.J1Jedi.ComboJedi.SelectedItem as ViewModel.Jedi.JediViewModel) != null
+                        && BusinessLayer.PartieManager.getCurrentGame().Pari_j1 != 0)
+                    {
+                        if((this.J1Jedi.ComboJedi.SelectedItem as ViewModel.Jedi.JediViewModel).Jedi.Equals(winner))
+                        {
+                            BusinessLayer.PartieManager.getCurrentGame().Bourse_j1 += BusinessLayer.PartieManager.getCurrentGame().Pari_j1;
+                        }
+                        else
+                        {
+                            BusinessLayer.PartieManager.getCurrentGame().Bourse_j1 -= BusinessLayer.PartieManager.getCurrentGame().Pari_j1;
+                        }
+                    }
+                        
+                    if (BusinessLayer.PartieManager.getCurrentGame().J2 != null 
+                        && (this.J2Jedi.ComboJedi.SelectedItem as ViewModel.Jedi.JediViewModel) != null
+                        && BusinessLayer.PartieManager.getCurrentGame().Pari_j2 != 0)
+                    {
+                        if ((this.J2Jedi.ComboJedi.SelectedItem as ViewModel.Jedi.JediViewModel).Jedi.Equals(winner))
+                        {
+                            BusinessLayer.PartieManager.getCurrentGame().Bourse_j2 += BusinessLayer.PartieManager.getCurrentGame().Pari_j2;
+                        }
+                        else
+                        {
+                            BusinessLayer.PartieManager.getCurrentGame().Bourse_j2 -= BusinessLayer.PartieManager.getCurrentGame().Pari_j2;
+                        }
+                    }
+
+                }
             }
         }
 
@@ -153,13 +228,31 @@ namespace ApplicationWPF.Frames
         {
             if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == null)
             {
-                if (BusinessLayer.PartieManager.resolve())
+                DropShadowEffect o = new DropShadowEffect();
+                o.Direction = 0;
+                o.Color = Colors.Blue;
+                o.ShadowDepth = 0;
+                o.BlurRadius = 10;
+
+
+                if (BusinessLayer.PartieManager.getCurrentGame().Mode == EntitiesLayer.Mode.Solo || BusinessLayer.PartieManager.getCurrentGame().Mode == EntitiesLayer.Mode.Multi)
+                {                    
+                    if (BusinessLayer.PartieManager.resolve())
+                    {                        
+                        if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1)
+                        {
+                            this.Concurent1Img.Effect = o;
+                        }
+                        else
+                        {
+                            this.Concurent2Img.Effect = o;
+                        }
+                    }
+                }
+                else
                 {
-                    DropShadowEffect o = new DropShadowEffect();
-                    o.Direction = 0;
-                    o.Color = Colors.Blue;
-                    o.ShadowDepth = 0;
-                    o.BlurRadius = 10;
+                    EntitiesLayer.Jedi winner =  new BusinessLayer.JediTournamentManager().simulateMatch(BusinessLayer.PartieManager.getCurrentGame().Current_match);
+                    BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur = winner;
 
                     if (BusinessLayer.PartieManager.getCurrentGame().Current_match.JediVainqueur == BusinessLayer.PartieManager.getCurrentGame().Current_match.Jedi1)
                     {
@@ -176,6 +269,72 @@ namespace ApplicationWPF.Frames
 
         private void Page_KeyDown(object sender, KeyEventArgs e)
         {
+
+        }
+
+        private void Bourse_j1_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string val = this.mise_j1.Text;
+
+            try
+            {
+                int bourse = int.Parse(val);
+
+                if (bourse < 0)
+                {
+                    this.mise_j1.Text = "0";
+                    BusinessLayer.PartieManager.getCurrentGame().Pari_j1 = 0;
+                }
+                else if (bourse > BusinessLayer.PartieManager.getCurrentGame().Bourse_j1)
+                {
+                    this.mise_j1.Text = BusinessLayer.PartieManager.getCurrentGame().Bourse_j1.ToString();
+                    BusinessLayer.PartieManager.getCurrentGame().Pari_j1 = BusinessLayer.PartieManager.getCurrentGame().Bourse_j1;
+                }
+                else
+                {
+                    BusinessLayer.PartieManager.getCurrentGame().Pari_j1 = bourse;
+                }
+
+
+            }
+            catch (Exception)
+            {
+                this.mise_j1.Text = "0";
+                BusinessLayer.PartieManager.getCurrentGame().Pari_j1 = 0;
+            }
+
+        }
+
+        private void Bourse_j2_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string val = this.mise_j2.Text;
+
+            try
+            {
+                int bourse = int.Parse(val);
+
+                if (bourse < 0)
+                {
+                    this.mise_j2.Text = "0";
+                    BusinessLayer.PartieManager.getCurrentGame().Pari_j2 = 0;
+                }
+                else if(bourse > BusinessLayer.PartieManager.getCurrentGame().Bourse_j2)
+                {
+                    this.mise_j2.Text = BusinessLayer.PartieManager.getCurrentGame().Bourse_j2.ToString();
+                    BusinessLayer.PartieManager.getCurrentGame().Pari_j2 = BusinessLayer.PartieManager.getCurrentGame().Bourse_j2;
+                }
+                else
+                {
+                    BusinessLayer.PartieManager.getCurrentGame().Pari_j2 = bourse;
+                }
+
+
+            }
+            catch (Exception)
+            {
+                this.mise_j2.Text = "0";
+                BusinessLayer.PartieManager.getCurrentGame().Pari_j2 = 0;
+            }
 
         }
     }

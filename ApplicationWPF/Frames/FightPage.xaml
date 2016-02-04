@@ -45,8 +45,13 @@
                 <TextBlock Text="{Binding Bourse_j1}" Style="{StaticResource StarWarsFontStyle}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
+                <UserControls:ComboBoxJedi x:Name="J1Jedi" Width="300"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Mise :" Style="{StaticResource StarWarsFontStyle}" />
-                <TextBox x:Name="mise_j1" Grid.Column="1" Height="50" Background="Transparent" BorderBrush="Red" Foreground="White" FontSize="30"/>
+                <TextBox x:Name="mise_j1" Text="0" Grid.Column="1" Height="50" Width="200" Margin="10" Background="Transparent" 
+                         BorderBrush="Red" Foreground="White" FontSize="30"
+                          MouseLeave="Bourse_j1_LostFocus" LostFocus="Bourse_j1_LostFocus"/>
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="Affiche1" Grid.Row="2" Grid.Column="0" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -54,14 +59,19 @@
             <UserControls:ButtonSoft  Label="Papier[D]" HorizontalAlignment="Right" Margin="10" Event="ButtonPapier_Event"/>
             <UserControls:ButtonSoft  Label="Ciseau[X]" HorizontalAlignment="Right" Margin="10" Event="ButtonCiseau_Event"/>
         </StackPanel>
-        <StackPanel x:Name="Pari2" Grid.Row="2" Grid.Column="0" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel x:Name="Pari2" Grid.Row="2" Grid.Column="2" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Votre richesse :" Style="{StaticResource StarWarsFontStyle}" />
                 <TextBlock Text="{Binding Bourse_j2}" Style="{StaticResource StarWarsFontStyle}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
+                <UserControls:ComboBoxJedi x:Name="J2Jedi"  Width="300"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Mise :" Style="{StaticResource StarWarsFontStyle}" />
-                <TextBox x:Name="mise_j2" Grid.Column="1" Height="50" Background="Transparent" BorderBrush="Red" Foreground="White" FontSize="30"/>
+                <TextBox x:Name="mise_j2" Text="0" Grid.Column="1" Height="50" Width="200" Margin="10" Background="Transparent" 
+                         BorderBrush="Red" Foreground="White" FontSize="30"
+                          MouseLeave="Bourse_j2_LostFocus" LostFocus="Bourse_j2_LostFocus"/>
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="Affiche2" Grid.Row="2" Grid.Column="2" Visibility="Hidden" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
