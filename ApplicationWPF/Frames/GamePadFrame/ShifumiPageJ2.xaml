@@ -1,0 +1,16 @@
+﻿<Page x:Class="ApplicationWPF.Frames.GamePadFrame.ShifumiPageJ2"
+      xmlns:UserControls="clr-namespace:ApplicationWPF.UserControls"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ApplicationWPF.Frames.GamePadFrame"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="700"
+      Title="ShifumiPage">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <UserControls:ButtonSoft  Label="Pierre[U]" HorizontalAlignment="Right" Margin="10" Event="ButtonPierre_Event"/>
+        <UserControls:ButtonSoft  Label="Papier[J]" HorizontalAlignment="Right" Margin="10" Event="ButtonPapier_Event"/>
+        <UserControls:ButtonSoft  Label="Ciseau[N]" HorizontalAlignment="Right" Margin="10" Event="ButtonCiseau_Event"/>
+    </StackPanel>
+</Page>

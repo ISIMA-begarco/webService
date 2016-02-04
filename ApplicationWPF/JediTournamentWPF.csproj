@@ -64,6 +64,9 @@
     <Compile Include="Frames\GamePadFrame\ShifumiPageJ1.xaml.cs">
       <DependentUpon>ShifumiPageJ1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Frames\GamePadFrame\ShifumiPageJ2.xaml.cs">
+      <DependentUpon>ShifumiPageJ2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\NewJediPagexaml.xaml.cs">
       <DependentUpon>NewJediPagexaml.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Frames\GamePadFrame\ShifumiPageJ1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\GamePadFrame\ShifumiPageJ2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -338,7 +345,26 @@
     <Resource Include="Picture\default.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Picture\Anonyme.png" />
+    <Resource Include="Picture\anakin.png" />
+    <Resource Include="Picture\kitfist.png" />
+    <Resource Include="Picture\luke.png" />
+    <Resource Include="Picture\obiwan.png" />
+    <Resource Include="Picture\planet.png" />
+    <Resource Include="Picture\plokoon.png" />
+    <Resource Include="Picture\quigon.png" />
+    <Resource Include="Picture\shaakti.png" />
+    <Resource Include="Picture\windu.png" />
+    <Resource Include="Picture\yoda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\darkmaul.png" />
+    <Resource Include="Picture\kylo.png" />
+    <Resource Include="Picture\revan.png" />
+    <Resource Include="Picture\rey.png" />
+    <Resource Include="Picture\sidious.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Picture\secura.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
