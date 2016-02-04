@@ -51,6 +51,18 @@ namespace ApplicationWPF.ViewModel.Jedi
             }
         }
 
+        public Uri IsSithUri
+        {
+            get
+            {
+                return m_jedi.IsSithUri;
+            }
+            set
+            {
+                OnPropertyChanged("IsSithUri");
+            }
+        }
+
         public bool IsSith
         {
             get
