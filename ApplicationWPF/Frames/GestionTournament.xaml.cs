@@ -57,6 +57,19 @@ namespace ApplicationWPF.Frames
             ucJedis.DataContext = jvm;
         }
 
+        private void JediUnloaded(object sender, RoutedEventArgs e)
+        {
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            ViewModel.Jedi.JedisModelView jvm = ucJedis.DataContext as ViewModel.Jedi.JedisModelView;
+            List<EntitiesLayer.Jedi> jedis = new List<EntitiesLayer.Jedi>();
+            foreach(ViewModel.Jedi.JediViewModel j in jvm.Jedis)
+            {
+                if (j.Nom != "" && j.ImageUri.OriginalString != "")
+                    jedis.Add(j.Jedi);
+            }
+            jtm.updateJedis(jedis);
+        }
+
         private void StadeLoaded(object sender, RoutedEventArgs e)
         {
             // Initialisation des Stade
@@ -64,6 +77,11 @@ namespace ApplicationWPF.Frames
             IList<EntitiesLayer.Stade> stades = jtm.getStades();
             ViewModel.Stade.StadesViewModel svm = new ViewModel.Stade.StadesViewModel(stades);
             ucStade.DataContext = svm;
+        }
+
+        private void StadeUnloaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void MatchLoaded(object sender, RoutedEventArgs e)
@@ -84,6 +102,11 @@ namespace ApplicationWPF.Frames
             ucMatchs.DataContext = mvm;
         }
 
+        private void MatchUnloaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         private void TournoiLoaded(object sender, RoutedEventArgs e)
         {
             // Initialisation des Tournois
@@ -91,6 +114,11 @@ namespace ApplicationWPF.Frames
             IList<EntitiesLayer.Tournoi> tournois = jtm.getTournois();
             ViewModel.Tournament.TournamentsViewModel tvm = new ViewModel.Tournament.TournamentsViewModel(tournois);
             ucTournoi.DataContext = tvm;
+        }
+
+        private void TournoiUnloaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

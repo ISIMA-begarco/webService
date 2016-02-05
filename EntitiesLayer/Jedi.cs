@@ -11,7 +11,7 @@ namespace EntitiesLayer
         private String image;
 
 
-        public Jedi(int id, List<Caracteristique> caracteristiques, bool isSith, string nom, string image = "img/default.png")
+        public Jedi(int id, List<Caracteristique> caracteristiques, bool isSith, string nom, string image = "default.png")
         {
             this.caracteristiques = caracteristiques;
             this.isSith = isSith;

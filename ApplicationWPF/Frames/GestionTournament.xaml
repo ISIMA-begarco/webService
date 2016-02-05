@@ -25,22 +25,22 @@
 
             <!-- Gestion des Jedis -->
             <TabItem Header="Jedi" FontWeight="Bold" Padding="25,20,25,20">
-                <userControls:JedisView x:Name="ucJedis" Style="{StaticResource Classic}" Loaded="JediLoaded"/>
+                <userControls:JedisView x:Name="ucJedis" Style="{StaticResource Classic}" Loaded="JediLoaded" Unloaded="JediUnloaded"/>
             </TabItem>
 
             <!-- Gestion des Matchs -->
             <TabItem Header="Match" FontWeight="Bold" Padding="25,20,25,20">
-                <userControls:MatchsView x:Name="ucMatchs" Style="{StaticResource Classic}" Loaded="MatchLoaded"/>
+                <userControls:MatchsView x:Name="ucMatchs" Style="{StaticResource Classic}" Loaded="MatchLoaded" Unloaded="MatchUnloaded"/>
             </TabItem>
 
             <!-- Gestion des Stades -->
             <TabItem Header="Stade" FontWeight="Bold" Padding="25,20,25,20">
-                <userControls:StadesView x:Name="ucStade" Style="{StaticResource Classic}" Loaded="StadeLoaded"/>
+                <userControls:StadesView x:Name="ucStade" Style="{StaticResource Classic}" Loaded="StadeLoaded" Unloaded="StadeUnloaded"/>
             </TabItem>
 
             <!-- Gestion des Tournois -->
             <TabItem Header="Tournoi" FontWeight="Bold" Padding="25,20,25,20">
-                <userControls:TournoisView x:Name="ucTournoi" Style="{StaticResource Classic}" Loaded="TournoiLoaded"/>
+                <userControls:TournoisView x:Name="ucTournoi" Style="{StaticResource Classic}" Loaded="TournoiLoaded" Unloaded="TournoiUnloaded"/>
             </TabItem>
         </TabControl>
     </Grid>
