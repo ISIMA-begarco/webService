@@ -71,7 +71,9 @@ namespace ApplicationWPF.ViewModel.Tournament
         private void Add()
         {
             BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-            EntitiesLayer.Match placeholder = jtm.getMatches()[0];
+            EntitiesLayer.Match placeholder = (from x in jtm.getMatches()
+                                               where x.PhaseTournoi == EntitiesLayer.EPhaseTournoi.HuitiemeFinale1
+                                               select x).First();
             EntitiesLayer.Match[] placeholders = {placeholder, placeholder, placeholder, placeholder,
                                                   placeholder, placeholder, placeholder, placeholder };
             List<EntitiesLayer.Match> matchs = new List<EntitiesLayer.Match>(placeholders);
