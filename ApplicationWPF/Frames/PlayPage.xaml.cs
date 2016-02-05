@@ -23,6 +23,8 @@ namespace ApplicationWPF.Frames
         public event EventHandler<FrameChangedEventArgs> m_changeFrame;
         public string m_nextFrame;
 
+        public UserControl lastSelect;
+
         public PlayPage()
         {
             InitializeComponent();
@@ -41,6 +43,26 @@ namespace ApplicationWPF.Frames
 
             BusinessLayer.PartieManager.startNewGame();
             usrCtrlTournoiCombo.cbTournoi.DropDownClosed += SetDetails;
+
+            lastSelect = usrSolo;
+            usrSolo.Margin = new System.Windows.Thickness(5);
+            usrSolo.Opacity = 1;
+
+
+            usrSolo.MouseDown += fixeSelection;
+            usrMulti.MouseDown += fixeSelection;
+            usrPariSolo.MouseDown += fixeSelection;
+            usrPariMulti.MouseDown += fixeSelection;
+        }
+
+        private void fixeSelection(object sender, MouseButtonEventArgs e)
+        {
+            lastSelect.Margin = new System.Windows.Thickness(10);
+            lastSelect.Opacity = 0.9;
+            UserControl usr = sender as UserControl;
+            usr.Margin = new System.Windows.Thickness(5);
+            usr.Opacity = 1;
+            lastSelect = usr;
         }
 
         public void SetDetails(object sender, EventArgs e)
