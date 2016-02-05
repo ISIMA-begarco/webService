@@ -21,6 +21,8 @@ namespace BusinessLayer
 
         public static bool nextMatch()
         {
+
+            
             bool nextExist = false;
             List<EntitiesLayer.Match> matchRestant = game.Tournament.Matchs.Where(m => m.JediVainqueur == null).OrderBy(m => m,new JediTournamentManager.MatchOrderComparer()).ToList();
             if(matchRestant.Count > 0)
@@ -118,7 +120,16 @@ namespace BusinessLayer
 
         public static void setCurrentGameTournament(EntitiesLayer.Tournoi t)
         {
+
+            
             game.Tournament = t;
+            int i = (int)EntitiesLayer.EPhaseTournoi.HuitiemeFinale1;
+            foreach(EntitiesLayer.Match ma in game.Tournament.Matchs.Where(m => (int)m.PhaseTournoi >= (int)EntitiesLayer.EPhaseTournoi.HuitiemeFinale8).ToList())
+            {
+                ma.PhaseTournoi = (EntitiesLayer.EPhaseTournoi) i;
+                i--;
+            }           
+
             game.Current_match = t.Matchs.First();
         }
 
