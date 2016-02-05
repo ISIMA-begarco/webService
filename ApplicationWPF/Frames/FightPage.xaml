@@ -12,7 +12,7 @@
       KeyDown="Page_KeyDown"
       x:Name="fightPage">
     <Page.Background>
-        <ImageBrush ImageSource="{StaticResource StarWarsImageBackGround1}"/>
+        <ImageBrush x:Name="stadeBckGrnd"  ImageSource="{Binding ImageUri}"/>
     </Page.Background>
     <Grid KeyDown="Page_KeyDown">
         <Grid.RowDefinitions>
