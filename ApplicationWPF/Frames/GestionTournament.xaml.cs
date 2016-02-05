@@ -81,7 +81,15 @@ namespace ApplicationWPF.Frames
 
         private void StadeUnloaded(object sender, RoutedEventArgs e)
         {
-
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            ViewModel.Stade.StadesViewModel svm = ucStade.DataContext as ViewModel.Stade.StadesViewModel;
+            List<EntitiesLayer.Stade> stades = new List<EntitiesLayer.Stade>();
+            foreach (ViewModel.Stade.StadeViewModel s in svm.Stades)
+            {
+                if (s.Planete != "" && s.ImageUri.OriginalString != "")
+                    stades.Add(s.Stade);
+            }
+            jtm.updateStades(stades);
         }
 
         private void MatchLoaded(object sender, RoutedEventArgs e)
@@ -104,7 +112,14 @@ namespace ApplicationWPF.Frames
 
         private void MatchUnloaded(object sender, RoutedEventArgs e)
         {
-            
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            ViewModel.Match.MatchsViewModel mvm = ucMatchs.DataContext as ViewModel.Match.MatchsViewModel;
+            List<EntitiesLayer.Match> matchs = new List<EntitiesLayer.Match>();
+            foreach (ViewModel.Match.MatchViewModel m in mvm.Matchs)
+            {
+                matchs.Add(m.Match);
+            }
+            jtm.updateMatches(matchs);
         }
 
         private void TournoiLoaded(object sender, RoutedEventArgs e)
@@ -118,7 +133,15 @@ namespace ApplicationWPF.Frames
 
         private void TournoiUnloaded(object sender, RoutedEventArgs e)
         {
-
+            BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
+            ViewModel.Tournament.TournamentsViewModel tvm = ucTournoi.DataContext as ViewModel.Tournament.TournamentsViewModel;
+            List<EntitiesLayer.Tournoi> tournois = new List<EntitiesLayer.Tournoi>();
+            foreach (ViewModel.Tournament.TournamentViewModel t in tvm.Tournaments)
+            {
+                if (t.Name != "")
+                    tournois.Add(t.Tournament);
+            }
+            jtm.updateTournois(tournois);
         }
     }
 }

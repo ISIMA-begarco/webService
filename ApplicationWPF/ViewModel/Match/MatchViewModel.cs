@@ -11,6 +11,12 @@ namespace ApplicationWPF.ViewModel.Match
     {
         private EntitiesLayer.Match m_match;
 
+        public EntitiesLayer.Match Match
+        {
+            get { return m_match; }
+            set { m_match = value; }
+        }
+
         public MatchViewModel(EntitiesLayer.Match match)
         {
             m_match = match;

@@ -11,6 +11,12 @@ namespace ApplicationWPF.ViewModel.Stade
     {
         private EntitiesLayer.Stade m_stade;
 
+        public EntitiesLayer.Stade Stade
+        {
+            get { return m_stade; }
+            set { m_stade = value; }
+        }
+
         public StadeViewModel(EntitiesLayer.Stade stade)
         {
             m_stade = stade;
