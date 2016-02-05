@@ -73,7 +73,14 @@ namespace ApplicationWPF.ViewModel.Tournament
             BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
             EntitiesLayer.Match placeholder = jtm.getMatches()[0];
             EntitiesLayer.Match[] placeholders = {placeholder, placeholder, placeholder, placeholder,
-                                                   placeholder, placeholder, placeholder, placeholder};
+                                                  placeholder, placeholder, placeholder, placeholder,
+                                                  new EntitiesLayer.Match(0, null, null, EntitiesLayer.EPhaseTournoi.QuartFinale1, null),
+                                                  new EntitiesLayer.Match(0, null, null, EntitiesLayer.EPhaseTournoi.QuartFinale2, null),
+                                                  new EntitiesLayer.Match(0, null, null, EntitiesLayer.EPhaseTournoi.QuartFinale3, null),
+                                                  new EntitiesLayer.Match(0, null, null, EntitiesLayer.EPhaseTournoi.QuartFinale4, null),
+                                                  new EntitiesLayer.Match(0, null, null, EntitiesLayer.EPhaseTournoi.DemiFinale1, null),
+                                                  new EntitiesLayer.Match(0, null, null, EntitiesLayer.EPhaseTournoi.DemiFinale2, null),
+                                                  new EntitiesLayer.Match(0, null, null, EntitiesLayer.EPhaseTournoi.Finale, null)};
 
             EntitiesLayer.Tournoi t = new EntitiesLayer.Tournoi(0, "<New>", new List<EntitiesLayer.Match>(placeholders));
             this.SelectedTournoi = new TournamentViewModel(t);
