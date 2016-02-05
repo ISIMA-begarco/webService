@@ -134,7 +134,7 @@ namespace ApplicationWPF.ViewModel.Tournament
 
             if (jedi1 != "Inconnu" && jedi2 != "Inconnu")
             {
-                m_tournament.Matchs[index] = (from x in jtm.getMatches()
+                m_tournament.Matchs[index] = (from x in jtm.getMatchsNonEmpty()
                                           where x.Jedi1.Nom == jedi1
                                           && x.Jedi2.Nom == jedi2
                                           && x.Stade.Planete == stade
@@ -142,7 +142,7 @@ namespace ApplicationWPF.ViewModel.Tournament
             }
             else if (jedi1 == "Inconnu" && jedi2 != "Inconnu")
             {
-                m_tournament.Matchs[index] = (from x in jtm.getMatches()
+                m_tournament.Matchs[index] = (from x in jtm.getMatchsNonEmpty()
                                           where x.Jedi1 == null
                                           && x.Jedi2.Nom == jedi2
                                           && x.Stade.Planete == stade
@@ -150,7 +150,7 @@ namespace ApplicationWPF.ViewModel.Tournament
             }
             else if (jedi1 != "Inconnu" && jedi2 == "Inconnu")
             {
-                m_tournament.Matchs[index] = (from x in jtm.getMatches()
+                m_tournament.Matchs[index] = (from x in jtm.getMatchsNonEmpty()
                                           where x.Jedi1.Nom == jedi1
                                           && x.Jedi2 == null
                                           && x.Stade.Planete == stade
@@ -158,7 +158,7 @@ namespace ApplicationWPF.ViewModel.Tournament
             }
             else // if (jedi1 == "Inconnu" && jedi2 == "Inconnu")
             {
-                m_tournament.Matchs[index] = (from x in jtm.getMatches()
+                m_tournament.Matchs[index] = (from x in jtm.getMatchsNonEmpty()
                                           where x.Jedi1 == null
                                           && x.Jedi2 == null
                                           && x.Stade.Planete == stade
