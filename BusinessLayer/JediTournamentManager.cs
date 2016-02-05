@@ -202,6 +202,10 @@ namespace BusinessLayer
             double balance = .5;
             
             double gain1, gain2, gain3, gain4;
+            double [] stade = new double[3];
+            stade[0] = 0;
+            stade[1] = 0;
+            stade[2] = 0;
             gain1 = rd.NextDouble();
             gain1 = gain1 <= m.Jedi1.getPerception() / 100 ? 1 + gain1 : 1;
             gain2 = rd.NextDouble();
@@ -210,6 +214,17 @@ namespace BusinessLayer
             gain3 = gain3 <= m.Jedi1.getPerception() / 100 ? 1 + gain3 : 1;
             gain4 = rd.NextDouble();
             gain4 = gain4 <= m.Jedi2.getPerception() / 100 ? 1 + gain4 : 1;
+
+            foreach(Caracteristique c in m.Stade.Caracteristiques)
+            {
+                stade[(int)c.Definition] += c.Valeur;
+            }
+
+            if(m.Jedi1.IsSith != m.Jedi2.IsSith)
+            {
+                balance += ((stade[(int)EDefCaracteristique.Strength] + stade[(int)EDefCaracteristique.Dexterity]) / 100);
+                balance = balance * (1 + stade[(int)EDefCaracteristique.Perception] / 100);
+            }
 
             balance += ((m.Jedi1.getStrength()/100*gain1-m.Jedi2.getDexterity()/100*gain2) + (m.Jedi2.getStrength() / 100 * gain4 - m.Jedi1.getDexterity() / 100 * gain3));
             

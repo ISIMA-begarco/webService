@@ -25,19 +25,23 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <UserControls:PlayChoice Grid.Row="0" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround1}" 
+        <UserControls:PlayChoice x:Name="usrSolo"
+                                 Grid.Row="0" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround1}" 
                                  PlayChoiceTitle="Armée d'un seul homme"
                                  PlayChoiceDescription="Solo"
                                  Event="OnPlayChoiceOnePlayer_Click"/>
-        <UserControls:PlayChoice Grid.Row="1" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround8}" 
+        <UserControls:PlayChoice x:Name="usrMulti"
+                                 Grid.Row="1" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround8}" 
                                  PlayChoiceTitle="Bataille au sommet"
                                  PlayChoiceDescription="Multiplayer"
                                  Event="OnPlayChoiceMultiplayer_Click"/>
-        <UserControls:PlayChoice Grid.Row="2" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround3}" 
+        <UserControls:PlayChoice x:Name="usrPariSolo"
+                                 Grid.Row="2" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround3}" 
                                  PlayChoiceTitle="Marchand de mort"
                                  PlayChoiceDescription="Pari Solo"
                                  Event="OnPlayChoiceSoloPari_Click"/>
-        <UserControls:PlayChoice Grid.Row="3" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround2}" 
+        <UserControls:PlayChoice x:Name="usrPariMulti" 
+                                 Grid.Row="3" Grid.Column="0" PlayChoiceImSource="{StaticResource StarWarsImageBackGround2}" 
                                  PlayChoiceTitle="Les Vendeurs d'âmes"
                                  PlayChoiceDescription="Pari Multiplayer"
                                  Event="OnPlayChoiceMultiplayerPari_Click"/>

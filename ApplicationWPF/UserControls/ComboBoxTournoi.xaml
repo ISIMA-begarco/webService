@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ApplicationWPF.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <ComboBox x:Name="cbTournoi" ItemsSource="{Binding Tournaments}" SelectedItem="{Binding SelectedTournament}" Height="50" Margin="10" Background="Transparent" MouseLeave="cbTournoi_MouseLeave">
+    <ComboBox x:Name="cbTournoi" ItemsSource="{Binding Tournaments}" SelectedItem="{Binding SelectedTournament}" Height="50" Margin="10" Background="Transparent" DropDownClosed="cbTournoi_MouseLeave">
         <ComboBox.Resources>
             <Style x:Key="ComboBoxItemStyle1" TargetType="{x:Type ComboBoxItem}">
                 <Setter Property="SnapsToDevicePixels" Value="True"/>

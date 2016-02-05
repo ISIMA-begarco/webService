@@ -245,7 +245,7 @@ namespace ApplicationWPF.Frames
                 o.Direction = 0;
                 o.Color = Colors.Blue;
                 o.ShadowDepth = 0;
-                o.BlurRadius = 10;
+                o.BlurRadius = 50;
 
 
                 if (BusinessLayer.PartieManager.getCurrentGame().Mode == EntitiesLayer.Mode.Solo || BusinessLayer.PartieManager.getCurrentGame().Mode == EntitiesLayer.Mode.Multi)
