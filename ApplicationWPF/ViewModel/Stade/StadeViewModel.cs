@@ -36,6 +36,12 @@ namespace ApplicationWPF.ViewModel.Stade
             }
         }
 
+
+        public Uri ImageUri
+        {
+            get {return  m_stade.ImageUri; }
+        }
+
         public string CaracteristiquesString
         {
             get

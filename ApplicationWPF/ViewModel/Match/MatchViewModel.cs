@@ -67,6 +67,13 @@ namespace ApplicationWPF.ViewModel.Match
             }
         }
 
+
+        public EntitiesLayer.Stade obj_Stade
+        {
+            get { return m_match.Stade; }
+        }
+
+
         public string Stade
         {
             get
