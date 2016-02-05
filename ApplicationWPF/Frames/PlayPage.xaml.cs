@@ -40,10 +40,10 @@ namespace ApplicationWPF.Frames
             usrCtrlTournoiCombo.DataContext = tvm;
 
             BusinessLayer.PartieManager.startNewGame();
-            tournamentDetails.MouseLeave += SetDetails;
+            usrCtrlTournoiCombo.cbTournoi.DropDownClosed += SetDetails;
         }
 
-        public void SetDetails(object sender, MouseEventArgs e)
+        public void SetDetails(object sender, EventArgs e)
         {
             if (BusinessLayer.PartieManager.getCurrentGame().Tournament != null)
             {

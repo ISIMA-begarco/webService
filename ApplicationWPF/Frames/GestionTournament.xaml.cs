@@ -70,8 +70,17 @@ namespace ApplicationWPF.Frames
         {
             // Initialisation des Matchs
             BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-            IList<EntitiesLayer.Match> matchs = jtm.getMatches();
-            ViewModel.Match.MatchsViewModel mvm = new ViewModel.Match.MatchsViewModel(matchs);
+            List<EntitiesLayer.Match> matchs = jtm.getMatches();
+            List<EntitiesLayer.Match> nonEmptyMatchs = new List<EntitiesLayer.Match>();
+            foreach (EntitiesLayer.Match match in matchs)
+            {
+                if (match.Jedi1 != null && match.Jedi2 != null)
+                {
+                    nonEmptyMatchs.Add(match);
+                }
+            }
+
+            ViewModel.Match.MatchsViewModel mvm = new ViewModel.Match.MatchsViewModel(nonEmptyMatchs);
             ucMatchs.DataContext = mvm;
         }
 

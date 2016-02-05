@@ -33,16 +33,19 @@ namespace ApplicationWPF.UserControls
             List<string> matchs = new List<string>();
             for (int i = 0; i < jedis1.Count; i++)
             {
-                string jedi1 = "Inconnu";
-                string jedi2 = "Inconnu";
-                string stade = jtm.getMatches()[i].Stade.Planete;
+                if (jedis1[i] != null && jedis2[i] != null)
+                {
+                    string jedi1 = "Inconnu";
+                    string jedi2 = "Inconnu";
+                    string stade = jtm.getMatches()[i].Stade.Planete;
 
-                if (jedis1[i] != null)
-                    jedi1 = jedis1[i].Nom;
-                if (jedis1[i] != null)
-                    jedi2 = jedis2[i].Nom;
+                    if (jedis1[i] != null)
+                        jedi1 = jedis1[i].Nom;
+                    if (jedis1[i] != null)
+                        jedi2 = jedis2[i].Nom;
 
-                matchs.Add(jedi1 + " VS " + jedi2 + " (" + stade + ")");
+                    matchs.Add(jedi1 + " VS " + jedi2 + " (" + stade + ")");
+                }
             }
 
             Match1.ItemsSource = matchs;

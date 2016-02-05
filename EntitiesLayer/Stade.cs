@@ -37,6 +37,12 @@ namespace EntitiesLayer
             set { planete = value; }
         }
 
+        public Uri ImageUri
+        {
+            get { return new Uri("../../Picture/" + Image, UriKind.Relative); }
+        }
+
+
         public string Image
         {
             get

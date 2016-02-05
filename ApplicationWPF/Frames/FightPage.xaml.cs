@@ -34,6 +34,9 @@ namespace ApplicationWPF.Frames
         {
             BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
 
+
+            fightPage.DataContext = BusinessLayer.PartieManager.getCurrentGame().Current_match.Stade;
+
             // Gestion de la Partie
             EntitiesLayer.Partie game = BusinessLayer.PartieManager.getCurrentGame();
             ViewModel.Partie.PartieViewModel gvm = new ViewModel.Partie.PartieViewModel(game);
@@ -61,7 +64,7 @@ namespace ApplicationWPF.Frames
                 List<EntitiesLayer.Jedi> jedis = new List<EntitiesLayer.Jedi>();   
                 jedis.Add(game.Current_match.Jedi1);
                 jedis.Add(game.Current_match.Jedi2);
-                
+
 
                 IList<EntitiesLayer.Jedi> jedis2 = jedis;
                 ViewModel.Jedi.JedisModelView jvm = new ViewModel.Jedi.JedisModelView(jedis);
