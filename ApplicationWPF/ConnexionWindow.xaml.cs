@@ -35,6 +35,8 @@ namespace JediTournamentWPF
             {
                 if (JediTournamentManager.CheckConnexionUser(Login_TextBox.Text, Password_TextBox.Password))
                 {
+                    ApplicationWPF.MainWindow mw = new ApplicationWPF.MainWindow();
+                    mw.Show();
                     this.Close();
                 }
             }

@@ -114,6 +114,22 @@ namespace BusinessLayer
                     select x).ToList();
         }
 
+        public List<Match> getMatchsEmpty()
+        {
+
+            return (from x in bdd.getMatches()
+                    where x.Jedi1 == null && x.Jedi2 == null
+                    select x).ToList();
+        }
+
+        public List<Match> getMatchsNonEmpty()
+        {
+
+            return (from x in bdd.getMatches()
+                    where x.Jedi1 != null && x.Jedi2 != null
+                    select x).ToList();
+        }
+
         public IEnumerable<Match> getMatches200Sith()
         {
             IEnumerable<Match> matches = from x in bdd.getMatches()

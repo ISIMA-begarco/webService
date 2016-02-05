@@ -112,7 +112,7 @@ namespace DataAccessLayer
                 dataTables[(int)DTName.TOURNOIS].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.TOURNOIS]);
 
-                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idtournoi, idmatch FROM MatchTournoi;", sqlConnection));
+                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idtournoi, idmatch, idmatchtournoi FROM MatchTournoi;", sqlConnection));
                 dataTables[(int)DTName.MATCHTOURNOI].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.MATCHTOURNOI]);
 
@@ -296,7 +296,7 @@ namespace DataAccessLayer
 
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                String request = "SELECT id, login, password, nom, prenom FROM users WHERE login=" + login + ";";
+                String request = "SELECT id, login, password, nom, prenom FROM users WHERE login='" + login + "';";
                 SqlCommand sqlCommand = new SqlCommand(request, sqlConnection);
                 sqlConnection.Open();
 
@@ -372,7 +372,7 @@ namespace DataAccessLayer
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 dataTables[(int)DTName.MATCHES].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.MATCHES]);
-                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idtournoi, idmatch FROM MatchTournoi;", sqlConnection));
+                sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idtournoi, idmatch, idmatchtournoi FROM MatchTournoi;", sqlConnection));
                 dataTables[(int)DTName.MATCHTOURNOI].Clear();
                 sqlDataAdapter.Fill(dataTables[(int)DTName.MATCHTOURNOI]);
                 sqlConnection.Close();
@@ -514,7 +514,7 @@ namespace DataAccessLayer
             if(deleteOccur)
             {
                 UpdateByCommandBuilder("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", dataTables[(int)DTName.TOURNOIS]);
-                UpdateByCommandBuilder("SELECT idtournoi, idmatch FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
+                UpdateByCommandBuilder("SELECT idtournoi, idmatch, idmatchtournoi FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
             }
             UpdateByCommandBuilder("SELECT id, nom, isSith, image FROM jedis;", dataTables[(int)DTName.JEDIS]);
             UpdateByCommandBuilder("SELECT idjedi, idcarac FROM JediCarac;", dataTables[(int)DTName.JEDICARAC]);
@@ -572,7 +572,7 @@ namespace DataAccessLayer
             }
 
             UpdateByCommandBuilder("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", dataTables[(int)DTName.MATCHES]);
-            UpdateByCommandBuilder("SELECT idtournoi, idmatch FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
+            UpdateByCommandBuilder("SELECT idtournoi, idmatch, idmatchtournoi FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
 
             return result;
         }
@@ -649,7 +649,7 @@ namespace DataAccessLayer
             if(deleteOccur)
             {
                 UpdateByCommandBuilder("SELECT id, jedi1, jedi2, stade, vainqueur, phase FROM Matches;", dataTables[(int)DTName.TOURNOIS]);
-                UpdateByCommandBuilder("SELECT idtournoi, idmatch FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
+                UpdateByCommandBuilder("SELECT idtournoi, idmatch, idmatchtournoi FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
             }
             UpdateByCommandBuilder("SELECT id, nom, nbplaces, image FROM stades;", dataTables[(int)DTName.STADES]);
             UpdateByCommandBuilder("SELECT idstade, idcarac FROM StadeCarac;", dataTables[(int)DTName.STADECARAC]);
@@ -723,7 +723,7 @@ namespace DataAccessLayer
             }
 
             UpdateByCommandBuilder("SELECT id, nom FROM Tournois;", dataTables[(int)DTName.TOURNOIS]);
-            UpdateByCommandBuilder("SELECT idtournoi, idmatch FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
+            UpdateByCommandBuilder("SELECT idtournoi, idmatch, idmatchtournoi FROM MatchTournoi;", dataTables[(int)DTName.MATCHTOURNOI]);
 
             return result;
         }

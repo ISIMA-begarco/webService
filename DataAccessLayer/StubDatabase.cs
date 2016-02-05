@@ -26,7 +26,7 @@ namespace DataAccessLayer
             tournois = new List<Tournoi>();
 
             #region ajout utilisateurs
-            users.Add(new Utilisateur(1, "begarco", "9e0513b4d4dd9b954a043d3ccd0c9e6281f3fede", "Garçon", "Benoît"));
+            users.Add(new Utilisateur(1, "begarco", "15851918021222115514974461602051215898129243254222", "Garçon", "Benoît"));
             #endregion
 
             #region ajout des caracteristiques

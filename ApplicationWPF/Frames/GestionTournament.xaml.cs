@@ -96,17 +96,9 @@ namespace ApplicationWPF.Frames
         {
             // Initialisation des Matchs
             BusinessLayer.JediTournamentManager jtm = new BusinessLayer.JediTournamentManager();
-            List<EntitiesLayer.Match> matchs = jtm.getMatches();
-            List<EntitiesLayer.Match> nonEmptyMatchs = new List<EntitiesLayer.Match>();
-            foreach (EntitiesLayer.Match match in matchs)
-            {
-                if (match.Jedi1 != null && match.Jedi2 != null)
-                {
-                    nonEmptyMatchs.Add(match);
-                }
-            }
+            List<EntitiesLayer.Match> matchs = jtm.getMatchsNonEmpty();
 
-            ViewModel.Match.MatchsViewModel mvm = new ViewModel.Match.MatchsViewModel(nonEmptyMatchs);
+            ViewModel.Match.MatchsViewModel mvm = new ViewModel.Match.MatchsViewModel(matchs);
             ucMatchs.DataContext = mvm;
         }
 
@@ -119,6 +111,7 @@ namespace ApplicationWPF.Frames
             {
                 matchs.Add(m.Match);
             }
+            matchs.AddRange(jtm.getMatchsEmpty());
             jtm.updateMatches(matchs);
         }
 

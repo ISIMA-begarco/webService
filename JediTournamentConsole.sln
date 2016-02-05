@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{4922E289-603
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{FA776FF9-9B98-4E10-B831-3FA639A1BA32}"
 	ProjectSection(SolutionItems) = preProject
-		create.sql = create.sql
+		SQL\create.sql = SQL\create.sql
 		SQL\insert.sql = SQL\insert.sql
 		SQL\truncate.sql = SQL\truncate.sql
 	EndProjectSection
